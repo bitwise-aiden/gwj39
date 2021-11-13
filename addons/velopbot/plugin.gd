@@ -1,7 +1,6 @@
 tool
 extends EditorPlugin
 
-
 var active: bool = true
 var twitch: Gift = null
 
@@ -13,15 +12,16 @@ var moderators: Array = [
 ]
 
 var command_responses: Dictionary = {
-  '!current': 'https://velopman.itch.io/inversion password: chickenrun',
-  '!discord': 'https://discord.gg/snQ4FMAkBp',
-  '!github': 'https://github.com/velopman',
-  '!itch': 'https://velopman.itch.io',
-  '!ian': 'https://www.youtube.com/channel/UCmRJyLjnQ035ng6XP295zXg',
-  '!jam': 'https://itch.io/jam/7drl-challenge-2021',
-  '!onlyfans': 'https://www.youtube.com/channel/UCmRJyLjnQ035ng6XP295zXg',
-  '!timezone': 'Eastern (UTC - 05:00)',
-  '!today': 'Working on a game for Godot Wild Jam 39, theme: Inversion!',
+	'!current': 'https://velopman.itch.io/inversion password: chickenrun',
+	'!discord': 'https://discord.gg/snQ4FMAkBp',
+	'!github': 'https://github.com/velopman',
+	'!itch': 'https://velopman.itch.io',
+	'!ian': 'https://www.youtube.com/channel/UCmRJyLjnQ035ng6XP295zXg',
+	'!jam': 'https://itch.io/jam/7drl-challenge-2021',
+	'!onlyfans': 'https://www.youtube.com/channel/UCmRJyLjnQ035ng6XP295zXg',
+	'!timezone': 'Eastern (UTC - 05:00)',
+	'!today': 'Working on a game for Godot Wild Jam 39, theme: Inversion!',
+	'!bangers': 'https://open.spotify.com/artist/7vd6FSorL46P9XmeHhSFwu',
 }
 
 var user_responses: Dictionary = {
@@ -34,7 +34,6 @@ var user_responses: Dictionary = {
 	"theyagich": "Why aren't you asleep?",
 	"lumikkode": "Oh my! It is Lumi <3 <3"
 }
-
 
 # Lifecycle methods
 func _process(delta: float) -> void:
