@@ -3,7 +3,7 @@ extends Node2D
 
 # Export variables
 
-export(int) var size: int = 10
+export(int) var size: int = 9
 
 
 # Private variables
@@ -32,8 +32,8 @@ func _ready() -> void:
 	var player_reference: Resource = preload("res://source/player.tscn")
 
 	var instance: Player = player_reference.instance()
-	instance.position = self.__initial_position + Globals.PLAYER_OFFSET
-	instance.set_direction(Vector2.DOWN)
+	instance.position = self.__initial_position + Vector2(0.0, 4.0) * Globals.SQUARE_SIZE + Globals.PLAYER_OFFSET
+	instance.set_direction(Vector2.RIGHT)
 	instance.set_can_move_callback(funcref(self, "__can_move"))
 
 	self.call_deferred("add_child", instance)

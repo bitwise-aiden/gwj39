@@ -14,6 +14,8 @@ onready var __sprite: Sprite = $sprite
 var __target: Player = null
 var __target_origin: Vector2 = Vector2.ZERO
 
+var __previous_color: Color = Color.white
+var __current_color: Color = Color.white
 
 # Public methods
 
@@ -31,7 +33,14 @@ func land(player: Player) -> void:
 	self.__target_origin = player.position
 
 	self.__animation.play("square_animation")
-	self.__sprite.modulate = player.color
+
+	self.__previous_color = self.__current_color
+	self.__sprite.material.set_shader_param("previous_color", self.__previous_color)
+
+	self.__current_color = player.color
+	self.__sprite.material.set_shader_param("current_color", self.__current_color)
+
+	self.__sprite.material.set_shader_param("start_time", OS.get_ticks_msec() / 1000.0)
 
 
 # Private methods
