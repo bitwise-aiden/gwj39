@@ -12,6 +12,12 @@ var __initial_position: Vector2 = Vector2.ZERO
 var __squares: Array = []
 
 
+var __player_data = [
+	[preload("res://assets/art/player_1.png"), Vector2(0.0, 4.0), Color("8be866"), Vector2.RIGHT],
+	[preload("res://assets/art/player_2.png"), Vector2(8.0, 4.0), Color("979bcc"), Vector2.LEFT],
+]
+
+
 # Lifecycle methods
 
 func _ready() -> void:
@@ -31,12 +37,17 @@ func _ready() -> void:
 
 	var player_reference: Resource = preload("res://source/player.tscn")
 
-	var instance: Player = player_reference.instance()
-	instance.position = self.__initial_position + Vector2(0.0, 4.0) * Globals.SQUARE_SIZE + Globals.PLAYER_OFFSET
-	instance.set_direction(Vector2.RIGHT)
-	instance.set_can_move_callback(funcref(self, "__can_move"))
+	for data in self.__player_data:
+		var instance: Player = player_reference.instance()
 
-	self.call_deferred("add_child", instance)
+		instance.set_texture(data[0])
+		instance.position = self.__initial_position + data[1] * Globals.SQUARE_SIZE + Globals.PLAYER_OFFSET
+		instance.color = data[2]
+		instance.set_direction(data[3])
+
+		instance.set_can_move_callback(funcref(self, "__can_move"))
+
+		self.call_deferred("add_child", instance)
 
 	Event.connect("player_landed", self, "__player_landed")
 

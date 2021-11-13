@@ -10,6 +10,7 @@ export(Color) var color: Color = Color("8be866")
 # Private variables
 
 onready var __animation: AnimationPlayer = $animation
+onready var __sprite: Sprite = $sprite
 
 var __destination: Vector2 = Vector2.ZERO
 var __origin: Vector2 = Vector2.ZERO
@@ -18,11 +19,15 @@ var __should_move: bool = false
 var __direction: Vector2 = Vector2.ZERO
 var __can_move_callback: FuncRef = null
 
+var __texture: Texture = null
+
 
 # Lifecylce method
 
 func _ready() -> void:
 	self.initiate_move()
+
+	self.__sprite.texture = self.__texture
 
 
 # Public methods
@@ -59,6 +64,9 @@ func set_can_move_callback(incoming: FuncRef) -> void:
 
 func set_direction(incoming: Vector2) -> void:
 	self.__direction = incoming
+
+func set_texture(incoming: Texture) -> void:
+	self.__texture = incoming
 
 
 # Private methods

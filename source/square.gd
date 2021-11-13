@@ -17,6 +17,7 @@ var __target_origin: Vector2 = Vector2.ZERO
 var __previous_color: Color = Color.white
 var __current_color: Color = Color.white
 
+
 # Public methods
 
 func complete() -> void:
