@@ -52,10 +52,7 @@ func __can_move(origin, destination) -> bool:
 			return false
 
 	var delta = (index_destination - index_origin).snapped(Vector2(0.1, 0.1))
-	if ![Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN].find(delta):
-		return false
-
-	return true
+	return [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN].find(delta) != -1
 
 
 func __player_landed(player: Player) -> void:

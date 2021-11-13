@@ -4,6 +4,7 @@ class_name Player extends Node2D
 # Public variables
 
 export(float) var move_delta: float = 0.0 setget __set_move_delta, __get_move_delta
+export(Color) var color: Color = Color("6ebc51")
 
 
 # Private variables
@@ -35,6 +36,9 @@ func land() -> void:
 
 
 func move() -> void:
+	if TouchInput.direction != Vector2.ZERO:
+		self.__direction = TouchInput.direction
+
 	self.__origin = self.position
 
 	if self.__can_move_callback == null:

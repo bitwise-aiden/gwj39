@@ -9,6 +9,7 @@ export(Vector2) var player_position: Vector2 setget __set_player_position, __get
 # Private variables
 
 onready var __animation: AnimationPlayer = $animation
+onready var __sprite: Sprite = $sprite
 
 var __target: Player = null
 var __target_origin: Vector2 = Vector2.ZERO
@@ -30,6 +31,7 @@ func land(player: Player) -> void:
 	self.__target_origin = player.position
 
 	self.__animation.play("square_animation")
+	self.__sprite.modulate = player.color
 
 
 # Private methods
