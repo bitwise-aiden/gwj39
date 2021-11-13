@@ -1,3 +1,16 @@
-[gd_resource type="TextFile" format=2]
+Theme: Inversion
+Wildcards:
+	- [ ] Prithee, Speak! - Have a system for talking to NPCs in your game
+	- [ ] Kids these days - Have a character complain about everything the player does
+	- [x] Mobile friendly - Make sure your HTML5 build can be played from a touch screen
 
-[resource]
+Board inversion game thing
+- Two players to be able to move around the board
+	- Cardinal direction input
+	- Player continues to move in current direction until another direction is pressed
+- As the player touches a square, they will convert it to their colour.
+	- Squares start off as grey
+	- Players will have two opposite colours to switch to
+- Power ups
+	- Speed
+	- Bomb: Stun anyone in blast radius, and reset colours to default
