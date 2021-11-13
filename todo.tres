@@ -14,3 +14,8 @@ Board inversion game thing
 - Power ups
 	- Speed
 	- Bomb: Stun anyone in blast radius, and reset colours to default
+
+
+Goals for this jam!
+- I want to use Godot built-in as much as possible.
+	- Looking at your animation manager!
