@@ -13,7 +13,7 @@ var moderators: Array = [
 ]
 
 var command_responses: Dictionary = {
-  '!current': 'https://velopman.itch.io/uhhh-helm password: chickenrun',
+  '!current': 'https://velopman.itch.io/inversion password: chickenrun',
   '!discord': 'https://discord.gg/snQ4FMAkBp',
   '!github': 'https://github.com/velopman',
   '!itch': 'https://velopman.itch.io',
@@ -21,7 +21,7 @@ var command_responses: Dictionary = {
   '!jam': 'https://itch.io/jam/7drl-challenge-2021',
   '!onlyfans': 'https://www.youtube.com/channel/UCmRJyLjnQ035ng6XP295zXg',
   '!timezone': 'Eastern (UTC - 05:00)',
-  '!today': 'Working on a game for Godot Wild Jam 30, theme: Heartbeat!',
+  '!today': 'Working on a game for Godot Wild Jam 39, theme: Inversion!',
 }
 
 var user_responses: Dictionary = {
