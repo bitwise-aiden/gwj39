@@ -16,6 +16,7 @@ var __destination: Vector2 = Vector2.ZERO
 var __origin: Vector2 = Vector2.ZERO
 var __should_move: bool = false
 
+var __interface: ControlInterface = null
 var __direction: Vector2 = Vector2.ZERO
 var __can_move_callback: FuncRef = null
 
@@ -31,6 +32,22 @@ func _ready() -> void:
 
 
 # Public methods
+func initialize(
+	position: Vector2,
+	color: Color,
+	texture: Texture,
+	interface: ControlInterface,
+	can_move_callback: FuncRef,
+	direction: Vector2 = Vector2.ZERO
+) -> void:
+	self.color = color
+	self.position = position
+
+	self.__can_move_callback = can_move_callback
+	self.__direction = direction
+	self.__interface = interface
+	self.__texture = texture
+
 
 func initiate_move() -> void:
 	self.__animation.play("jump")
@@ -41,8 +58,8 @@ func land() -> void:
 
 
 func move() -> void:
-	if TouchInput.direction != Vector2.ZERO:
-		self.__direction = TouchInput.direction
+	if self.__interface.direction() != Vector2.ZERO:
+		self.__direction =  self.__interface.direction()
 
 	self.__origin = self.position
 
@@ -56,17 +73,6 @@ func move() -> void:
 		self.__destination = self.__origin
 
 	self.__should_move = true
-
-
-func set_can_move_callback(incoming: FuncRef) -> void:
-	self.__can_move_callback = incoming
-
-
-func set_direction(incoming: Vector2) -> void:
-	self.__direction = incoming
-
-func set_texture(incoming: Texture) -> void:
-	self.__texture = incoming
 
 
 # Private methods

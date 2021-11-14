@@ -17,10 +17,14 @@ class InputKey:
 var input: Dictionary = {
 	# key: String, name of action
 	# value: InputKey
-	"up": InputKey.new(KEY_W),
-	"down": InputKey.new(KEY_S),
-	"left": InputKey.new(KEY_A),
-	"right": InputKey.new(KEY_D)
+	"keyboard_1_up": InputKey.new(KEY_W),
+	"keyboard_1_down": InputKey.new(KEY_S),
+	"keyboard_1_left": InputKey.new(KEY_A),
+	"keyboard_1_right": InputKey.new(KEY_D),
+	"keyboard_2_up": InputKey.new(KEY_UP),
+	"keyboard_2_down": InputKey.new(KEY_DOWN),
+	"keyboard_2_left": InputKey.new(KEY_LEFT),
+	"keyboard_2_right": InputKey.new(KEY_RIGHT)
 }
 
 var __used_keys: Dictionary  = {
@@ -31,9 +35,6 @@ var __used_keys: Dictionary  = {
 
 # Lifecycle methods
 func _ready() -> void:
-	for action_name in InputMap.get_actions():
-		InputMap.erase_action(action_name)
-
 	for action_name in self.input:
 		self.input[action_name].valid = self.__update_used_keys(
 			action_name,
