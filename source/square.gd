@@ -11,6 +11,12 @@ export(Vector2) var player_position: Vector2 setget __set_player_position, __get
 onready var __animation: AnimationPlayer = $animation
 onready var __sprite: Sprite = $sprite
 
+
+var __origin: Vector2 = Vector2.ZERO
+var __start_offset: Vector2 = Vector2.ZERO
+var __speed: float = 1.0
+var __delay: float = 0.0
+
 var __target: Player = null
 var __target_origin: Vector2 = Vector2.ZERO
 
@@ -29,6 +35,23 @@ func _ready() -> void:
 	self.call_deferred("add_child", self.__untraversable_timer)
 
 
+func _process(delta: float) -> void:
+	if self.__delay > 0.0:
+		self.__delay = max(0.0, self.__delay - delta)
+		return
+
+	var distance: float = self.position.distance_to(self.__origin)
+
+	if distance != 0.0:
+		var max_distance = self.position.distance_to(self.position + self.__start_offset)
+		var modifier: float = 0.25 + (distance * distance) / (max_distance * max_distance)
+
+		self.position = self.position.move_toward(
+			self.__origin,
+			delta * self.__speed * 1000.0 * modifier
+		)
+
+
 # Public methods
 
 func can_traverse() -> bool:
@@ -44,6 +67,15 @@ func complete() -> void:
 	self.__target_origin = Vector2.ZERO
 
 	self.__untraversable_timer.start()
+
+
+func initialize(origin, start_offset, speed, delay) -> void:
+	self.position = origin + start_offset
+
+	self.__origin = origin
+	self.__start_offset = start_offset
+	self.__speed = speed
+	self.__delay = delay
 
 
 func land(player: Player) -> void:

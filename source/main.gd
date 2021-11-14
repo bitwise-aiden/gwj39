@@ -32,6 +32,8 @@ var __interfaces: Array = [
 # Lifecycle methods
 
 func _ready() -> void:
+	randomize()
+
 	var total_size: Vector2 = Globals.SQUARE_SIZE * self.size
 	self.__initial_position = Globals.SCREEN_SIZE / 2.0 - total_size / 2.0
 
@@ -104,10 +106,29 @@ func __can_move(player: Player, origin: Vector2, destination: Vector2) -> bool:
 
 
 func __create_squares() -> void:
+	var player_positions: Array = []
+
+	for data in self.__player_data:
+		player_positions.append(data[0])
+
 	for y in self.size:
 		for x in self.size:
 			var instance: Square = SQUARE_REFERENCE.instance()
-			instance.position = self.__initial_position + Vector2(x, y) * Globals.SQUARE_SIZE
+			var index_position = Vector2(x, y)
+			instance.position = self.__initial_position + index_position * Globals.SQUARE_SIZE
+
+			var speed = randf() * 3.0 + 2.0
+			var delay = 1.0
+			if player_positions.find(index_position) != -1:
+				speed = 5.0
+				delay = 0.5
+
+			instance.initialize(
+				self.__initial_position + Vector2(x, y) * Globals.SQUARE_SIZE,
+				Vector2(0.0, 1000.0),
+				speed,
+				delay
+			)
 
 			self.call_deferred("add_child", instance)
 
