@@ -36,6 +36,11 @@ Todo:
 	- [ ] Current player scores
 	- [ ] Time remaining
 - [ ] Game loop
+	- [ ] Start game
+		- [ ] Minimum 2 players joined (determine what happens if there are more)
+		- [ ] Start timer 3, 2, 1... Go! 
+		- [ ] When player joined, will jump once and stay stationary? 
+		- [ ] OR we have a timer to ensure that players are jumping at the same time at the start of the game.
 	- [ ] Countdown timer
 		- [ ] Scale back at the last 5 seconds for effect
 		- [ ] Scale player movement at the last 5 seconds for effect
@@ -44,3 +49,4 @@ Todo:
 - [ ] Polish
 	- [ ] Particles when player lands
 - [ ] Detect when on mobile? Is this even possible? Do we need to allow for touch regardless?
+- [x] Have direction indicators to show current movement

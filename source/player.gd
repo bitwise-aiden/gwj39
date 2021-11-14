@@ -11,6 +11,12 @@ export(Color) var color: Color = Color("8be866")
 
 onready var __animation: AnimationPlayer = $animation
 onready var __sprite: Sprite = $sprite
+onready var __arrows: Dictionary = {
+	Vector2.LEFT: $arrow_left,
+	Vector2.RIGHT: $arrow_right,
+	Vector2.UP: $arrow_up,
+	Vector2.DOWN: $arrow_down,
+}
 
 var __destination: Vector2 = Vector2.ZERO
 var __origin: Vector2 = Vector2.ZERO
@@ -29,6 +35,11 @@ func _ready() -> void:
 	self.initiate_move()
 
 	self.__sprite.texture = self.__texture
+
+
+func _process(delta: float) -> void:
+	for arrow in self.__arrows:
+		self.__arrows[arrow].visible = arrow == self.__interface.direction()
 
 
 # Public methods
@@ -90,4 +101,3 @@ func __set_move_delta(incoming: float) -> void:
 	self.position = lerp(self.__origin, self.__destination, move_delta)
 
 	self.__should_move = self.position != self.__destination
-
