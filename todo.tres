@@ -19,3 +19,27 @@ Board inversion game thing
 Goals for this jam!
 - I want to use Godot built-in as much as possible.
 	- Looking at your animation manager!
+
+
+Todo: 
+- [ ] Separate player controls
+- [ ] Some form of AI
+- [ ] Scoring done based on squares formed
+- [ ] A lovely background
+- [ ] Make the game look nice on mobile (Currently it's sampling at a weird rate)
+- [ ] Nico suggestion!! Flip the center of the tile to better represent inversion
+- [ ] Menus
+	- [ ] Start screen
+	- [ ] Controls screen
+	- [ ] Pause screen
+- [ ] UI
+	- [ ] Current player scores
+	- [ ] Time remaining
+- [ ] Game loop
+	- [ ] Countdown timer
+		- [ ] Scale back at the last 5 seconds for effect
+		- [ ] Scale player movement at the last 5 seconds for effect
+	- [ ] When players form squares, give score based on size
+	- [x] Tile keeps track of previous player for x seconds to prevent new player from entering the same square
+- [ ] Polish
+	- [ ] Particles when player lands
