@@ -1,2 +1,2 @@
-# godot-template
-Template project to be used as a base for creating a new project in Godot
+# gwj39
+Game made for Godot Wild Jam 30. Theme: Inversion 
