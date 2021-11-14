@@ -13,8 +13,8 @@ var __squares: Array = []
 
 
 var __player_data = [
-	[preload("res://assets/art/player_1.png"), Vector2(0.0, 4.0), Color("8be866"), Vector2.RIGHT],
-	[preload("res://assets/art/player_2.png"), Vector2(8.0, 4.0), Color("979bcc"), Vector2.LEFT],
+	[preload("res://assets/art/player_1.png"), Vector2(0.0, 4.0), Color("8be866"), Vector2.ZERO],
+	[preload("res://assets/art/player_2.png"), Vector2(8.0, 4.0), Color("979bcc"), Vector2.ZERO],
 ]
 
 
@@ -63,7 +63,11 @@ func __can_move(origin, destination) -> bool:
 			return false
 
 	var delta = (index_destination - index_origin).snapped(Vector2(0.1, 0.1))
-	return [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN].find(delta) != -1
+	if [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN].find(delta) == -1:
+		return false
+
+	var index: int = self.__position_to_index(destination)
+	return self.__squares[index].can_traverse()
 
 
 func __player_landed(player: Player) -> void:

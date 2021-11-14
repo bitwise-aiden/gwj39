@@ -17,8 +17,22 @@ var __target_origin: Vector2 = Vector2.ZERO
 var __previous_color: Color = Color.white
 var __current_color: Color = Color.white
 
+var __untraversable_timer: Timer = null
+
+
+# Lifecycle methods
+
+func _ready() -> void:
+	self.__untraversable_timer = Timer.new()
+	self.__untraversable_timer.one_shot = true
+	self.__untraversable_timer.wait_time = 1.0
+	self.call_deferred("add_child", self.__untraversable_timer)
 
 # Public methods
+
+func can_traverse() -> bool:
+	return self.__target != null || self.__untraversable_timer.is_stopped()
+
 
 func complete() -> void:
 	if self.__target == null:
@@ -27,6 +41,8 @@ func complete() -> void:
 	self.__target.initiate_move()
 	self.__target = null
 	self.__target_origin = Vector2.ZERO
+
+	self.__untraversable_timer.start()
 
 
 func land(player: Player) -> void:
@@ -41,7 +57,7 @@ func land(player: Player) -> void:
 	self.__current_color = player.color
 	self.__sprite.material.set_shader_param("current_color", self.__current_color)
 
-	self.__sprite.material.set_shader_param("start_time", OS.get_ticks_msec() / 1000.0)
+	self.__sprite.material.set_shader_param("start_time", OS.get_ticks_msec() / 1000.0 - 0.8)
 
 
 # Private methods
