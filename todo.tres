@@ -22,7 +22,7 @@ Goals for this jam!
 
 
 Todo: 
-- [ ] Separate player controls
+- [x] Separate player controls
 - [ ] Some form of AI
 - [ ] Scoring done based on squares formed
 - [ ] A lovely background
@@ -43,3 +43,4 @@ Todo:
 	- [x] Tile keeps track of previous player for x seconds to prevent new player from entering the same square
 - [ ] Polish
 	- [ ] Particles when player lands
+- [ ] Detect when on mobile? Is this even possible? Do we need to allow for touch regardless?

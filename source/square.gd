@@ -28,10 +28,11 @@ func _ready() -> void:
 	self.__untraversable_timer.wait_time = 1.0
 	self.call_deferred("add_child", self.__untraversable_timer)
 
+
 # Public methods
 
 func can_traverse() -> bool:
-	return self.__target != null || self.__untraversable_timer.is_stopped()
+	return self.__target == null && self.__untraversable_timer.is_stopped()
 
 
 func complete() -> void:
@@ -58,6 +59,10 @@ func land(player: Player) -> void:
 	self.__sprite.material.set_shader_param("current_color", self.__current_color)
 
 	self.__sprite.material.set_shader_param("start_time", OS.get_ticks_msec() / 1000.0 - 0.8)
+
+
+func reserve(player: Player) -> void:
+	self.__target = player
 
 
 # Private methods

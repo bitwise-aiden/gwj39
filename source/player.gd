@@ -69,7 +69,7 @@ func move() -> void:
 
 	self.__destination = self.global_position + self.__direction * Globals.SQUARE_SIZE
 
-	if !self.__can_move_callback.call_func(self.__origin, self.__destination):
+	if !self.__can_move_callback.call_func(self, self.__origin, self.__destination):
 		self.__destination = self.__origin
 
 	self.__should_move = true

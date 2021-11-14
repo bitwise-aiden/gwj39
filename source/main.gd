@@ -37,9 +37,6 @@ func _ready() -> void:
 
 	self.__create_squares()
 
-#	for data in self.__player_data:
-#		self.__add_player(data[0], data[1], data[2], data[3])
-
 	Event.connect("player_landed", self, "__player_landed")
 
 
@@ -84,7 +81,7 @@ func __add_player(
 	self.call_deferred("add_child", instance)
 
 
-func __can_move(origin, destination) -> bool:
+func __can_move(player: Player, origin: Vector2, destination: Vector2) -> bool:
 	var index_origin: Vector2 = self.__position_to_index_position(origin)
 	var index_destination: Vector2 = self.__position_to_index_position(destination)
 
@@ -97,7 +94,13 @@ func __can_move(origin, destination) -> bool:
 		return false
 
 	var index: int = self.__position_to_index(destination)
-	return self.__squares[index].can_traverse()
+	var square: Square = self.__squares[index]
+	if !square.can_traverse():
+		return false
+
+	square.reserve(player)
+
+	return true
 
 
 func __create_squares() -> void:
