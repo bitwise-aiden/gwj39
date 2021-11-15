@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://source/menus/player_join/player_join.gd" type="Script" id=1]
+[ext_resource path="res://source/player_data/inactive.tres" type="Resource" id=2]
+[ext_resource path="res://source/player_data/player_2.tres" type="Resource" id=3]
+[ext_resource path="res://source/player_data/player_4.tres" type="Resource" id=4]
+[ext_resource path="res://source/player_data/player_3.tres" type="Resource" id=5]
+[ext_resource path="res://source/player_data/player_1.tres" type="Resource" id=6]
+[ext_resource path="res://assets/art/player_join.png" type="Texture" id=7]
+[ext_resource path="res://source/menus/player_join/player_pane.tscn" type="PackedScene" id=13]
+
+[node name="player_join" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player_1_pane" parent="." instance=ExtResource( 13 )]
+margin_left = 61.0
+margin_top = 146.0
+margin_right = 320.0
+margin_bottom = 655.0
+inactive_data = ExtResource( 2 )
+active_data = ExtResource( 6 )
+
+[node name="player_2_pane" parent="." instance=ExtResource( 13 )]
+margin_left = 360.0
+margin_top = 146.0
+margin_right = 619.0
+margin_bottom = 655.0
+inactive_data = ExtResource( 2 )
+active_data = ExtResource( 3 )
+
+[node name="player_3_pane" parent="." instance=ExtResource( 13 )]
+margin_left = 660.0
+margin_top = 146.0
+margin_right = 919.0
+margin_bottom = 655.0
+inactive_data = ExtResource( 2 )
+active_data = ExtResource( 5 )
+
+[node name="player_4_pane" parent="." instance=ExtResource( 13 )]
+margin_left = 960.0
+margin_top = 146.0
+margin_right = 1219.0
+margin_bottom = 655.0
+inactive_data = ExtResource( 2 )
+active_data = ExtResource( 4 )

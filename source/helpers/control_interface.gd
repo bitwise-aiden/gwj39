@@ -29,6 +29,9 @@ func assign() -> void:
 	self.__assigned = true
 
 
+func interface() -> int:
+	return self.__interface
+
 func is_active() -> bool:
 	return self.__direction != Vector2.ZERO
 
