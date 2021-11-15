@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/art/inactive_join_pain.png" type="Texture" id=1]
 [ext_resource path="res://source/menus/player_join/player_pane.gd" type="Script" id=2]
@@ -8,6 +8,580 @@
 [ext_resource path="res://assets/art/hand_trail.png" type="Texture" id=6]
 [ext_resource path="res://assets/art/key_inactive.png" type="Texture" id=7]
 [ext_resource path="res://assets/art/controller_player_inactive.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=4]
+resource_name = "choose_controller"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("hand:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("key_1:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("key_2:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("key_3:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("key_4:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("controller:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 3, 3 ) ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "controller", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("hand_trail:rect_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "choose_keyboard"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("hand:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("key_1:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("key_2:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("key_3:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("key_4:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("controller:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 0, 0 ) ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "keyboard", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("key_1:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 97.5, 240 ), Vector2( 97.5, 320 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("key_2:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 59.5, 260 ), Vector2( 48, 350 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("key_3:rect_position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 97.5, 260 ), Vector2( 97.5, 350 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("key_4:rect_position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 135.5, 260 ), Vector2( 147, 350 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("hand_trail:rect_scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "choose_touch"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("hand:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 2, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("key_1:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("key_2:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("key_3:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("key_4:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0.75, 0.75 ), Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("controller:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1.5, 1.5 ), Vector2( 0, 0 ) ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("animation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ "touch", -1, 1.0, false ],
+"method": "play"
+} ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("hand_trail:rect_scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 2, 2 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("hand_trail:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 87, 431 ), Vector2( 65, 328 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("hand:rect_position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 3.5, 1 ),
+"update": 0,
+"values": [ Vector2( 77.5, 420 ), Vector2( 77.5, 335 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "controller"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 2.1, 2.1 ), Vector2( 2, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("name:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("controller:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.8, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -10.0, 10.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "join"
+length = 0.3
+tracks/0/type = "method"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "__join_complete"
+} ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.001, 0.1, 0.2 ),
+"transitions": PoolRealArray( 3.5, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "keyboard"
+length = 1.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("player:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 2.1, 2.1 ), Vector2( 2, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("name:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("key_1:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.66 ), Vector2( 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("key_1:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 97.5, 320 ), Vector2( 97.5, 326 ), Vector2( 97.5, 320 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("key_2:rect_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.66 ), Vector2( 1, 1 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("key_2:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.2, 0.4, 0.61 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 48, 350 ), Vector2( 48, 356 ), Vector2( 48, 350 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("key_3:rect_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.66 ), Vector2( 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("key_3:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.41, 0.61, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 97.5, 350 ), Vector2( 97.5, 356 ), Vector2( 97.5, 350 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("key_4:rect_scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.66 ), Vector2( 1, 1 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("key_4:rect_position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 147, 350 ), Vector2( 147, 356 ), Vector2( 147, 350 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "life"
@@ -198,8 +772,9 @@ tracks/14/keys = {
 default_font = ExtResource( 4 )
 
 [node name="player_pane" type="TextureRect"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 259.0
+margin_bottom = 509.0
+rect_pivot_offset = Vector2( 129, 254 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -207,6 +782,12 @@ __meta__ = {
 }
 
 [node name="animation" type="AnimationPlayer" parent="."]
+anims/choose_controller = SubResource( 4 )
+anims/choose_keyboard = SubResource( 5 )
+anims/choose_touch = SubResource( 6 )
+anims/controller = SubResource( 7 )
+anims/join = SubResource( 3 )
+anims/keyboard = SubResource( 8 )
 anims/life = SubResource( 2 )
 
 [node name="name" type="Label" parent="."]
@@ -218,7 +799,6 @@ margin_left = -81.0
 margin_top = -191.5
 margin_right = 81.0
 margin_bottom = -167.5
-rect_scale = Vector2( 1.00227, 1.00227 )
 rect_pivot_offset = Vector2( 81, 12 )
 theme = SubResource( 1 )
 text = "Player 1"
@@ -237,7 +817,7 @@ margin_right = 16.0
 margin_bottom = -43.5
 grow_horizontal = 2
 grow_vertical = 2
-rect_scale = Vector2( 2.00227, 2.00227 )
+rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 16, 42 )
 texture = ExtResource( 3 )
 __meta__ = {
@@ -250,10 +830,10 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -32.0
-margin_top = -14.2726
+margin_top = -14.5001
 margin_right = 32.0
-margin_bottom = 49.7275
-rect_scale = Vector2( 0.75, 0.735785 )
+margin_bottom = 49.5
+rect_scale = Vector2( 0.75, 0.75 )
 rect_pivot_offset = Vector2( 32, 32 )
 texture = ExtResource( 7 )
 __meta__ = {
@@ -266,9 +846,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -70.0
-margin_top = 5.5
+margin_top = 5.49994
 margin_right = -6.0
-margin_bottom = 69.5
+margin_bottom = 69.4999
 rect_scale = Vector2( 0.75, 0.75 )
 rect_pivot_offset = Vector2( 32, 32 )
 texture = ExtResource( 7 )
@@ -282,9 +862,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -32.0
-margin_top = 5.5
-margin_right = 32.0
-margin_bottom = 69.5
+margin_top = 5.49994
+margin_right = 32.0001
+margin_bottom = 69.4999
 rect_scale = Vector2( 0.75, 0.75 )
 rect_pivot_offset = Vector2( 32, 32 )
 texture = ExtResource( 7 )
@@ -298,9 +878,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 6.0
-margin_top = 5.5
-margin_right = 70.0
-margin_bottom = 69.5
+margin_top = 5.49994
+margin_right = 70.0001
+margin_bottom = 69.4999
 rect_scale = Vector2( 0.75, 0.75 )
 rect_pivot_offset = Vector2( 32, 32 )
 texture = ExtResource( 7 )
@@ -317,17 +897,18 @@ margin_left = -32.0
 margin_top = 80.5
 margin_right = 32.0
 margin_bottom = 144.5
-rect_rotation = -0.379058
 rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 32, 32 )
 texture = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="hand_trail" type="TextureRect" parent="."]
 margin_left = 87.0
 margin_top = 431.0
-margin_right = 92.0004
+margin_right = 92.0
 margin_bottom = 436.0
-rect_scale = Vector2( 1.00007, 1 )
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -338,10 +919,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -51.9996
+margin_left = -52.0
 margin_top = 165.5
-margin_right = 12.0005
+margin_right = 12.0002
 margin_bottom = 229.5
+rect_pivot_offset = Vector2( 32, 32 )
 texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false

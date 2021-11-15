@@ -51,3 +51,8 @@ Todo:
 	- [ ] Particles when player lands
 - [ ] Detect when on mobile? Is this even possible? Do we need to allow for touch regardless?
 - [x] Have direction indicators to show current movement
+
+k1 = 1, 97.5, 320
+k2 = 1, 48, 350
+k3 = 1, 97.5, 350
+k4 = 1, 147, 350

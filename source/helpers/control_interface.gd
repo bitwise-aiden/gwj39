@@ -5,6 +5,13 @@ class_name ControlInterface
 const KEYBOARD_1 = 1 << 0 # Default: WASD
 const KEYBOARD_2 = 1 << 1 # Default: Arrow keys
 const TOUCH = 1 << 2 # Default: Touch input
+const CONTROLLER_1 = 1 << 4 # Default: Controller, slot 1
+const CONTROLLER_2 = 1 << 5 # Default: Controller, slot 2
+const CONTROLLER_3 = 1 << 6 # Default: Controller, slot 3
+const CONTROLLER_4 = 1 << 7 # Default: Controller, slot 4
+
+const KEYBOARD = KEYBOARD_1 | KEYBOARD_2
+const CONTROLLER = CONTROLLER_1 | CONTROLLER_2 | CONTROLLER_3 | CONTROLLER_4
 
 
 # Private variables
