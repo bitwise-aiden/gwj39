@@ -49,10 +49,6 @@ Todo:
 	- [x] Tile keeps track of previous player for x seconds to prevent new player from entering the same square
 - [ ] Polish
 	- [ ] Particles when player lands
+	- [ ] Remove unavailable input options as they are taken
 - [ ] Detect when on mobile? Is this even possible? Do we need to allow for touch regardless?
 - [x] Have direction indicators to show current movement
-
-k1 = 1, 97.5, 320
-k2 = 1, 48, 350
-k3 = 1, 97.5, 350
-k4 = 1, 147, 350

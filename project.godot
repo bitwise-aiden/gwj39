@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://source/helpers/control_interface.gd"
 }, {
 "base": "Reference",
+"class": "ControllerInput",
+"language": "GDScript",
+"path": "res://source/helpers/controller_input.gd"
+}, {
+"base": "Reference",
 "class": "CurrentQueue",
 "language": "GDScript",
 "path": "res://source/helpers/current_queue.gd"
@@ -89,6 +94,7 @@ _global_script_class_icons={
 "CommandData": "",
 "CommandInfo": "",
 "ControlInterface": "",
+"ControllerInput": "",
 "CurrentQueue": "",
 "Gift": "",
 "GodotReset": "",

@@ -15,6 +15,10 @@ var __control_interfaces: Array = [
 	ControlInterface.new(ControlInterface.TOUCH),
 	ControlInterface.new(ControlInterface.KEYBOARD_1),
 	ControlInterface.new(ControlInterface.KEYBOARD_2),
+	ControlInterface.new(ControlInterface.CONTROLLER_1),
+	ControlInterface.new(ControlInterface.CONTROLLER_2),
+	ControlInterface.new(ControlInterface.CONTROLLER_3),
+	ControlInterface.new(ControlInterface.CONTROLLER_4),
 ]
 var __active_interfaces: Array = []
 

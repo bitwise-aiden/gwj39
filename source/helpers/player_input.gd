@@ -30,11 +30,11 @@ func _init(identifier: String = "") -> void:
 
 # Public methods
 
-func current() -> Vector2:
+func direction() -> Vector2:
 	return self.__input_queue.current()
 
 
-func update() -> void:
+func process() -> void:
 	for input in self.__inputs:
 		if Input.is_action_just_pressed(input):
 			self.__input_queue.add(self.__inputs[input])

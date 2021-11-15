@@ -23,11 +23,18 @@ var __interface: int = 0
 var __keyboard_1: PlayerInput = null setget , __get_keyboard_1
 var __keyboard_2: PlayerInput = null setget , __get_keyboard_2
 
+var __controller_1: ControllerInput = null setget , __get_controller_1
+var __controller_2: ControllerInput = null setget , __get_controller_2
+var __controller_3: ControllerInput = null setget , __get_controller_3
+var __controller_4: ControllerInput = null setget , __get_controller_4
+
 
 # Lifecycle methods
 
 func _init(interface: int) -> void:
 	self.__interface = interface
+
+	print(Input.get_connected_joypads())
 
 
 # Public methods
@@ -38,6 +45,7 @@ func assign() -> void:
 
 func interface() -> int:
 	return self.__interface
+
 
 func is_active() -> bool:
 	return self.__direction != Vector2.ZERO
@@ -53,16 +61,44 @@ func direction() -> Vector2:
 
 func process() -> void:
 	if self.__interface & KEYBOARD_1:
-		self.__keyboard_1.update()
+		self.__keyboard_1.process()
 
-		var direction: Vector2 = self.__keyboard_1.current()
+		var direction: Vector2 = self.__keyboard_1.direction()
 		if direction != Vector2.ZERO:
 			self.__direction = direction
 
 	if self.__interface & KEYBOARD_2:
-		self.__keyboard_2.update()
+		self.__keyboard_2.process()
 
-		var direction: Vector2 = self.__keyboard_2.current()
+		var direction: Vector2 = self.__keyboard_2.direction()
+		if direction != Vector2.ZERO:
+			self.__direction = direction
+
+	if self.__interface & CONTROLLER_1:
+		self.__controller_1.process()
+
+		var direction: Vector2 = self.__controller_1.direction()
+		if direction != Vector2.ZERO:
+			self.__direction = direction
+
+	if self.__interface & CONTROLLER_2:
+		self.__controller_2.process()
+
+		var direction: Vector2 = self.__controller_2.direction()
+		if direction != Vector2.ZERO:
+			self.__direction = direction
+
+	if self.__interface & CONTROLLER_3:
+		self.__controller_3.process()
+
+		var direction: Vector2 = self.__controller_3.direction()
+		if direction != Vector2.ZERO:
+			self.__direction = direction
+
+	if self.__interface & CONTROLLER_4:
+		self.__controller_4.process()
+
+		var direction: Vector2 = self.__controller_4.direction()
 		if direction != Vector2.ZERO:
 			self.__direction = direction
 
@@ -72,6 +108,35 @@ func process() -> void:
 
 
 # Private methods
+
+
+func __get_controller_1() -> ControllerInput:
+	if __controller_1 == null:
+		__controller_1 = ControllerInput.new(0)
+
+	return __controller_1
+
+
+func __get_controller_2() -> ControllerInput:
+	if __controller_2 == null:
+		__controller_2 = ControllerInput.new(1)
+
+	return __controller_2
+
+
+func __get_controller_3() -> ControllerInput:
+	if __controller_3 == null:
+		__controller_3 = ControllerInput.new(2)
+
+	return __controller_3
+
+
+func __get_controller_4() -> ControllerInput:
+	if __controller_4 == null:
+		__controller_4 = ControllerInput.new(3)
+
+	return __controller_4
+
 
 func __get_keyboard_1() -> PlayerInput:
 	if __keyboard_1 == null:

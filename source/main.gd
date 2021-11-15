@@ -26,6 +26,7 @@ var __player_data: Array = [
 var __interfaces: Array = [
 	ControlInterface.new(ControlInterface.KEYBOARD_1 | ControlInterface.TOUCH),
 	ControlInterface.new(ControlInterface.KEYBOARD_2),
+	ControlInterface.new(ControlInterface.CONTROLLER_1),
 ]
 
 
