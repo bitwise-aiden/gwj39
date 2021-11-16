@@ -10,6 +10,8 @@ onready var __player_panes: Array = [
 	$player_4_pane,
 ]
 
+onready var __start_button: Button = $start
+
 
 var __control_interfaces: Array = [
 	ControlInterface.new(ControlInterface.TOUCH),
@@ -40,5 +42,9 @@ func _process(delta: float) -> void:
 			self.__player_panes[player_count].activate(interface.interface())
 
 			self.__active_interfaces.append(interface.interface())
+
+			if self.__active_interfaces.size() == 1:
+				self.__start_button.disabled = false
+				self.__start_button.grab_focus()
 
 
