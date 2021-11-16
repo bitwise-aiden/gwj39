@@ -4,7 +4,7 @@ class_name Player extends Node2D
 # Public variables
 
 export(float) var move_delta: float = 0.0 setget __set_move_delta, __get_move_delta
-export(Color) var color: Color = Color("8be866")
+export(Resource) var data: Resource
 
 
 # Private variables
@@ -26,7 +26,7 @@ var __interface: ControlInterface = null
 var __direction: Vector2 = Vector2.ZERO
 var __can_move_callback: FuncRef = null
 
-var __texture: Texture = null
+var __live: bool = false
 
 
 # Lifecylce method
@@ -34,30 +34,29 @@ var __texture: Texture = null
 func _ready() -> void:
 	self.initiate_move()
 
-	self.__sprite.texture = self.__texture
+	self.__sprite.texture = self.data.player
+	self.__direction = self.data.start_direction
 
 
-func _process(delta: float) -> void:
-	for arrow in self.__arrows:
-		self.__arrows[arrow].visible = arrow == self.__interface.direction()
+func _process(_delta: float) -> void:
+	self.__interface.process()
+	self.__update_arrows(self.__interface.direction())
 
 
 # Public methods
-func initialize(
-	position: Vector2,
-	color: Color,
-	texture: Texture,
-	interface: ControlInterface,
-	can_move_callback: FuncRef,
-	direction: Vector2 = Vector2.ZERO
-) -> void:
-	self.color = color
-	self.position = position
 
+func color() -> Color:
+	return self.data.color
+
+
+func initialize(interface: ControlInterface, can_move_callback: FuncRef) -> void:
 	self.__can_move_callback = can_move_callback
-	self.__direction = direction
 	self.__interface = interface
-	self.__texture = texture
+
+	yield(Event, "wait_game_start")
+	self.__live = true
+
+	self.__update_arrows(self.__direction)
 
 
 func initiate_move() -> void:
@@ -74,7 +73,7 @@ func move() -> void:
 
 	self.__origin = self.position
 
-	if self.__can_move_callback == null:
+	if !self.__live || self.__can_move_callback == null:
 		self.__destination = self.__origin
 		return
 
@@ -82,6 +81,7 @@ func move() -> void:
 
 	if !self.__can_move_callback.call_func(self, self.__origin, self.__destination):
 		self.__destination = self.__origin
+		return
 
 	self.__should_move = true
 
@@ -101,3 +101,8 @@ func __set_move_delta(incoming: float) -> void:
 	self.position = lerp(self.__origin, self.__destination, move_delta)
 
 	self.__should_move = self.position != self.__destination
+
+
+func __update_arrows(direction: Vector2) -> void:
+	for arrow in self.__arrows:
+		self.__arrows[arrow].visible = arrow == direction

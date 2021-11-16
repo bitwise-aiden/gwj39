@@ -54,54 +54,54 @@ Todo:
 - [x] Have direction indicators to show current movement
 
 Todo list:
-- have players spawn from above map and fall into world
-- have countdown timer start
-- allow players to move when timer finished
-- increase move speed
-- add power ups
-  - speed 
-  - bomb (clear board, stun players)
-  - reverse controls
-  - should some internal squares leave????
-  - more?????
-- haptic feedback for controllers 
-  - countdown timer
-  - pick up 
-  - bomb going off nearby
-- stun players near bomb
-- scoring
-  - 1pt grey to own
-  - 2pt other to own
-  - 2xNpt where N is the number of grey inside a box (could scale?)
-  - 3xNpt where N is the number of other inside a box (could scale?)
-- esc brings up menu controlled by the player who initiated
-  - unpause
-  - options (brings up options window)
-  - main menu to are you sure
-  - are you sure to main menu
-- tutorial screen
-  - tile changes fly in making it look dynamic
-  - have fade to show players
-  - text at bottom 
-  - back to main
-  - esc to main
-  - 1x1 you are a slime (you fly in from off screen)
-  - 3x3 you can jump around the place using <controls> (show all arrows to start) 
-  - 3x3 you earn points by inverting the colour of squares to be your own
-  - 5x5 with other player, you earn more points when you invert the colour of a square when it belonged to your opponent 
-  - 5x5 to maximize your points, form a box to surround the squares you want to invert
-  - 7x7 with power ups, pick up power ups to increase your speed, clear the board, confuse your enemies
-- options screen
-  - music volume
-  - sfx volume
-  - map keyboard inputs to different keys
-  - back to main
-  - esc to main
-- title screen
-  - <name> with letters that look like the active boarders on the player join screen
-  - play
-  - tutorial 
-  - options 
-  - quit to are you sure
-  - esc to are you sure
-- background??????
+- [x] have players spawn from above map and fall into world
+- [ ] have countdown timer start
+- [ ] allow players to move when timer finished
+- [ ] increase move speed
+- [ ] add power ups
+  - [ ] speed 
+  - [ ] bomb (clear board, stun players)
+  - [ ] reverse controls
+  - [ ] should some internal squares leave????
+  - [ ] more?????
+- [ ] haptic feedback for controllers 
+  - [ ] countdown timer
+  - [ ] pick up 
+  - [ ] bomb going off nearby
+- [ ] stun players near bomb
+- [ ] scoring
+  - [ ] 1pt grey to own
+  - [ ] 2pt other to own
+  - [ ] 2xNpt where N is the number of grey inside a box (could scale?)
+  - [ ] 3xNpt where N is the number of other inside a box (could scale?)
+- [ ] esc brings up menu controlled by the player who initiated
+  - [ ] unpause
+  - [ ] options (brings up options window)
+  - [ ] main menu to are you sure
+  - [ ] are you sure to main menu
+- [ ] tutorial screen
+  - [ ] tile changes fly in making it look dynamic
+  - [ ] have fade to show players
+  - [ ] text at bottom 
+  - [ ] back to main
+  - [ ] esc to main
+  - [ ] 1x1 you are a slime (you fly in from off screen)
+  - [ ] 3x3 you can jump around the place using <controls> (show all arrows to start) 
+  - [ ] 3x3 you earn points by inverting the colour of squares to be your own
+  - [ ] 5x5 with other player, you earn more points when you invert the colour of a square when it belonged to your opponent 
+  - [ ] 5x5 to maximize your points, form a box to surround the squares you want to invert
+  - [ ] 7x7 with power ups, pick up power ups to increase your speed, clear the board, confuse your enemies
+- [ ] options screen
+  - [ ] music volume
+  - [ ] sfx volume
+  - [ ] map keyboard inputs to different keys
+  - [ ] back to main
+  - [ ] esc to main
+- [ ] title screen
+  - [ ] <name> with letters that look like the active boarders on the player join screen
+  - [ ] play
+  - [ ] tutorial 
+  - [ ] options 
+  - [ ] quit to are you sure
+  - [ ] esc to are you sure
+- [ ] background??????

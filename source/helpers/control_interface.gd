@@ -34,8 +34,6 @@ var __controller_4: ControllerInput = null setget , __get_controller_4
 func _init(interface: int) -> void:
 	self.__interface = interface
 
-	print(Input.get_connected_joypads())
-
 
 # Public methods
 

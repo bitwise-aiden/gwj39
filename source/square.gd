@@ -15,7 +15,7 @@ onready var __sprite: Sprite = $sprite
 var __origin: Vector2 = Vector2.ZERO
 var __start_offset: Vector2 = Vector2.ZERO
 var __speed: float = 1.0
-var __delay: float = 0.0
+var __live: bool = false
 
 var __target: Player = null
 var __target_origin: Vector2 = Vector2.ZERO
@@ -36,8 +36,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if self.__delay > 0.0:
-		self.__delay = max(0.0, self.__delay - delta)
+	if !self.__live:
 		return
 
 	var distance: float = self.position.distance_to(self.__origin)
@@ -55,7 +54,7 @@ func _process(delta: float) -> void:
 # Public methods
 
 func can_traverse() -> bool:
-	return self.__target == null && self.__untraversable_timer.is_stopped()
+	return self.__live && self.__target == null && self.__untraversable_timer.is_stopped()
 
 
 func complete() -> void:
@@ -69,13 +68,16 @@ func complete() -> void:
 	self.__untraversable_timer.start()
 
 
-func initialize(origin, start_offset, speed, delay) -> void:
+func initialize(origin: Vector2, start_offset: Vector2, speed: float, wait_event: String) -> void:
 	self.position = origin + start_offset
 
 	self.__origin = origin
 	self.__start_offset = start_offset
 	self.__speed = speed
-	self.__delay = delay
+
+	yield(Event, wait_event)
+
+	self.__live = true
 
 
 func land(player: Player) -> void:
@@ -87,7 +89,7 @@ func land(player: Player) -> void:
 	self.__previous_color = self.__current_color
 	self.__sprite.material.set_shader_param("previous_color", self.__previous_color)
 
-	self.__current_color = player.color
+	self.__current_color = player.color()
 	self.__sprite.material.set_shader_param("current_color", self.__current_color)
 
 	self.__sprite.material.set_shader_param("start_time", OS.get_ticks_msec() / 1000.0 - 0.8)

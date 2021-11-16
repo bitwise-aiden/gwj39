@@ -134,6 +134,7 @@ playback_speed = 1.5
 anims/jump = SubResource( 1 )
 
 [node name="shadow" type="Sprite" parent="."]
+visible = false
 modulate = Color( 1, 1, 1, 0.784314 )
 position = Vector2( 0, 4 )
 z_index = 3
@@ -141,28 +142,28 @@ texture = ExtResource( 3 )
 
 [node name="arrow_right" type="Sprite" parent="."]
 visible = false
-position = Vector2( 35, 4 )
+position = Vector2( 44.5581, 4 )
 scale = Vector2( 1.5, 1.5 )
 z_index = 5
 texture = ExtResource( 4 )
 
 [node name="arrow_left" type="Sprite" parent="."]
 visible = false
-position = Vector2( -35, 4 )
+position = Vector2( -44.5581, 4 )
 scale = Vector2( 1.5, 1.5 )
 z_index = 5
 texture = ExtResource( 5 )
 
 [node name="arrow_up" type="Sprite" parent="."]
 visible = false
-position = Vector2( 0, -30 )
+position = Vector2( 0, -39.5581 )
 scale = Vector2( 1.5, 1.5 )
 z_index = 5
 texture = ExtResource( 6 )
 
 [node name="arrow_down" type="Sprite" parent="."]
 visible = false
-position = Vector2( 0, 34 )
+position = Vector2( 0, 43.5581 )
 scale = Vector2( 1.5, 1.5 )
 z_index = 5
 texture = ExtResource( 7 )

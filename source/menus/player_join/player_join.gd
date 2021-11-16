@@ -33,7 +33,7 @@ func _ready()-> void:
 	self.__button_back.connect("pressed", self, "__back_pressed")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var player_count = self.__active_interfaces.size()
 	if player_count == 4:
 		return

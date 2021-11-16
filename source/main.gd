@@ -3,31 +3,34 @@ extends Node2D
 
 # Const variables
 
-const PLAYER_REFERENCE: Resource = preload("res://source/player.tscn")
+const PLAYER_POSITIONS: Array = [
+	Vector2(0, 4),
+	Vector2(8, 4),
+	Vector2(4, 0),
+	Vector2(4, 8),
+]
 const SQUARE_REFERENCE: Resource = preload("res://source/square.tscn")
 
 
 # Export variables
 
 export(int) var size: int = 9
+export(Array) var player_data: Array = []
 
 
 # Private variables
 
+onready var __animation: AnimationPlayer = $animation
+onready var __players: Array = [
+	$player_1,
+	$player_2,
+	$player_3,
+	$player_4,
+]
+
 var __initial_position: Vector2 = Vector2.ZERO
+var __interfaces: Array = []
 var __squares: Array = []
-
-var __player_count: int = 0
-var __player_data: Array = [
-	[Vector2(0.0, 4.0), Color("8be866"), preload("res://assets/art/player_1.png")],
-	[Vector2(8.0, 4.0), Color("979bcc"), preload("res://assets/art/player_2.png")],
-]
-
-var __interfaces: Array = [
-	ControlInterface.new(ControlInterface.KEYBOARD_1 | ControlInterface.TOUCH),
-	ControlInterface.new(ControlInterface.KEYBOARD_2),
-	ControlInterface.new(ControlInterface.CONTROLLER_1),
-]
 
 
 # Lifecycle methods
@@ -35,54 +38,13 @@ var __interfaces: Array = [
 func _ready() -> void:
 	randomize()
 
-	var total_size: Vector2 = Globals.SQUARE_SIZE * self.size
-	self.__initial_position = Globals.SCREEN_SIZE / 2.0 - total_size / 2.0
+	self.__initialize_squares()
+	self.__initialize_players()
 
-	self.__create_squares()
-
-	Event.connect("player_landed", self, "__player_landed")
-
-
-func _process(delta: float) -> void:
-	for interface in self.__interfaces:
-		interface.process()
-
-		if interface.is_active() && !interface.is_assigned():
-			var data: Array = self.__player_data[self.__player_count]
-
-			self.__add_player(
-				data[0],
-				data[1],
-				data[2],
-				interface
-			)
-
-			interface.assign()
-			self.__player_count += 1
+	self.__animation.play("spawn")
 
 
 # Private methods
-
-func __add_player(
-	position: Vector2,
-	color: Color,
-	texture: Texture,
-	interface: ControlInterface,
-	direction: Vector2 = Vector2.ZERO
-) -> void:
-	var instance: Player = PLAYER_REFERENCE.instance()
-
-	instance.initialize(
-		self.__initial_position + position * Globals.SQUARE_SIZE + Globals.PLAYER_OFFSET,
-		color,
-		texture,
-		interface,
-		funcref(self, "__can_move"),
-		direction
-	)
-
-	self.call_deferred("add_child", instance)
-
 
 func __can_move(player: Player, origin: Vector2, destination: Vector2) -> bool:
 	var index_origin: Vector2 = self.__position_to_index_position(origin)
@@ -106,29 +68,37 @@ func __can_move(player: Player, origin: Vector2, destination: Vector2) -> bool:
 	return true
 
 
-func __create_squares() -> void:
-	var player_positions: Array = []
+func __emit_signal(name: String) -> void:
+	Event.emit_signal(name)
 
-	for data in self.__player_data:
-		player_positions.append(data[0])
+
+func __initialize_players() -> void:
+	for i in self.__players.size():
+		self.__players[i].initialize(ControlInterface.new(ControlInterface.KEYBOARD_1), funcref(self, "__can_move"))
+
+	Event.connect("player_landed", self, "__player_landed")
+
+
+func __initialize_squares() -> void:
+	var total_size: Vector2 = Globals.SQUARE_SIZE * self.size
+	self.__initial_position = Globals.SCREEN_SIZE / 2.0 - total_size / 2.0
 
 	for y in self.size:
 		for x in self.size:
 			var instance: Square = SQUARE_REFERENCE.instance()
 			var index_position = Vector2(x, y)
-			instance.position = self.__initial_position + index_position * Globals.SQUARE_SIZE
 
 			var speed = randf() * 3.0 + 2.0
-			var delay = 1.0
-			if player_positions.find(index_position) != -1:
-				speed = 5.0
-				delay = 0.5
+			var wait_event: String = "wait_spawn_world"
+			if PLAYER_POSITIONS.find(index_position) != -1:
+				speed = randf() + 4.0
+				wait_event = "wait_spawn_player"
 
 			instance.initialize(
-				self.__initial_position + Vector2(x, y) * Globals.SQUARE_SIZE,
+				self.__initial_position + index_position * Globals.SQUARE_SIZE,
 				Vector2(0.0, 1000.0),
 				speed,
-				delay
+				wait_event
 			)
 
 			self.call_deferred("add_child", instance)
@@ -138,6 +108,10 @@ func __create_squares() -> void:
 
 func __player_landed(player: Player) -> void:
 	var index: int = self.__position_to_index(player.position)
+
+	if index < 0 || index > self.__squares.size():
+		return
+
 	self.__squares[index].land(player)
 
 

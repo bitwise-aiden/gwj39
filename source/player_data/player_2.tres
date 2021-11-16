@@ -10,6 +10,8 @@
 [resource]
 script = ExtResource( 1 )
 name = "Player 2"
+color = Color( 0.478431, 0.639216, 0.901961, 1 )
+start_direction = Vector2( -1, 0 )
 pane = ExtResource( 3 )
 player = ExtResource( 4 )
 touch = ExtResource( 2 )
