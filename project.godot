@@ -111,7 +111,7 @@ _global_script_class_icons={
 [application]
 
 config/name="inversion"
-run/main_scene="res://source/main.tscn"
+run/main_scene="res://source/menus/player_join/player_join.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -182,6 +182,7 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 2d/snapping/use_gpu_pixel_snap=true
+environment/default_clear_color=Color( 0.192157, 0.145098, 0.501961, 1 )
 environment/default_environment="res://default_env.tres"
 quality/dynamic_fonts/use_oversampling=false
 quality/2d/use_pixel_snap=true
