@@ -69,6 +69,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/helpers/player_input.gd"
 }, {
+"base": "Control",
+"class": "PlayerScore",
+"language": "GDScript",
+"path": "res://source/player_score.gd"
+}, {
+"base": "Reference",
+"class": "PlayerState",
+"language": "GDScript",
+"path": "res://source/player_state.gd"
+}, {
 "base": "Reference",
 "class": "SenderData",
 "language": "GDScript",
@@ -102,6 +112,8 @@ _global_script_class_icons={
 "Player": "",
 "PlayerData": "",
 "PlayerInput": "",
+"PlayerScore": "",
+"PlayerState": "",
 "SenderData": "",
 "Square": "",
 "Task": "",

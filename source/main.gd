@@ -22,15 +22,17 @@ export(Array) var player_data: Array = []
 
 onready var __animation: AnimationPlayer = $animation
 onready var __players: Array = [
-	$player_1,
-	$player_2,
-	$player_3,
-	$player_4,
+	PlayerState.new($player_1, $ui/player_score_1),
+	PlayerState.new($player_2, $ui/player_score_2),
+	PlayerState.new($player_3, $ui/player_score_3),
+	PlayerState.new($player_4, $ui/player_score_4),
 ]
 
 var __initial_position: Vector2 = Vector2.ZERO
 var __interfaces: Array = []
 var __squares: Array = []
+
+var __playing: bool = false
 
 
 # Lifecycle methods
@@ -45,8 +47,51 @@ func _ready() -> void:
 	yield(self.__animation, "animation_finished")
 	self.__animation.play("countdown")
 
+	yield(Event, "wait_game_start")
+	self.__playing = true
+
 
 # Private methods
+
+#func __detect_color(index_position: Vector2, color: Color) -> bool:
+#	return self.__squares[self.__index_position_to_index(index_position)].color != color
+#
+#func __detect_corner(index_position: Vector2, color: Color) -> bool:
+#	if self.__detect_color(:
+#		return false
+#
+#	for i in 2:
+#		var horizontal: Vector2 = index_position + Vector2(i + 1, 0)
+
+
+
+
+func __find_squares(player: Player) -> int:
+	var active_squares: Array = []
+
+	# for each square in 0,0 7,7:
+		# if x, y + 1 and x + 1, y + 1 == color:
+			# add active squares
+
+#	for y in size - 2:
+#		for x in size - 2:
+#			if
+
+
+
+
+	return 0
+
+
+func __calculate_points(square: Square, player: Player) -> int:
+	if square.color_previous == square.color_current:
+		return 0
+
+	if square.color_previous != Color.white:
+		return 2
+
+	return 1
+
 
 func __can_move(player: Player, origin: Vector2, destination: Vector2) -> bool:
 	var index_origin: Vector2 = self.__position_to_index_position(origin)
@@ -79,7 +124,7 @@ func __initialize_players() -> void:
 		var interface: int = ControlInterface.NONE
 		if i < GlobalState.connected_interfaces.size():
 			interface = GlobalState.connected_interfaces[i]
-		self.__players[i].initialize(
+		self.__players[i].instance.initialize(
 			ControlInterface.new(interface),
 			funcref(self, "__can_move")
 		)
@@ -120,7 +165,23 @@ func __player_landed(player: Player) -> void:
 	if index < 0 || index > self.__squares.size():
 		return
 
-	self.__squares[index].land(player)
+	var square = self.__squares[index]
+	square.land(player)
+
+	if !self.__playing:
+		return
+
+	for state in self.__players:
+		if state.instance == player:
+			var points: int = self.__calculate_points(square, player)
+			if points == 0:
+				break
+
+
+			state.score += points
+			state.ui.set_score(state.score)
+
+			break
 
 
 func __position_to_index_position(incoming: Vector2) -> Vector2:
@@ -128,6 +189,10 @@ func __position_to_index_position(incoming: Vector2) -> Vector2:
 	return relative_position / Globals.SQUARE_SIZE
 
 
+func __index_position_to_index(incoming: Vector2) -> int:
+	return int(incoming.y * self.size + incoming.x)
+
+
 func __position_to_index(incoming: Vector2) -> int:
-	var indexed_position: Vector2 = self.__position_to_index_position(incoming)
-	return int(indexed_position.y * self.size + indexed_position.x)
+	var index_position: Vector2 = self.__position_to_index_position(incoming)
+	return self.__index_position_to_index(index_position)

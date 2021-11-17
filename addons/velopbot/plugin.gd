@@ -22,6 +22,7 @@ var command_responses: Dictionary = {
 	'!timezone': 'Eastern (UTC - 05:00)',
 	'!today': 'Working on a game for Godot Wild Jam 39, theme: Inversion!',
 	'!bangers': 'https://open.spotify.com/artist/7vd6FSorL46P9XmeHhSFwu',
+	'!ridiculous ': 'https://github.com/jotson/ridiculous_coding',
 }
 
 var user_responses: Dictionary = {

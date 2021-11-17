@@ -1,0 +1,113 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/art/player_inactive.png" type="Texture" id=2]
+[ext_resource path="res://source/player_score.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("text:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("text:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "changed"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("text:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 10.0, -10.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("text:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ), Vector2( 2.5, 2.5 ), Vector2( 2.5, 2.5 ), Vector2( 2, 2 ) ]
+}
+
+[node name="player_score" type="Control"]
+margin_right = 320.0
+margin_bottom = 84.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="animation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/changed = SubResource( 1 )
+
+[node name="sprite_left" type="TextureRect" parent="."]
+visible = false
+margin_left = 16.0
+margin_top = 21.0
+margin_right = 48.0
+margin_bottom = 63.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 16, 21 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sprite_right" type="TextureRect" parent="."]
+visible = false
+margin_left = 272.0
+margin_top = 21.0
+margin_right = 304.0
+margin_bottom = 63.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 16, 21 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="text" type="Label" parent="."]
+margin_left = 115.0
+margin_top = 22.0
+margin_right = 215.0
+margin_bottom = 64.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 50, 21 )
+text = "000"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

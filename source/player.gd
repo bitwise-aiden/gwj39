@@ -31,7 +31,6 @@ var __live: bool = false
 # Lifecylce method
 
 func _ready() -> void:
-	self.__sprite.texture = self.data.player
 	self.__direction = self.data.start_direction
 
 
@@ -51,6 +50,9 @@ func color() -> Color:
 func initialize(interface: ControlInterface, can_move_callback: FuncRef) -> void:
 	self.__can_move_callback = can_move_callback
 	self.__interface = interface
+
+#	if self.__interface.interface() != 0:
+	self.__sprite.texture = self.data.player
 
 	yield(Event, "wait_game_start")
 	self.__live = true

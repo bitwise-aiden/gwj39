@@ -5,6 +5,9 @@ class_name Square extends Node2D
 
 export(Vector2) var player_position: Vector2 setget __set_player_position, __get_player_position
 
+var color_previous: Color = Color.white
+var color_current: Color = Color.white
+
 
 # Private variables
 
@@ -19,9 +22,6 @@ var __live: bool = false
 
 var __target: Player = null
 var __target_origin: Vector2 = Vector2.ZERO
-
-var __previous_color: Color = Color.white
-var __current_color: Color = Color.white
 
 var __untraversable_timer: Timer = null
 
@@ -91,11 +91,11 @@ func land(player: Player) -> void:
 
 	self.__animation.play("square_animation")
 
-	self.__previous_color = self.__current_color
-	self.__sprite.material.set_shader_param("previous_color", self.__previous_color)
+	self.color_previous = self.color_current
+	self.__sprite.material.set_shader_param("previous_color", self.color_previous)
 
-	self.__current_color = player.color()
-	self.__sprite.material.set_shader_param("current_color", self.__current_color)
+	self.color_current = player.color()
+	self.__sprite.material.set_shader_param("current_color", self.color_current)
 
 	self.__sprite.material.set_shader_param("start_time", OS.get_ticks_msec() / 1000.0 - 0.8)
 
