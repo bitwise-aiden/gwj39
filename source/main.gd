@@ -42,6 +42,8 @@ func _ready() -> void:
 	self.__initialize_players()
 
 	self.__animation.play("spawn")
+	yield(self.__animation, "animation_finished")
+	self.__animation.play("countdown")
 
 
 # Private methods
@@ -74,7 +76,13 @@ func __emit_signal(name: String) -> void:
 
 func __initialize_players() -> void:
 	for i in self.__players.size():
-		self.__players[i].initialize(ControlInterface.new(ControlInterface.KEYBOARD_1), funcref(self, "__can_move"))
+		var interface: int = ControlInterface.NONE
+		if i < GlobalState.connected_interfaces.size():
+			interface = GlobalState.connected_interfaces[i]
+		self.__players[i].initialize(
+			ControlInterface.new(interface),
+			funcref(self, "__can_move")
+		)
 
 	Event.connect("player_landed", self, "__player_landed")
 

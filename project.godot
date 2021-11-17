@@ -129,6 +129,7 @@ AudioManager="*res://source/autoloads/audio_manager.gd"
 InputManager="*res://source/autoloads/input_manager.gd"
 DebugManager="*res://source/autoloads/debug_manager.gd"
 TouchInput="*res://source/autoloads/touch_input.gd"
+GlobalState="*res://source/autoloads/global_state.gd"
 
 [display]
 

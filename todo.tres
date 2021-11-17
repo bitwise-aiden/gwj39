@@ -55,9 +55,9 @@ Todo:
 
 Todo list:
 - [x] have players spawn from above map and fall into world
-- [ ] have countdown timer start
-- [ ] allow players to move when timer finished
-- [ ] increase move speed
+- [x] have countdown timer start
+- [x] allow players to move when timer finished
+- [x] increase move speed
 - [ ] add power ups
   - [ ] speed 
   - [ ] bomb (clear board, stun players)
@@ -105,3 +105,4 @@ Todo list:
   - [ ] quit to are you sure
   - [ ] esc to are you sure
 - [ ] background??????
+- [ ] fix touch input so it doesn't keep state going into the game scene

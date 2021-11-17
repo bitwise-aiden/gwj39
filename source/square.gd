@@ -54,7 +54,12 @@ func _process(delta: float) -> void:
 # Public methods
 
 func can_traverse() -> bool:
-	return self.__live && self.__target == null && self.__untraversable_timer.is_stopped()
+	return (
+		self.__live &&
+		self.position.distance_to(self.__origin) == 0.0 &&
+		self.__target == null &&
+		self.__untraversable_timer.is_stopped()
+	)
 
 
 func complete() -> void:

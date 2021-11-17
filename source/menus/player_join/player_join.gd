@@ -3,6 +3,7 @@ extends Control
 
 # Private variables
 
+onready var __animation: AnimationPlayer = $animation
 onready var __player_panes: Array = [
 	$player_1_pane,
 	$player_2_pane,
@@ -23,7 +24,6 @@ var __control_interfaces: Array = [
 	ControlInterface.new(ControlInterface.CONTROLLER_3),
 	ControlInterface.new(ControlInterface.CONTROLLER_4),
 ]
-var __active_interfaces: Array = []
 
 
 # Lifecylce methods
@@ -32,9 +32,11 @@ func _ready()-> void:
 	self.__button_start.connect("pressed", self, "__start_pressed")
 	self.__button_back.connect("pressed", self, "__back_pressed")
 
+	GlobalState.connected_interfaces.clear()
+
 
 func _process(_delta: float) -> void:
-	var player_count = self.__active_interfaces.size()
+	var player_count = GlobalState.connected_interfaces.size()
 	if player_count == 4:
 		return
 
@@ -47,9 +49,9 @@ func _process(_delta: float) -> void:
 			# Give interface to the current pane
 			self.__player_panes[player_count].activate(interface.interface())
 
-			self.__active_interfaces.append(interface.interface())
+			GlobalState.connected_interfaces.append(interface.interface())
 
-			if self.__active_interfaces.size() == 1:
+			if GlobalState.connected_interfaces.size() == 1:
 				self.__button_start.disabled = false
 				self.__button_start.grab_focus()
 
@@ -57,6 +59,10 @@ func _process(_delta: float) -> void:
 # Private methods
 
 func __start_pressed() -> void:
+	self.__animation.play("start_game")
+
+
+func __start_game() -> void:
 	SceneManager.load_scene("main")
 
 

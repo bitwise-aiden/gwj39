@@ -2,6 +2,7 @@ class_name ControlInterface
 
 # Const variables
 
+const NONE = 0 # AI
 const KEYBOARD_1 = 1 << 0 # Default: WASD
 const KEYBOARD_2 = 1 << 1 # Default: Arrow keys
 const TOUCH = 1 << 2 # Default: Touch input

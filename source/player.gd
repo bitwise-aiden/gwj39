@@ -20,7 +20,6 @@ onready var __arrows: Dictionary = {
 
 var __destination: Vector2 = Vector2.ZERO
 var __origin: Vector2 = Vector2.ZERO
-var __should_move: bool = false
 
 var __interface: ControlInterface = null
 var __direction: Vector2 = Vector2.ZERO
@@ -32,15 +31,15 @@ var __live: bool = false
 # Lifecylce method
 
 func _ready() -> void:
-	self.initiate_move()
-
 	self.__sprite.texture = self.data.player
 	self.__direction = self.data.start_direction
 
 
 func _process(_delta: float) -> void:
 	self.__interface.process()
-	self.__update_arrows(self.__interface.direction())
+
+	if self.__interface.direction() != Vector2.ZERO:
+		self.__update_arrows(self.__interface.direction())
 
 
 # Public methods
@@ -83,8 +82,6 @@ func move() -> void:
 		self.__destination = self.__origin
 		return
 
-	self.__should_move = true
-
 
 # Private methods
 
@@ -95,14 +92,14 @@ func __get_move_delta() -> float:
 func __set_move_delta(incoming: float) -> void:
 	move_delta = incoming
 
-	if !self.__should_move:
+	if self.position == self.__destination:
 		return
 
 	self.position = lerp(self.__origin, self.__destination, move_delta)
-
-	self.__should_move = self.position != self.__destination
 
 
 func __update_arrows(direction: Vector2) -> void:
 	for arrow in self.__arrows:
 		self.__arrows[arrow].visible = arrow == direction
+
+
