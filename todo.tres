@@ -111,14 +111,10 @@ Todo list:
 - [ ] background??????
 - [ ] fix touch input so it doesn't keep state going into the game scene
 - [ ] explore AI being grey??
+- [ ] STRETCH: Fix gap between Blue and Red scores on game screen
 
 
 Confirmed working phones: 
   iphone 8 -> chrome browser 
     - boxes are tiny
   mac -> chrome
-
-1 -> 64, 360
-2 -> 896, 360
-3 -> 64, 551
-4 -> 896, 551

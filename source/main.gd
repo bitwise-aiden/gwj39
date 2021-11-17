@@ -10,6 +10,7 @@ const PLAYER_POSITIONS: Array = [
 	Vector2(4, 8),
 ]
 const SQUARE_REFERENCE: Resource = preload("res://source/square.tscn")
+const SCORE_AREA_MIN_SIZE: int = 3
 
 
 # Export variables
@@ -52,45 +53,134 @@ func _ready() -> void:
 
 
 # Private methods
+func __attempt_complete_square(origin: Vector2, color) -> CompleteSquare:
+	var top_right_corners: Array = self.__detect_corners(
+		origin,
+		Vector2.RIGHT,
+		Vector2.DOWN,
+		color
+	)
 
-#func __detect_color(index_position: Vector2, color: Color) -> bool:
-#	return self.__squares[self.__index_position_to_index(index_position)].color != color
+	for top_right_corner in top_right_corners:
+		var bottom_right_corners: Array = self.__detect_corners(
+			top_right_corner,
+			Vector2.DOWN,
+			Vector2.LEFT,
+			color
+		)
+
+		for bottom_right_corner in bottom_right_corners:
+			var length = bottom_right_corner - origin
+
+			if self.__detect_length(bottom_right_corner, Vector2.LEFT, length.x, color):
+				var bottom_left_corner: Vector2 = bottom_right_corner + Vector2.LEFT * length.x
+
+				if self.__detect_length(bottom_left_corner, Vector2.UP, length.y, color):
+					return CompleteSquare.new(origin, bottom_right_corner)
+
+	return null
+
+
+func __check_square_active(square: CompleteSquare, color: Color) -> bool:
+	for position in square.internal_positions:
+		if !self.__detect_color(position, color):
+#			var index: int = self.__index_position_to_index(position)
 #
-#func __detect_corner(index_position: Vector2, color: Color) -> bool:
-#	if self.__detect_color(:
-#		return false
-#
-#	for i in 2:
-#		var horizontal: Vector2 = index_position + Vector2(i + 1, 0)
+#			if !self.__squares[index].can_traverse():
+				return true
+
+	return false
 
 
+func __detect_color(index_position: Vector2, color: Color) -> bool:
+	var index: int = self.__index_position_to_index(index_position)
+	if index == -1:
+		return false
+
+	return self.__squares[index].color_current == color
 
 
-func __find_squares(player: Player) -> int:
+func __detect_corner(index_position: Vector2, color: Color) -> bool:
+	if !self.__detect_color(index_position, color):
+		return false
+
+	for i in SCORE_AREA_MIN_SIZE - 1:
+		var horizontal: Vector2 = index_position + Vector2(i + 1.0, 0.0)
+		if !self.__detect_color(horizontal, color):
+			return false
+
+		var vertical: Vector2 = index_position + Vector2(0.0, i + 1.0)
+		if !self.__detect_color(vertical, color):
+			return false
+
+	return true
+
+
+func __detect_corners(origin: Vector2, direction: Vector2, turn: Vector2, color: Color) -> Array:
+	var corners: Array = []  # Yikes LMAO - MartyrPher # I like turtles - velopman
+
+	var current: Vector2 = origin + direction * 2.0
+	while self.__detect_color(current, color): # BOOOO BORING, we don't want gamedev, we want editor plugin dev and shitposts! - totally_not_a_spambot # omg put a f*cking comma there already - TheYagich
+		if self.__detect_color(current + turn, color):
+			corners.append(current) # i think the most annoying thing with the comments is that it will scroll tothe cursor when commenting  - TheYagich
+# STETCH goal, SRETCH goal... what is it velop?? - TheYagich
+		current += direction
+
+	corners.invert() # Lil'Oni was here - Lil'Oni
+	# oh and i guess erasing the code can be pretty annoying too - TheYagich # no - TheYagich
+	return corners
+
+
+func __detect_length(origin: Vector2, direction: Vector2, length: float, color: Color) -> bool:
+	for i in range(2, length):
+		if !self.__detect_color(origin + direction * length, color):
+			return false
+
+	return true
+
+
+func __detect_squares(color: Color) -> Array:
 	var active_squares: Array = []
 
-	# for each square in 0,0 7,7:
-		# if x, y + 1 and x + 1, y + 1 == color:
-			# add active squares
+	for y in size - SCORE_AREA_MIN_SIZE + 1:
+		for x in size - SCORE_AREA_MIN_SIZE + 1:
+			var origin = Vector2(x, y)
 
-#	for y in size - 2:
-#		for x in size - 2:
-#			if
+			if self.__detect_corner(origin, color):
+				var square: CompleteSquare = self.__attempt_complete_square(origin, color)
 
+				if square && self.__check_square_active(square, color):
+					active_squares.append(square)
 
-
-
-	return 0
+	return active_squares
 
 
 func __calculate_points(square: Square, player: Player) -> int:
+	var points: int = 1
+
 	if square.color_previous == square.color_current:
 		return 0
 
 	if square.color_previous != Color.white:
-		return 2
+		points += 1
 
-	return 1
+	for complete_square in self.__detect_squares(player.color()):
+		print(complete_square)
+		for internal_positions in complete_square.internal_positions:
+			var index: int = self.__index_position_to_index(internal_positions)
+
+			var color = self.__squares[index].color_current
+
+			if color != player.color():
+				if color == Color.white:
+					points += 1
+				else:
+					points += 2
+
+				self.__squares[index].invert(player.color())
+
+
+	return points
 
 
 func __can_move(player: Player, origin: Vector2, destination: Vector2) -> bool:
@@ -190,6 +280,9 @@ func __position_to_index_position(incoming: Vector2) -> Vector2:
 
 
 func __index_position_to_index(incoming: Vector2) -> int:
+	if incoming.x < 0.0 || incoming.x >= self.size || incoming.y < 0.0 || incoming.y >= self.size:
+		return -1
+
 	return int(incoming.y * self.size + incoming.x)
 
 

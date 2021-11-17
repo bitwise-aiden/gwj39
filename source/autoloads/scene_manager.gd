@@ -19,3 +19,10 @@ func load_scene(name: String) -> void:
 		self.get_tree().change_scene_to(self.__scenes_by_name[name])
 	else:
 		push_error("Could not load scene with name: %s" % name)
+
+# this comment brought to you by Arby's
+# hello \n line returns?
+
+
+# f*ck you # hiding a random comment # eggs - TheYagich # test - velopman
+# no - TheYagich

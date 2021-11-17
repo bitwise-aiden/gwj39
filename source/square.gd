@@ -85,19 +85,27 @@ func initialize(origin: Vector2, start_offset: Vector2, speed: float, wait_event
 	self.__live = true
 
 
+func invert(color: Color) -> void:
+	self.color_previous = self.color_current
+	self.__sprite.material.set_shader_param("previous_color", self.color_previous)
+
+	self.color_current = color
+	self.__sprite.material.set_shader_param("current_color", self.color_current)
+
+	self.__sprite.material.set_shader_param("start_time", OS.get_ticks_msec() / 1000.0 - 0.8)
+
+
+func has_target() -> bool:
+	return self.__target != null
+
+
 func land(player: Player) -> void:
 	self.__target = player
 	self.__target_origin = player.position
 
 	self.__animation.play("square_animation")
 
-	self.color_previous = self.color_current
-	self.__sprite.material.set_shader_param("previous_color", self.color_previous)
-
-	self.color_current = player.color()
-	self.__sprite.material.set_shader_param("current_color", self.color_current)
-
-	self.__sprite.material.set_shader_param("start_time", OS.get_ticks_msec() / 1000.0 - 0.8)
+	self.invert(player.color())
 
 
 func reserve(player: Player) -> void:

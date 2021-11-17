@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://addons/gift/util/cmd_info.gd"
 }, {
 "base": "Reference",
+"class": "CompleteSquare",
+"language": "GDScript",
+"path": "res://source/complete_square.gd"
+}, {
+"base": "Reference",
 "class": "ControlInterface",
 "language": "GDScript",
 "path": "res://source/helpers/control_interface.gd"
@@ -103,6 +108,7 @@ _global_script_class_icons={
 "BaseTask": "",
 "CommandData": "",
 "CommandInfo": "",
+"CompleteSquare": "",
 "ControlInterface": "",
 "ControllerInput": "",
 "CurrentQueue": "",
