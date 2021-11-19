@@ -62,11 +62,11 @@ Todo list:
   - [x] Add player icons with colored controls and score
   - [ ] Add countdown timer to end of round
   - [ ] Add end of round stuff
-- [ ] scoring
+- [x] scoring
   - [x] 1pt grey to own
   - [x] 2pt other to own
-  - [ ] 2xNpt where N is the number of grey inside a box (could scale?)
-  - [ ] 3xNpt where N is the number of other inside a box (could scale?)
+  - [x] 2xNpt where N is the number of grey inside a box (could scale?)
+  - [x] 3xNpt where N is the number of other inside a box (could scale?)
 - [ ] esc brings up menu controlled by the player who initiated
   - [ ] unpause
   - [ ] options (brings up options window)
@@ -111,7 +111,7 @@ Todo list:
 - [ ] background??????
 - [ ] fix touch input so it doesn't keep state going into the game scene
 - [ ] explore AI being grey??
-- [ ] STRETCH: Fix gap between Blue and Red scores on game screen
+- [x] STRETCH: Fix gap between Blue and Red scores on game screen
 
 
 Confirmed working phones: 
