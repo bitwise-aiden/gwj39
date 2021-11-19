@@ -102,7 +102,7 @@ Todo list:
   - [ ] back to main
   - [ ] esc to main
 - [ ] title screen
-  - [ ] <name> with letters that look like the active boarders on the player join screen
+  - [x] <name> with letters that look like the active boarders on the player join screen
   - [ ] play
   - [ ] tutorial 
   - [ ] options 

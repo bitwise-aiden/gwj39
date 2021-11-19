@@ -1,6 +1,5 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=40 format=2]
 
-[ext_resource path="res://source/menus/components/button_change_scene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/themes/theme.tres" type="Theme" id=2]
 [ext_resource path="res://source/menus/letter.gd" type="Script" id=3]
 [ext_resource path="res://assets/art/letter_i.png" type="Texture" id=4]
@@ -171,6 +170,54 @@ tracks/11/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 266.5, 28 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("play:rect_position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -14, 70 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("tutorial:rect_position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 68, 70 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("settings:rect_position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -14, 102 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("exit:rect_position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 68, 102 ) ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -506,7 +553,7 @@ tracks/24/keys = {
 
 [sub_resource type="Animation" id=15]
 resource_name = "load"
-length = 2.6
+length = 5.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("title/letter_i:rect_position")
 tracks/0/interp = 1
@@ -514,7 +561,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1.5, 1.6, 1.7 ),
+"times": PoolRealArray( 0, 1.5, 2.5, 2.6, 2.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 36, 1028 ), Vector2( 36, 1028 ), Vector2( 36, 18 ), Vector2( 36, 38 ), Vector2( 36, 28 ) ]
@@ -526,7 +573,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6 ),
+"times": PoolRealArray( 0, 1.1, 1.4, 1.5, 1.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 51, 1028 ), Vector2( 51, 1028 ), Vector2( 51, 18 ), Vector2( 51, 38 ), Vector2( 51, 28 ) ]
@@ -538,7 +585,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3, 0.8, 0.9, 1 ),
+"times": PoolRealArray( 0, 1.3, 1.8, 1.9, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 72.25, 1028 ), Vector2( 72.25, 1028 ), Vector2( 72.25, 18 ), Vector2( 72.25, 38 ), Vector2( 72.25, 28 ) ]
@@ -550,10 +597,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1, 1.1, 1.2 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 2, 2.1, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 93.25, 1028 ), Vector2( 93.25, 18 ), Vector2( 93.25, 38 ), Vector2( 93.25, 28 ) ]
+"values": [ Vector2( 93.25, 1028 ), Vector2( 93.25, 1028 ), Vector2( 93.25, 18 ), Vector2( 93.25, 38 ), Vector2( 93.25, 28 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("title/letter_r_1:rect_position")
@@ -562,7 +609,7 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6, 0.7, 0.8 ),
+"times": PoolRealArray( 0, 1.1, 1.6, 1.7, 1.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 114, 1028 ), Vector2( 114, 1028 ), Vector2( 114, 18 ), Vector2( 114, 38 ), Vector2( 114, 28 ) ]
@@ -574,7 +621,7 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.6, 1.6, 1.7, 1.8 ),
+"times": PoolRealArray( 0, 1.6, 2.6, 2.7, 2.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 134.5, 1028 ), Vector2( 134.5, 1028 ), Vector2( 134.5, 18 ), Vector2( 134.5, 38 ), Vector2( 134.5, 28 ) ]
@@ -586,7 +633,7 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.3, 0.8, 0.9, 1 ),
+"times": PoolRealArray( 0, 1.3, 1.8, 1.9, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 156, 1028 ), Vector2( 156, 1028 ), Vector2( 156, 18 ), Vector2( 156, 38 ), Vector2( 156, 28 ) ]
@@ -598,7 +645,7 @@ tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
-"times": PoolRealArray( 0, 1.7, 2.4, 2.5, 2.6 ),
+"times": PoolRealArray( 0, 2.7, 3.4, 3.5, 3.6 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 176.5, 1028 ), Vector2( 176.5, 1028 ), Vector2( 176.5, 18 ), Vector2( 176.5, 38 ), Vector2( 176.5, 28 ) ]
@@ -610,7 +657,7 @@ tracks/8/loop_wrap = true
 tracks/8/imported = false
 tracks/8/enabled = true
 tracks/8/keys = {
-"times": PoolRealArray( 0, 0.4, 1.3, 1.4, 1.5 ),
+"times": PoolRealArray( 0, 1.4, 2.3, 2.4, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 204.25, 1028 ), Vector2( 204.25, 1028 ), Vector2( 204.25, 18 ), Vector2( 204.25, 38 ), Vector2( 204.25, 28 ) ]
@@ -622,7 +669,7 @@ tracks/9/loop_wrap = true
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/keys = {
-"times": PoolRealArray( 0, 0.1, 0.6, 0.7, 0.8 ),
+"times": PoolRealArray( 0, 1.1, 1.6, 1.7, 1.8 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 225.25, 1028 ), Vector2( 225.25, 1028 ), Vector2( 225.25, 18 ), Vector2( 225.25, 38 ), Vector2( 225.25, 28 ) ]
@@ -634,7 +681,7 @@ tracks/10/loop_wrap = true
 tracks/10/imported = false
 tracks/10/enabled = true
 tracks/10/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.1, 1.2 ),
+"times": PoolRealArray( 0, 1.5, 2, 2.1, 2.2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 246, 1028 ), Vector2( 246, 1028 ), Vector2( 246, 18 ), Vector2( 246, 38 ), Vector2( 246, 28 ) ]
@@ -646,10 +693,58 @@ tracks/11/loop_wrap = true
 tracks/11/imported = false
 tracks/11/enabled = true
 tracks/11/keys = {
-"times": PoolRealArray( 0, 0.3, 1.1, 1.2, 1.3 ),
+"times": PoolRealArray( 0, 1.3, 2.1, 2.2, 2.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 266.5, 1028 ), Vector2( 266.5, 1028 ), Vector2( 266.5, 18 ), Vector2( 266.5, 38 ), Vector2( 266.5, 28 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("play:rect_position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 3.5, 3.9, 4, 4.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -14, 1070 ), Vector2( -14, 570 ), Vector2( -14, 60 ), Vector2( -14, 80 ), Vector2( -14, 70 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("tutorial:rect_position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 3.8, 4.2, 4.3, 4.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 68, 1070 ), Vector2( 68, 570 ), Vector2( 68, 60 ), Vector2( 68, 80 ), Vector2( 68, 70 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("settings:rect_position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 4.1, 4.5, 4.6, 4.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -14, 1102 ), Vector2( -14, 602 ), Vector2( -14, 92 ), Vector2( -14, 112 ), Vector2( -14, 102 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("exit:rect_position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 4.4, 4.8, 4.9, 5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 68, 1102 ), Vector2( 68, 602 ), Vector2( 68, 92 ), Vector2( 68, 112 ), Vector2( 68, 102 ) ]
 }
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -789,7 +884,7 @@ material = SubResource( 2 )
 margin_left = 36.0
 margin_top = 28.0
 margin_right = 83.0
-margin_bottom = 148.005
+margin_bottom = 148.006
 rect_scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 4 )
 script = ExtResource( 3 )
@@ -815,7 +910,7 @@ material = SubResource( 5 )
 margin_left = 72.25
 margin_top = 28.0
 margin_right = 143.25
-margin_bottom = 148.001
+margin_bottom = 148.0
 rect_scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 8 )
 script = ExtResource( 3 )
@@ -828,7 +923,7 @@ material = SubResource( 6 )
 margin_left = 93.25
 margin_top = 28.0
 margin_right = 165.25
-margin_bottom = 148.0
+margin_bottom = 148.002
 rect_scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 10 )
 script = ExtResource( 3 )
@@ -854,7 +949,7 @@ material = SubResource( 8 )
 margin_left = 134.5
 margin_top = 28.0
 margin_right = 207.5
-margin_bottom = 148.004
+margin_bottom = 148.005
 rect_scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 14 )
 script = ExtResource( 3 )
@@ -940,25 +1035,61 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="controls" type="VBoxContainer" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -32.0
-margin_top = -32.0
-margin_right = 32.0
-margin_bottom = 32.0
+[node name="play" type="Button" parent="."]
+anchor_left = -0.0423828
+anchor_top = 0.0125
+anchor_right = 0.207617
+anchor_bottom = 0.2625
+margin_left = 40.25
+margin_top = 61.0
+margin_right = -29.75
+margin_bottom = -47.0004
+rect_scale = Vector2( 0.25, 0.25 )
+rect_pivot_offset = Vector2( 125, 36 )
+text = "Play"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="button_play" parent="controls" instance=ExtResource( 1 )]
-margin_right = 64.0
-scene_name = "main"
+[node name="tutorial" type="Button" parent="."]
+anchor_right = 0.25
+anchor_bottom = 0.25
+margin_left = 68.0
+margin_top = 70.0
+margin_right = -2.0
+margin_bottom = -37.9997
+rect_scale = Vector2( 0.25, 0.25 )
+rect_pivot_offset = Vector2( 125, 36 )
+disabled = true
+text = "Tutorial"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="button_credits" parent="controls" instance=ExtResource( 1 )]
-margin_top = 4.0
-margin_right = 64.0
-margin_bottom = 4.0
-scene_name = "screen_credits"
+[node name="settings" type="Button" parent="."]
+anchor_right = 0.25
+anchor_bottom = 0.25
+margin_left = -14.0
+margin_top = 102.0
+margin_right = -84.0
+margin_bottom = -5.99683
+rect_scale = Vector2( 0.25, 0.25 )
+rect_pivot_offset = Vector2( 125, 36 )
+text = "Settings"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exit" type="Button" parent="."]
+anchor_right = 0.25
+anchor_bottom = 0.25
+margin_left = 68.0
+margin_top = 102.0
+margin_right = -2.0
+margin_bottom = -6.00072
+rect_scale = Vector2( 0.25, 0.25 )
+rect_pivot_offset = Vector2( 125, 36 )
+text = "Exit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
