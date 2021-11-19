@@ -253,6 +253,92 @@ func __can_move(player: Player, origin: Vector2, destination: Vector2) -> bool:
 
 	return true
 
+class Group:
+	var exposed: bool = false
+	var squares: Array = []
+
+	func add(square: int) -> void:
+		self.squares.append(square)
+
+	func expose() -> void:
+		self.exposed = true
+
+
+func __is_on_edge(origin: Vector2) -> bool:
+	return (
+		origin.x == 0 ||
+		origin.y == 0 ||
+		origin.x == size - 1 ||
+		origin.y == size - 1
+	)
+
+func __generate_adjacent(origin: Vector2) -> Array:
+	return [
+		origin + Vector2.LEFT,
+		origin + Vector2.RIGHT,
+		origin + Vector2.UP,
+		origin + Vector2.DOWN,
+	]
+
+
+func __find_enclosed_squares(player: Player) -> Array:
+	var color: Color = player.color()
+
+	var visited: Dictionary = {
+		# key: index
+		# value: group
+	}
+	var groups: Array = []
+
+	for y in size:
+		for x in size:
+			var index_position: Vector2 = Vector2(x, y)
+			var index: int = self.__index_position_to_index(index_position)
+
+			if visited.has(index):
+				continue
+
+			if self.__squares[index].color_current != color:
+				var group: Group = Group.new()
+				group.add(index)
+				if self.__is_on_edge(index_position):
+						group.expose()
+
+				visited[index] = group
+
+				var queue: Array = self.__generate_adjacent(index_position)
+
+				while !queue.empty():
+					var check_position: Vector2 = queue.pop_back()
+
+					var check_index: int = self.__index_position_to_index(check_position)
+					if check_index == -1:
+						continue
+
+					if visited.has(check_index):
+						continue
+
+					if self.__squares[check_index].color_current == color:
+						continue
+
+					group.add(check_index)
+					if self.__is_on_edge(check_position):
+						group.expose()
+
+					visited[check_index] = group
+
+					queue.append_array(self.__generate_adjacent(check_position))
+
+				if !group.exposed:
+					groups.append(group)
+
+	var squares: Array = []
+
+	for group in groups:
+		squares.append_array(group.squares)
+
+	return squares
+
 
 func __emit_signal(name: String) -> void:
 	Event.emit_signal(name)
