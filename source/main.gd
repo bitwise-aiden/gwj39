@@ -219,7 +219,11 @@ func __calculate_points(square: Square, player: Player) -> int:
 		for internal_positions in inversion_area.internal_positions:
 			var index: int = self.__index_position_to_index(internal_positions)
 
-			var color = self.__squares[index].color_current
+			var current_square: Square = self.__squares[index]
+			if current_square.has_target():
+				continue
+
+			var color = current_square.color_current
 
 			if color != player.color():
 				if color == Color.white:
@@ -227,7 +231,7 @@ func __calculate_points(square: Square, player: Player) -> int:
 				else:
 					points += 2
 
-				self.__squares[index].invert(player.color())
+				current_square.invert(player.color())
 
 	return points
 
