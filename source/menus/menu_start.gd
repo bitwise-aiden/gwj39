@@ -13,8 +13,18 @@ onready var __button_exit: Button = $exit
 # Lifecylce methods
 
 func _ready() -> void:
+	var seek: float = 0.0
+
+	if !GlobalState.first_time_load:
+		seek = 1.0
+	GlobalState.first_time_load = false
+
+
 	self.__animation.play("load")
+	self.__animation.seek(seek)
 	yield(self.__animation, "animation_finished")
+
+	self.__animation.playback_speed = 1.0
 
 	self.__button_play.grab_focus()
 	self.__animation.play("change")
