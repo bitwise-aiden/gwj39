@@ -129,7 +129,7 @@ _global_script_class_icons={
 [application]
 
 config/name="inversion"
-run/main_scene="res://source/menus/player_join/player_join.tscn"
+run/main_scene="res://source/menus/menu_start.tscn"
 config/icon="res://icon.png"
 
 [autoload]

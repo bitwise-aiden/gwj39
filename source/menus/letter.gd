@@ -8,6 +8,14 @@ var __color_current: Color = Color.white
 var __color_previous: Color = Color.white
 
 
+# Lifecycle methods
+
+func _ready() -> void:
+	self.__color_current = Color.white
+	self.__color_previous = Color.white
+
+	self.start_change()
+
 # Public methods
 
 func set_color(color: Color) -> void:
