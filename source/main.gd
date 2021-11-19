@@ -57,6 +57,7 @@ func _ready() -> void:
 #
 # Although this code is no longer used, I am keeping it here as memory for the first time
 # I unleashed havoc on myself by letting my chat comment my codes as a channel point redemption...
+# - velopman
 #
 
 #func __detect_corners(origin: Vector2, direction: Vector2, turn: Vector2, color: Color) -> Array:
@@ -150,16 +151,17 @@ func __find_inversion_areas(player: Player) -> Array:
 		for x in check_area_size:
 			var origin: Vector2 = Vector2(x, y)
 
-			inversion_areas.append_array(
-				self.__find_inversion_areas_at_position(origin, player.color())
-			)
+			inversion_areas.append_array(self.__find_inversion_areas_at_position(origin, player))
 
 	inversion_areas = self.__filter_containing_inversion_areas(inversion_areas)
 
 	return inversion_areas
 
 
-func __find_inversion_areas_at_position(origin: Vector2, color: Color) -> Array:
+func __find_inversion_areas_at_position(origin: Vector2, player: Player) -> Array:
+	var color: Color = player.color()
+	var index_position: Vector2 = self.__position_to_index_position(player.position)
+
 	if !self.__is_corner(origin, Vector2.DOWN, Vector2.RIGHT, color):
 		return []
 
@@ -194,6 +196,11 @@ func __find_inversion_areas_at_position(origin: Vector2, color: Color) -> Array:
 		if !self.__is_side_of_length(third_corner, Vector2.UP, delta.y, color):
 			continue
 
+		var inversion_area: InversionArea = InversionArea.new(origin, second_corner)
+
+		if !inversion_area.contains_position_border(index_position):
+			continue
+
 		inversion_areas.append(InversionArea.new(origin, second_corner))
 
 	return self.__filter_containing_inversion_areas(inversion_areas)
@@ -208,8 +215,8 @@ func __calculate_points(square: Square, player: Player) -> int:
 	if square.color_previous != Color.white:
 		points += 1
 
-	for complete_square in self.__find_inversion_areas(player):
-		for internal_positions in complete_square.internal_positions:
+	for inversion_area in self.__find_inversion_areas(player):
+		for internal_positions in inversion_area.internal_positions:
 			var index: int = self.__index_position_to_index(internal_positions)
 
 			var color = self.__squares[index].color_current
@@ -221,7 +228,6 @@ func __calculate_points(square: Square, player: Player) -> int:
 					points += 2
 
 				self.__squares[index].invert(player.color())
-
 
 	return points
 

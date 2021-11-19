@@ -31,3 +31,24 @@ func contains_area(area: InversionArea) -> bool:
 		self.bottom_right.x >= area.bottom_right.x &&
 		self.bottom_right.y >= area.bottom_right.y
 	)
+
+func contains_position(position: Vector2) -> bool:
+	return (
+		self.top_left.x <= position.x &&
+		self.top_left.y <= position.y &&
+		self.bottom_right.x >= position.x &&
+		self.bottom_right.y >= position.y
+	)
+
+
+func contains_position_border(position: Vector2) -> bool:
+	return self.contains_position(position) && !self.contains_position_internally(position)
+
+
+func contains_position_internally(position: Vector2) -> bool:
+	return (
+		self.top_left.x < position.x &&
+		self.top_left.y < position.y &&
+		self.bottom_right.x > position.x &&
+		self.bottom_right.y > position.y
+	)
