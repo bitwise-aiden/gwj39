@@ -1,4 +1,4 @@
-class_name CompleteSquare
+class_name InversionArea
 
 
 # Private variables
@@ -20,3 +20,14 @@ func _init(top_left: Vector2, bottom_right: Vector2) -> void:
 	for y in range(1.0, delta.y):
 		for x in range(1.0, delta.x):
 			self.internal_positions.append(self.top_left + Vector2(x, y))
+
+
+# Public methods
+
+func contains_area(area: InversionArea) -> bool:
+	return (
+		self.top_left.x <= area.top_left.x &&
+		self.top_left.y <= area.top_left.y &&
+		self.bottom_right.x >= area.bottom_right.x &&
+		self.bottom_right.y >= area.bottom_right.y
+	)
