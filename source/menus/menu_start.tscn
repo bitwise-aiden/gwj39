@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://source/menus/components/button_change_scene.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/themes/theme.tres" type="Theme" id=2]
@@ -17,6 +17,14 @@
 [ext_resource path="res://assets/art/letter_t_mask.png" type="Texture" id=15]
 [ext_resource path="res://assets/art/letter_o_mask.png" type="Texture" id=16]
 [ext_resource path="res://assets/art/letter_o.png" type="Texture" id=17]
+[ext_resource path="res://source/menus/title.gd" type="Script" id=18]
+[ext_resource path="res://source/player_data/inactive.tres" type="Resource" id=19]
+[ext_resource path="res://source/player_data/player_2.tres" type="Resource" id=20]
+[ext_resource path="res://source/player_data/player_4.tres" type="Resource" id=21]
+[ext_resource path="res://source/player_data/player_3.tres" type="Resource" id=22]
+[ext_resource path="res://source/player_data/player_1.tres" type="Resource" id=23]
+[ext_resource path="res://source/menus/menu_start.gd" type="Script" id=24]
+[ext_resource path="res://assets/shaders/title.gdshader" type="Shader" id=25]
 
 [sub_resource type="Animation" id=16]
 length = 0.001
@@ -168,6 +176,7 @@ tracks/11/keys = {
 [sub_resource type="Animation" id=17]
 resource_name = "change"
 length = 5.5
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("title/letter_i:rect_position")
 tracks/0/interp = 1
@@ -311,6 +320,188 @@ tracks/11/keys = {
 "transitions": PoolRealArray( 1, 0.5, -3.5, 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 266.5, 28 ), Vector2( 266.5, 28 ), Vector2( 266.5, 36 ), Vector2( 266.5, 28 ), Vector2( 266.5, 26 ), Vector2( 266.5, 28 ) ]
+}
+tracks/12/type = "method"
+tracks/12/path = NodePath("title")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "change_color"
+} ]
+}
+tracks/13/type = "method"
+tracks/13/path = NodePath("title/letter_i")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_change"
+} ]
+}
+tracks/14/type = "method"
+tracks/14/path = NodePath("title/letter_n")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 1.1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_change"
+} ]
+}
+tracks/15/type = "method"
+tracks/15/path = NodePath("title/letter_v_1")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 1.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_change"
+} ]
+}
+tracks/16/type = "method"
+tracks/16/path = NodePath("title/letter_e_1")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 1.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_change"
+} ]
+}
+tracks/17/type = "method"
+tracks/17/path = NodePath("title/letter_r_1")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_change"
+} ]
+}
+tracks/18/type = "method"
+tracks/18/path = NodePath("title/letter_t_1")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 2.3 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_change"
+} ]
+}
+tracks/19/type = "method"
+tracks/19/path = NodePath("title/letter_r_2")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 2.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_change"
+} ]
+}
+tracks/20/type = "method"
+tracks/20/path = NodePath("title/letter_o")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 2.9 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_change"
+} ]
+}
+tracks/21/type = "method"
+tracks/21/path = NodePath("title/letter_v_2")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 3.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_change"
+} ]
+}
+tracks/22/type = "method"
+tracks/22/path = NodePath("title/letter_e_2")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 3.5 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_change"
+} ]
+}
+tracks/23/type = "method"
+tracks/23/path = NodePath("title/letter_r_3")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 3.8 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_change"
+} ]
+}
+tracks/24/type = "method"
+tracks/24/path = NodePath("title/letter_t_2")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 4.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_change"
+} ]
 }
 
 [sub_resource type="Animation" id=15]
@@ -461,141 +652,112 @@ tracks/11/keys = {
 "values": [ Vector2( 266.5, 1028 ), Vector2( 266.5, 1028 ), Vector2( 266.5, 18 ), Vector2( 266.5, 38 ), Vector2( 266.5, 28 ) ]
 }
 
-[sub_resource type="Shader" id=3]
-code = "shader_type canvas_item;
-
-uniform sampler2D mask;
-
-uniform vec4 current_color: hint_color;
-uniform vec4 previous_color: hint_color;
-
-uniform float start_time;
-uniform float duration: hint_range(0.01, 2.0) = 0.05 ;
-
-
-vec2 texture_size(sampler2D t)
-{
-	ivec2 s = textureSize(t, 0);
-	return vec2(float(s.x), float(s.y));
-}
-
-void fragment()
-{
-	vec2 size = texture_size(TEXTURE);
-	
-	vec2 position = UV * size; 
-	position.x = floor(position.x);
-	position.y = floor(position.y);
-	
-	vec4 c = texture(TEXTURE, UV);
-	
-	vec4 m = texture(mask, UV);
-	if (m.a != 0.0)
-	{
-		vec2 dir = position - vec2(47.0, 47.0);
-		float dist = max(abs(dir.x), abs(dir.y));
-		float delta = (TIME - start_time) / duration;
-		
-		c = dist < delta ? m * current_color : m*previous_color;
-	}
-	
-	COLOR = c;
-}"
-
 [sub_resource type="ShaderMaterial" id=2]
-shader = SubResource( 3 )
+shader = ExtResource( 25 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
-shader_param/duration = 0.2
+shader_param/duration = 0.05
+shader_param/origin = Vector2( 23.5, 48 )
 shader_param/mask = ExtResource( 5 )
 
 [sub_resource type="ShaderMaterial" id=4]
-shader = SubResource( 3 )
+shader = ExtResource( 25 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
-shader_param/duration = 0.2
+shader_param/duration = 0.05
+shader_param/origin = Vector2( 36.5, 48 )
 shader_param/mask = ExtResource( 7 )
 
 [sub_resource type="ShaderMaterial" id=5]
-shader = SubResource( 3 )
+shader = ExtResource( 25 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
-shader_param/duration = 0.2
+shader_param/duration = 0.05
+shader_param/origin = Vector2( 35.5, 48 )
 shader_param/mask = ExtResource( 9 )
 
 [sub_resource type="ShaderMaterial" id=6]
-shader = SubResource( 3 )
+shader = ExtResource( 25 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
-shader_param/duration = 0.2
+shader_param/duration = 0.05
+shader_param/origin = Vector2( 36, 48 )
 shader_param/mask = ExtResource( 11 )
 
 [sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 3 )
+shader = ExtResource( 25 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
-shader_param/duration = 0.2
+shader_param/duration = 0.05
+shader_param/origin = Vector2( 36.5, 48 )
 shader_param/mask = ExtResource( 12 )
 
 [sub_resource type="ShaderMaterial" id=8]
-shader = SubResource( 3 )
+shader = ExtResource( 25 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
-shader_param/duration = 0.2
+shader_param/duration = 0.05
+shader_param/origin = Vector2( 36.5, 48 )
 shader_param/mask = ExtResource( 15 )
 
 [sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 3 )
+shader = ExtResource( 25 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
-shader_param/duration = 0.2
+shader_param/duration = 0.05
+shader_param/origin = Vector2( 36.5, 48 )
 shader_param/mask = ExtResource( 12 )
 
 [sub_resource type="ShaderMaterial" id=10]
-shader = SubResource( 3 )
-shader_param/current_color = Color( 0.545098, 0, 0, 1 )
+shader = ExtResource( 25 )
+shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
-shader_param/duration = 0.2
+shader_param/duration = 0.05
+shader_param/origin = Vector2( 48, 48 )
 shader_param/mask = ExtResource( 16 )
 
 [sub_resource type="ShaderMaterial" id=11]
-shader = SubResource( 3 )
+shader = ExtResource( 25 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
-shader_param/duration = 0.2
+shader_param/duration = 0.05
+shader_param/origin = Vector2( 35.5, 48 )
 shader_param/mask = ExtResource( 9 )
 
 [sub_resource type="ShaderMaterial" id=12]
-shader = SubResource( 3 )
+shader = ExtResource( 25 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
-shader_param/duration = 0.2
+shader_param/duration = 0.05
+shader_param/origin = Vector2( 36, 48 )
 shader_param/mask = ExtResource( 11 )
 
 [sub_resource type="ShaderMaterial" id=13]
-shader = SubResource( 3 )
+shader = ExtResource( 25 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
-shader_param/duration = 0.2
+shader_param/duration = 0.05
+shader_param/origin = Vector2( 0, 36.5 )
 shader_param/mask = ExtResource( 12 )
 
 [sub_resource type="ShaderMaterial" id=14]
-shader = SubResource( 3 )
+shader = ExtResource( 25 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
-shader_param/duration = 0.2
+shader_param/duration = 0.05
+shader_param/origin = Vector2( 36.5, 48 )
 shader_param/mask = ExtResource( 15 )
 
 [node name="menu_start" type="Control"]
@@ -603,6 +765,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_scale = Vector2( 4, 4 )
 theme = ExtResource( 2 )
+script = ExtResource( 24 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -615,9 +778,11 @@ anims/load = SubResource( 15 )
 [node name="title" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+player_data = [ ExtResource( 19 ), ExtResource( 23 ), ExtResource( 20 ), ExtResource( 22 ), ExtResource( 21 ) ]
 
 [node name="letter_i" type="TextureRect" parent="title"]
 material = SubResource( 2 )
