@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://source/menus/player_join/player_join.gd" type="Script" id=1]
 [ext_resource path="res://source/player_data/inactive.tres" type="Resource" id=2]
@@ -23,6 +23,178 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("player_1_pane:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 61, 1100 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("player_2_pane:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 360, 1100 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("player_3_pane:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 660, 1100 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("player_4_pane:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 960, 1100 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("back:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 408, 1632 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("start:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 704, 1632 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("information:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 315, -57 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "load"
+length = 2.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("player_1_pane:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 61, 1100 ), Vector2( 61, 1100 ), Vector2( 61, 80 ), Vector2( 61, 120 ), Vector2( 61, 100 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("player_2_pane:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 360, 1100 ), Vector2( 360, 1100 ), Vector2( 360, 80 ), Vector2( 360, 120 ), Vector2( 360, 100 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("player_3_pane:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 0.9, 1, 1.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 660, 1100 ), Vector2( 660, 1100 ), Vector2( 660, 80 ), Vector2( 660, 120 ), Vector2( 660, 100 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("player_4_pane:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.9, 1.2, 1.3, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 960, 1100 ), Vector2( 960, 1100 ), Vector2( 960, 80 ), Vector2( 960, 120 ), Vector2( 960, 100 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("back:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.1, 1.3, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 408, 1632 ), Vector2( 408, 1632 ), Vector2( 408, 612 ), Vector2( 408, 652 ), Vector2( 408, 632 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("start:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.3, 1.5, 1.6, 1.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 704, 1632 ), Vector2( 704, 1632 ), Vector2( 704, 612 ), Vector2( 704, 652 ), Vector2( 704, 632 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("information:rect_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1.5, 1.7, 1.8, 1.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 315, -57 ), Vector2( 315, -57 ), Vector2( 315, 53 ), Vector2( 315, 63 ), Vector2( 315, 43 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -68,6 +240,7 @@ __meta__ = {
 
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 1 )
+anims/load = SubResource( 3 )
 anims/start_game = SubResource( 2 )
 
 [node name="background" type="TextureRect" parent="."]
@@ -81,41 +254,41 @@ __meta__ = {
 
 [node name="player_1_pane" parent="." instance=ExtResource( 13 )]
 margin_left = 61.0
-margin_top = 100.0
+margin_top = 1100.0
 margin_right = 320.0
-margin_bottom = 609.0
+margin_bottom = 1609.0
 inactive_data = ExtResource( 2 )
 active_data = ExtResource( 6 )
 
 [node name="player_2_pane" parent="." instance=ExtResource( 13 )]
 margin_left = 360.0
-margin_top = 100.0
+margin_top = 1100.0
 margin_right = 619.0
-margin_bottom = 609.0
+margin_bottom = 1609.0
 inactive_data = ExtResource( 2 )
 active_data = ExtResource( 3 )
 
 [node name="player_3_pane" parent="." instance=ExtResource( 13 )]
 margin_left = 660.0
-margin_top = 100.0
+margin_top = 1100.0
 margin_right = 919.0
-margin_bottom = 609.0
+margin_bottom = 1609.0
 inactive_data = ExtResource( 2 )
 active_data = ExtResource( 5 )
 
 [node name="player_4_pane" parent="." instance=ExtResource( 13 )]
 margin_left = 960.0
-margin_top = 100.0
+margin_top = 1100.0
 margin_right = 1219.0
-margin_bottom = 609.0
+margin_bottom = 1609.0
 inactive_data = ExtResource( 2 )
 active_data = ExtResource( 4 )
 
 [node name="back" type="Button" parent="."]
 margin_left = 408.0
-margin_top = 632.0
+margin_top = 1632.0
 margin_right = 575.0
-margin_bottom = 692.0
+margin_bottom = 1692.0
 rect_pivot_offset = Vector2( 83, 30 )
 theme = ExtResource( 8 )
 text = "Back"
@@ -125,9 +298,9 @@ __meta__ = {
 
 [node name="start" type="Button" parent="."]
 margin_left = 704.0
-margin_top = 632.0
+margin_top = 1632.0
 margin_right = 871.0
-margin_bottom = 692.0
+margin_bottom = 1692.0
 rect_pivot_offset = Vector2( 83, 30 )
 theme = ExtResource( 8 )
 disabled = true
@@ -140,9 +313,9 @@ __meta__ = {
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -325.0
-margin_top = 43.0
+margin_top = -57.0
 margin_right = 326.0
-margin_bottom = 67.0
+margin_bottom = -33.0
 rect_pivot_offset = Vector2( 325, 12 )
 text = "Inactive players will spawn as AI"
 __meta__ = {
