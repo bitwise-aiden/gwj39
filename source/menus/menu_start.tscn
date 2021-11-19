@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://assets/themes/theme.tres" type="Theme" id=2]
 [ext_resource path="res://source/menus/letter.gd" type="Script" id=3]
@@ -218,6 +218,18 @@ tracks/15/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 68, 102 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath(".:rect_scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=17]
@@ -551,9 +563,24 @@ tracks/24/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=18]
+resource_name = "change_scene"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 12.1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 10, 10 ) ]
+}
+
 [sub_resource type="Animation" id=15]
 resource_name = "load"
-length = 5.5
+length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("title/letter_i:rect_position")
 tracks/0/interp = 1
@@ -708,7 +735,7 @@ tracks/12/keys = {
 "times": PoolRealArray( 0, 3.5, 3.9, 4, 4.1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -14, 1070 ), Vector2( -14, 570 ), Vector2( -14, 60 ), Vector2( -14, 80 ), Vector2( -14, 70 ) ]
+"values": [ Vector2( 320, 1384 ), Vector2( 320, 1384 ), Vector2( 320, 364 ), Vector2( 320, 404 ), Vector2( 320, 384 ) ]
 }
 tracks/13/type = "value"
 tracks/13/path = NodePath("tutorial:rect_position")
@@ -717,10 +744,10 @@ tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0, 3.8, 4.2, 4.3, 4.4 ),
+"times": PoolRealArray( 0, 3.7, 4.1, 4.2, 4.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 68, 1070 ), Vector2( 68, 570 ), Vector2( 68, 60 ), Vector2( 68, 80 ), Vector2( 68, 70 ) ]
+"values": [ Vector2( 712, 1384 ), Vector2( 712, 1384 ), Vector2( 712, 364 ), Vector2( 712, 404 ), Vector2( 712, 384 ) ]
 }
 tracks/14/type = "value"
 tracks/14/path = NodePath("settings:rect_position")
@@ -729,10 +756,10 @@ tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0, 4.1, 4.5, 4.6, 4.7 ),
+"times": PoolRealArray( 0, 3.9, 4.3, 4.4, 4.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -14, 1102 ), Vector2( -14, 602 ), Vector2( -14, 92 ), Vector2( -14, 112 ), Vector2( -14, 102 ) ]
+"values": [ Vector2( 320, 1512 ), Vector2( 320, 1512 ), Vector2( 320, 492 ), Vector2( 320, 532 ), Vector2( 320, 512 ) ]
 }
 tracks/15/type = "value"
 tracks/15/path = NodePath("exit:rect_position")
@@ -741,10 +768,10 @@ tracks/15/loop_wrap = true
 tracks/15/imported = false
 tracks/15/enabled = true
 tracks/15/keys = {
-"times": PoolRealArray( 0, 4.4, 4.8, 4.9, 5 ),
+"times": PoolRealArray( 0, 4.1, 4.5, 4.6, 4.7 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 68, 1102 ), Vector2( 68, 602 ), Vector2( 68, 92 ), Vector2( 68, 112 ), Vector2( 68, 102 ) ]
+"values": [ Vector2( 712, 1512 ), Vector2( 712, 1512 ), Vector2( 712, 492 ), Vector2( 712, 532 ), Vector2( 712, 512 ) ]
 }
 
 [sub_resource type="ShaderMaterial" id=2]
@@ -858,7 +885,7 @@ shader_param/mask = ExtResource( 15 )
 [node name="menu_start" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_scale = Vector2( 4, 4 )
+rect_pivot_offset = Vector2( 640, 360 )
 theme = ExtResource( 2 )
 script = ExtResource( 24 )
 __meta__ = {
@@ -868,11 +895,13 @@ __meta__ = {
 [node name="animation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 16 )
 anims/change = SubResource( 17 )
+anims/change_scene = SubResource( 18 )
 anims/load = SubResource( 15 )
 
 [node name="title" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
+rect_scale = Vector2( 4, 4 )
 script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -1036,15 +1065,14 @@ __meta__ = {
 }
 
 [node name="play" type="Button" parent="."]
-anchor_left = -0.0423828
-anchor_top = 0.0125
-anchor_right = 0.207617
-anchor_bottom = 0.2625
-margin_left = 40.25
-margin_top = 61.0
-margin_right = -29.75
-margin_bottom = -47.0004
-rect_scale = Vector2( 0.25, 0.25 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -654.0
+margin_top = -290.0
+margin_right = -404.0
+margin_bottom = -218.0
 rect_pivot_offset = Vector2( 125, 36 )
 text = "Play"
 __meta__ = {
@@ -1052,13 +1080,14 @@ __meta__ = {
 }
 
 [node name="tutorial" type="Button" parent="."]
-anchor_right = 0.25
-anchor_bottom = 0.25
-margin_left = 68.0
-margin_top = 70.0
-margin_right = -2.0
-margin_bottom = -37.9997
-rect_scale = Vector2( 0.25, 0.25 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -572.0
+margin_top = -290.0
+margin_right = -322.0
+margin_bottom = -218.0
 rect_pivot_offset = Vector2( 125, 36 )
 disabled = true
 text = "Tutorial"
@@ -1067,13 +1096,14 @@ __meta__ = {
 }
 
 [node name="settings" type="Button" parent="."]
-anchor_right = 0.25
-anchor_bottom = 0.25
-margin_left = -14.0
-margin_top = 102.0
-margin_right = -84.0
-margin_bottom = -5.99683
-rect_scale = Vector2( 0.25, 0.25 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -654.0
+margin_top = -258.0
+margin_right = -404.0
+margin_bottom = -185.997
 rect_pivot_offset = Vector2( 125, 36 )
 text = "Settings"
 __meta__ = {
@@ -1081,13 +1111,14 @@ __meta__ = {
 }
 
 [node name="exit" type="Button" parent="."]
-anchor_right = 0.25
-anchor_bottom = 0.25
-margin_left = 68.0
-margin_top = 102.0
-margin_right = -2.0
-margin_bottom = -6.00072
-rect_scale = Vector2( 0.25, 0.25 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -572.0
+margin_top = -258.0
+margin_right = -322.0
+margin_bottom = -186.001
 rect_pivot_offset = Vector2( 125, 36 )
 text = "Exit"
 __meta__ = {

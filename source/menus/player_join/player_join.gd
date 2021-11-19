@@ -60,11 +60,10 @@ func _process(_delta: float) -> void:
 
 func __start_pressed() -> void:
 	self.__animation.play("start_game")
+	yield(self.__animation, "animation_finished")
 
-
-func __start_game() -> void:
 	SceneManager.load_scene("main")
 
 
 func __back_pressed() -> void:
-	SceneManager.load_scene("menu")
+	SceneManager.load_scene("menu_start")

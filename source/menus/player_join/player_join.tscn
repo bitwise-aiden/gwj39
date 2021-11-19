@@ -118,7 +118,6 @@ margin_right = 575.0
 margin_bottom = 692.0
 rect_pivot_offset = Vector2( 83, 30 )
 theme = ExtResource( 8 )
-disabled = true
 text = "Back"
 __meta__ = {
 "_edit_use_anchors_": false
