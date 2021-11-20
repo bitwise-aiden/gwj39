@@ -157,6 +157,54 @@ tracks/11/keys = {
 "update": 0,
 "values": [ Vector2( 0, 0 ) ]
 }
+tracks/12/type = "value"
+tracks/12/path = NodePath("player_1:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 384, 1353 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("player_2:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 896, 1353 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("player_3:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 640, 1353 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("player_4:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 640, 1353 ) ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "countdown"
@@ -666,17 +714,17 @@ __meta__ = {
 }
 
 [node name="player_1" parent="." instance=ExtResource( 10 )]
-position = Vector2( 384, 353 )
+position = Vector2( 384, 1353 )
 data = ExtResource( 6 )
 
 [node name="player_2" parent="." instance=ExtResource( 10 )]
-position = Vector2( 896, 353 )
+position = Vector2( 896, 1353 )
 data = ExtResource( 3 )
 
 [node name="player_3" parent="." instance=ExtResource( 10 )]
-position = Vector2( 640, 89 )
+position = Vector2( 640, 1353 )
 data = ExtResource( 5 )
 
 [node name="player_4" parent="." instance=ExtResource( 10 )]
-position = Vector2( 640, 617 )
+position = Vector2( 640, 1353 )
 data = ExtResource( 4 )

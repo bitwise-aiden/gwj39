@@ -25,6 +25,8 @@ var __target_origin: Vector2 = Vector2.ZERO
 
 var __untraversable_timer: Timer = null
 
+var __shader_offset: float = 0.8
+
 
 # Lifecycle methods
 
@@ -36,6 +38,8 @@ func _ready() -> void: # Velop is a bad influence, we are now all awake at 3AM. 
 
 	Event.connect("wait_times_up", self, "set", ["__live", false])
 
+	if OS.get_name() == "HTML5":
+		self.__shader_offset = 2.0
 
 func _process(delta: float) -> void:
 	if !self.__live:
@@ -103,7 +107,7 @@ func invert(color: Color) -> void:
 	self.color_current = color
 	self.__sprite.material.set_shader_param("current_color", self.color_current)
 
-	self.__sprite.material.set_shader_param("start_time", OS.get_ticks_msec() / 1000.0 - 0.8)
+	self.__sprite.material.set_shader_param("start_time", OS.get_ticks_msec() / 1000.0 - self.__shader_offset)
 
 
 func has_target() -> bool:

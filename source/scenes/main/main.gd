@@ -405,7 +405,7 @@ func __set_winner_tween(incoming: float) -> void:
 
 	for player in self.__players:
 		if self.__winner == player:
-			continue
+			continue # You can't report me, I'm too awesome. - Lil'Oni
 
 		player.ui.rect_scale = lerp(
 			Vector2(1.0, 1.0),
