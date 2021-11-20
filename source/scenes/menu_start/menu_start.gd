@@ -11,7 +11,7 @@ const AUDIO_PACK_REFERENCE: AudioPack = preload("res://source/audio_pack/menu.tr
 onready var __animation: AnimationPlayer = $animation
 onready var __button_play: Button = $play
 onready var __button_tutorial: Button = $tutorial
-onready var __button_settings: Button = $settings
+onready var __button_settings: Button = $settings # Hi, I got no sound. So I'm just going to communicate in your code instead - Lil'Oni
 onready var __button_exit: Button = $exit
 
 
@@ -46,6 +46,8 @@ func _ready() -> void:
 # Private methods
 
 func __change_scene(scene: String) -> void:
+	AudioManager.play_sound_effect("select")
+
 	self.__animation.play("change_scene")
 	yield(self.__animation, "animation_finished")
 
@@ -53,6 +55,8 @@ func __change_scene(scene: String) -> void:
 
 
 func __exit_pressed() -> void:
+	AudioManager.play_sound_effect("select")
+
 	self.__animation.playback_speed = 2.0
 	self.__animation.play_backwards("load")
 	yield(self.__animation, "animation_finished")

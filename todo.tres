@@ -72,13 +72,13 @@ Todo list:
   - [x] play
   - [x] tutorial 
   - [x] options 
-- [ ] Add the awesome bangers to the game
-- [ ] Add sound effects to game 
-  - [ ] Button pressed
-  - [ ] Player joined
-  - [ ] Bounce 
-  - [ ] End of round noise
-  - [ ] Fireworks
+- [x] Add the awesome bangers to the game
+- [x] Add sound effects to game 
+  - [x] Button pressed
+  - [x] Player joined
+  - [x] Bounce 
+  - [x] End of round noise
+  - [x] titles inverted
 - [x] fix touch input so it doesn't keep state going into the game scene
 - [x] Fix touch
 - [x] Fix UI being unresponsive after animations 

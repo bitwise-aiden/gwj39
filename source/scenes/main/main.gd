@@ -63,9 +63,11 @@ func _ready() -> void:
 
 	yield(Event, "wait_game_start")
 	self.__playing = true
-	self.__hour_glass.set_time_remaining(120) # #Why are you setting origin? - MartyrPher
+	self.__hour_glass.set_time_remaining(10) # #Why are you setting origin? - MartyrPher
 
 	yield(Event, "wait_times_up")
+
+	AudioManager.play_sound_effect("finish")
 
 	var highest_score: int = 0
 	var highest_score_time: int = 0
@@ -249,7 +251,9 @@ func __calculate_points(square: Square, player: Player) -> int:
 	if square.color_previous != Color.white:
 		points += 1
 
+
 	for inversion_area in self.__find_inversion_areas(player):
+
 		for internal_positions in inversion_area.internal_positions:
 			var index: int = self.__index_position_to_index(internal_positions)
 
@@ -260,6 +264,8 @@ func __calculate_points(square: Square, player: Player) -> int:
 			var color = current_square.color_current
 
 			if color != player.color():
+				AudioManager.play_sound_effect("select")
+
 				if color == Color.white:
 					points += 1
 				else:

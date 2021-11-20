@@ -48,6 +48,8 @@ func _process(_delta: float) -> void:
 		if interface.is_active() && !interface.is_assigned():
 			interface.assign()
 
+			AudioManager.play_sound_effect("join")
+
 			# Give interface to the current pane
 			self.__player_panes[player_count].activate(interface.interface())
 
@@ -61,6 +63,8 @@ func _process(_delta: float) -> void:
 # Private methods
 
 func __start_pressed() -> void:
+	AudioManager.play_sound_effect("select")
+
 	self.__animation.play("start_game")
 	yield(self.__animation, "animation_finished")
 
@@ -68,6 +72,8 @@ func __start_pressed() -> void:
 
 
 func __back_pressed() -> void:
+	AudioManager.play_sound_effect("select")
+
 	self.__animation.play_backwards("load")
 	yield(self.__animation, "animation_finished")
 

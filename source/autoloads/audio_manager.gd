@@ -84,7 +84,18 @@ func play_music(name: String, fade: bool = true) -> void:
 
 
 func play_sound_effect(name: String) -> void:
-	pass
+	if self.__audio_pack == null:
+		return
+
+	var effect: AudioStream = self.__audio_pack.get_sound_effect(name)
+	if effect == null:
+		return
+
+	if self.__sound_effect == effect:
+		return
+
+	self.__sound_effect.stream = effect
+	self.__sound_effect.play()
 
 
 # Private methods
