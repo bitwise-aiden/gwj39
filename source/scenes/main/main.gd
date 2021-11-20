@@ -399,6 +399,20 @@ func __position_to_index(incoming: Vector2) -> int:
 func __set_winner_tween(incoming: float) -> void:
 	winner_tween = incoming
 
+	if self.__winner == null:
+		return
+
+
+	for player in self.__players:
+		if self.__winner == player:
+			continue
+
+		player.ui.rect_scale = lerp(
+			Vector2(1.0, 1.0),
+			Vector2(0.5, 0.5),
+			incoming
+		)
+
 	self.__winner.ui.rect_position = lerp(
 		self.__winner_position_ui,
 		WIN_POSITION_UI,
@@ -433,3 +447,7 @@ func __player_state_getter() -> Array:
 		players.append(player.instance)
 
 	return players
+
+
+func __play_sound_effect(name: String) -> void:
+	AudioManager.play_sound_effect(name)

@@ -25,6 +25,10 @@ func _process(delta: float) -> void:
 			delta *= 0.75
 			self.__animation.playback_speed = 10.0 / self.__time_total * 0.75
 
+		if  floor(self.__time_remaining) > floor(self.__time_remaining - delta) && self.__time_remaining < 5.0:
+			AudioManager.play_sound_effect("countdown")
+
+
 		self.__time_remaining = max(0.0, self.__time_remaining - delta)
 
 		var time_output: int = ceil(self.__time_remaining)
