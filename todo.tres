@@ -73,9 +73,9 @@ Todo list:
   - [x] tutorial 
   - [x] options 
 - [ ] Add the awesome bangers to the game
-- [ ] fix touch input so it doesn't keep state going into the game scene
-- [ ] Fix touch
-- [ ] Fix UI being unresponsive after animations 
+- [x] fix touch input so it doesn't keep state going into the game scene
+- [x] Fix touch
+- [x] Fix UI being unresponsive after animations 
 - [ ] options screen
   - [ ] music volume
   - [ ] sfx volume

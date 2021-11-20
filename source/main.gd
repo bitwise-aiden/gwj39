@@ -350,6 +350,7 @@ func __player_landed(player: Player) -> void:
 
 	var square = self.__squares[index]
 	square.land(player)
+
 	player.set_coord(self.__position_to_index_position(player.position))
 
 	if !self.__playing:

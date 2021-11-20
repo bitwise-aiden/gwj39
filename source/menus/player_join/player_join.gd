@@ -24,7 +24,6 @@ var __control_interfaces: Array = [
 	ControlInterface.new(ControlInterface.CONTROLLER_3),
 	ControlInterface.new(ControlInterface.CONTROLLER_4),
 ]
-var __live: bool = false
 
 
 # Lifecylce methods
@@ -36,15 +35,9 @@ func _ready()-> void:
 	GlobalState.connected_interfaces.clear()
 
 	self.__animation.play("load")
-	yield(self.__animation, "animation_finished")
-
-	self.__live = true
 
 
 func _process(_delta: float) -> void:
-	if !self.__live:
-		return
-
 	var player_count = GlobalState.connected_interfaces.size()
 	if player_count == 4:
 		return
