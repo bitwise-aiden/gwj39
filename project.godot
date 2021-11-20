@@ -134,9 +134,10 @@ _global_script_class_icons={
 
 [application]
 
-config/name="inversion"
+config/name="Invertovert"
 run/main_scene="res://source/scenes/menu_start/menu_start.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/art/tiles.png"
+config/windows_native_icon="res://assets/art/tiles-export.ico"
 
 [autoload]
 

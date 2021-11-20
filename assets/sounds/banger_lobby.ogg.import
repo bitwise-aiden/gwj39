@@ -12,4 +12,4 @@ dest_files=[ "res://.import/banger_lobby.ogg-b829c71397c000435fe08493a06e3484.og
 [params]
 
 loop=true
-loop_offset=0.0
+loop_offset=27.042

@@ -61,13 +61,16 @@ func play_music(name: String, fade: bool = true) -> void:
 	if track == null:
 		return
 
+	if self.__music.stream == track:
+		return
+
 	if fade && self.__music.stream:
 		self.__music_fade_tween.interpolate_property(
 			self.__music,
 			"volume_db",
 			0.0,
 			-80.0,
-			1.0,
+			0.5,
 			Tween.TRANS_LINEAR
 		)
 		self.__music_fade_tween.start()
