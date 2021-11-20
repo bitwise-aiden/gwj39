@@ -21,6 +21,8 @@ var __assigned: bool = false
 var __direction: Vector2 = Vector2.ZERO
 var __interface: int = 0
 
+var __ai: AIInput = null
+
 var __keyboard_1: PlayerInput = null setget , __get_keyboard_1
 var __keyboard_2: PlayerInput = null setget , __get_keyboard_2
 
@@ -32,8 +34,9 @@ var __controller_4: ControllerInput = null setget , __get_controller_4
 
 # Lifecycle methods
 
-func _init(interface: int) -> void:
+func _init(interface: int, ai: AIInput = null) -> void:
 	self.__interface = interface
+	self.__ai = ai
 
 
 # Public methods
@@ -59,6 +62,17 @@ func direction() -> Vector2:
 
 
 func process() -> void:
+	if self.__interface == 0:
+		if !self.__ai:
+			return
+
+		self.__ai.process()
+
+		var direction: Vector2 = self.__ai.direction()
+		if direction != Vector2.ZERO:
+			self.__direction = direction
+
+
 	if self.__interface & KEYBOARD_1:
 		self.__keyboard_1.process()
 

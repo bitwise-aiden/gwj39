@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AIInput",
+"language": "GDScript",
+"path": "res://source/helpers/ai_input.gd"
+}, {
 "base": "Reference",
 "class": "BaseTask",
 "language": "GDScript",
@@ -110,6 +115,7 @@ _global_script_classes=[ {
 "path": "res://source/helpers/tasks/task_queue.gd"
 } ]
 _global_script_class_icons={
+"AIInput": "",
 "BaseTask": "",
 "CommandData": "",
 "CommandInfo": "",

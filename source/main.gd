@@ -59,7 +59,7 @@ func _ready() -> void:
 
 	yield(Event, "wait_game_start")
 	self.__playing = true
-	self.__hour_glass.set_time_remaining(10) # #Why are you setting origin? - MartyrPher
+	self.__hour_glass.set_time_remaining(120) # #Why are you setting origin? - MartyrPher
 
 	yield(Event, "wait_times_up")
 
@@ -294,11 +294,19 @@ func __emit_signal(name: String) -> void:
 
 func __initialize_players() -> void:
 	for i in self.__players.size():
-		var interface: int = ControlInterface.NONE
+		var interface: ControlInterface = ControlInterface.new(
+			ControlInterface.NONE,
+			AIInput.new(
+				funcref(self, "__board_state_getter"),
+				self.__players[i].instance.color()
+			)
+		)
+
 		if i < GlobalState.connected_interfaces.size():
-			interface = GlobalState.connected_interfaces[i]
+			interface = ControlInterface.new(GlobalState.connected_interfaces[i])
+
 		self.__players[i].instance.initialize(
-			ControlInterface.new(interface),
+			interface,
 			funcref(self, "__can_move")
 		)
 
@@ -321,6 +329,7 @@ func __initialize_squares() -> void:
 				wait_event = "wait_spawn_player"
 
 			instance.initialize(
+				index_position,
 				self.__initial_position + index_position * Globals.SQUARE_SIZE,
 				Vector2(0.0, 1000.0),
 				speed,
@@ -399,3 +408,7 @@ func __hide_children() -> void:
 			continue
 
 		child.visible = false
+
+
+func __board_state_getter() -> Array:
+	return self.__squares

@@ -68,6 +68,10 @@ func initiate_move() -> void:
 	self.__animation.play("jump")
 
 
+func interface() -> int:
+	return self.__interface.interface()
+
+
 func land() -> void:
 	Event.emit_signal("player_landed", self)
 

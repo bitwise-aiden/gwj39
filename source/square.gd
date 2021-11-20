@@ -7,7 +7,7 @@ export(Vector2) var player_position: Vector2 setget __set_player_position, __get
 
 var color_previous: Color = Color.white
 var color_current: Color = Color.white
-
+var coord: Vector2 = Vector2.ZERO
 
 # Private variables
 
@@ -76,8 +76,10 @@ func complete() -> void:
 	self.__untraversable_timer.start()
 
 
-func initialize(origin: Vector2, start_offset: Vector2, speed: float, wait_event: String) -> void:
+func initialize(coord: Vector2, origin: Vector2, start_offset: Vector2, speed: float, wait_event: String) -> void:
 	self.position = origin + start_offset
+
+	self.coord = coord
 
 	self.__origin = origin
 	self.__start_offset = start_offset
@@ -117,8 +119,15 @@ func land(player: Player) -> void:
 	self.invert(player.color())
 
 
+func is_occupied_by(color: Color) -> bool:
+	return self.has_target() && self.__target.color() == color
+
+
 func reserve(player: Player) -> void:
 	self.__target = player
+
+func target() -> Player:
+	return self.__target
 
 
 # Private methods
