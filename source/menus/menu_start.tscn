@@ -1,5 +1,6 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=42 format=2]
 
+[ext_resource path="res://assets/sounds/banger_lobby.ogg" type="AudioStream" id=1]
 [ext_resource path="res://assets/themes/theme.tres" type="Theme" id=2]
 [ext_resource path="res://source/menus/letter.gd" type="Script" id=3]
 [ext_resource path="res://assets/art/letter_i.png" type="Texture" id=4]
@@ -1124,3 +1125,8 @@ text = "Exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+bus = "Music"

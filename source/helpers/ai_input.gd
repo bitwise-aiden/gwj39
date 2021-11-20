@@ -37,15 +37,17 @@ func _init(board_state_getter: FuncRef, color: Color) -> void:
 # Public methods
 
 func direction() -> Vector2:
+	if self.__cooldown > 0:
+		self.__cooldown -= 1
+# What can I program.. Uhhh.. Uhhh.. Ahhh.. Uuuuuuhhhhhhhh. - Lil'Oni
 	return self.__direction
 
 
 func process() -> void:
-#	if self.__cooldown > 0:
-#		self.__cooldown -= 1
-#		return
+	if self.__cooldown > 0:
+		return # Okay, but this is a test - velopman
 #
-#	self.__cooldown += randi() % 2 + 1
+	self.__cooldown += randi() % 2 + 1
 
 	var board: Array = self.__board_state_getter.call_func()
 
@@ -68,22 +70,12 @@ func process() -> void:
 			else:
 				position_player.add(square.coord)
 
-
-#	print("-----\n%s\n-----" % str(self.__color))
-#	print("color:  ", position_color.direction_to(position_own))
-#	print("player: ", position_player.direction_to(position_own))
-#	print("center: ", (Vector2(4.0, 4.0) - position_own).normalized())
-#	print("ai:     ", position_ai.direction_to(position_own))
-#	print('-----\n')
-
 	var direction: Vector2 = (
 		position_color.direction_to(position_own) * 10.0 +
 		position_player.direction_to(position_own) * 100.0 +
 		(Vector2(4.0, 4.0) - position_own).normalized() * 3.0 +
 		position_ai.direction_to(position_own) * -2.0
 	).normalized()
-
-	print("-----\n%s\n-----\ndirection:%s\n-----" % [str(self.__color), direction])
 
 	self.__direction = Vector2(sign(direction.x), 0.0)
 	if abs(direction.y) > abs(direction.x):

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/banger_lobby.ogg-b829c71397c000435fe08493a06e3484.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/banger_lobby.ogg"
+dest_files=[ "res://.import/banger_lobby.ogg-b829c71397c000435fe08493a06e3484.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

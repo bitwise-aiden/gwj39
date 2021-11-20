@@ -72,8 +72,12 @@ Todo list:
   - [x] play
   - [x] tutorial 
   - [x] options 
+- [ ] Add the awesome bangers to the game
 - [ ] AI 
   - [ ] Make AI that checks the density of colors that aren't their own and heads in that direction
+- [ ] fix touch input so it doesn't keep state going into the game scene
+- [ ] Fix touch
+- [ ] Fix UI being unresponsive after animations 
 - [ ] options screen
   - [ ] music volume
   - [ ] sfx volume
@@ -104,10 +108,10 @@ Todo list:
   - [ ] main menu to are you sure
   - [ ] are you sure to main menu
 - [ ] background??????
-- [ ] fix touch input so it doesn't keep state going into the game scene
 - [ ] explore AI being grey??
 - [x] STRETCH: Fix gap between Blue and Red scores on game screen
 - [ ] Make tiles invert properly
+
 
 
 Confirmed working phones: 
