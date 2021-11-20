@@ -181,7 +181,7 @@ tracks/12/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -14, 1070 ) ]
+"values": [ Vector2( -1000, -1000 ) ]
 }
 tracks/13/type = "value"
 tracks/13/path = NodePath("tutorial:rect_position")
@@ -193,7 +193,7 @@ tracks/13/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 68, 70 ) ]
+"values": [ Vector2( -1000, -1000 ) ]
 }
 tracks/14/type = "value"
 tracks/14/path = NodePath("settings:rect_position")
@@ -205,7 +205,7 @@ tracks/14/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -14, 102 ) ]
+"values": [ Vector2( -1000, -1000 ) ]
 }
 tracks/15/type = "value"
 tracks/15/path = NodePath("exit:rect_position")
@@ -217,7 +217,7 @@ tracks/15/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 68, 1102 ) ]
+"values": [ Vector2( -1000, -1000 ) ]
 }
 tracks/16/type = "value"
 tracks/16/path = NodePath(".:rect_scale")
@@ -1069,10 +1069,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -640.0
-margin_top = 640.0
-margin_right = -390.0
-margin_bottom = 712.0
+margin_left = -1640.0
+margin_top = -1360.0
+margin_right = -1390.0
+margin_bottom = -1288.0
 rect_pivot_offset = Vector2( 125, 36 )
 text = "Play"
 __meta__ = {
@@ -1084,10 +1084,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -640.0
-margin_top = 640.0
-margin_right = -390.0
-margin_bottom = 712.0
+margin_left = -1640.0
+margin_top = -1360.0
+margin_right = -1390.0
+margin_bottom = -1288.0
 rect_pivot_offset = Vector2( 125, 36 )
 disabled = true
 text = "Tutorial"
@@ -1100,10 +1100,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -640.0
-margin_top = 640.0
-margin_right = -390.0
-margin_bottom = 712.003
+margin_left = -1640.0
+margin_top = -1360.0
+margin_right = -1390.0
+margin_bottom = -1288.0
 rect_pivot_offset = Vector2( 125, 36 )
 text = "Settings"
 __meta__ = {
@@ -1115,10 +1115,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -640.0
-margin_top = 640.0
-margin_right = -390.0
-margin_bottom = 711.999
+margin_left = -1640.0
+margin_top = -1360.0
+margin_right = -1390.0
+margin_bottom = -1288.0
 rect_pivot_offset = Vector2( 125, 36 )
 text = "Exit"
 __meta__ = {

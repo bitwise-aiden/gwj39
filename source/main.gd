@@ -11,12 +11,15 @@ const PLAYER_POSITIONS: Array = [
 ]
 const SQUARE_REFERENCE: Resource = preload("res://source/square.tscn")
 const INVERSION_AREA_SIZE_MIN: int = 3
+const WIN_POSITION_UI: Vector2 = Vector2(1280.0/2.0 - 100.0, 720.0/2.0)
 
 
-# Export variables
+
+# Publuc variables
 
 export(int) var size: int = 9
 export(Array) var player_data: Array = []
+export(float) var winner_tween: float = 0.0 setget __set_winner_tween, __get_winner_tween
 
 
 # Private variables
@@ -28,12 +31,18 @@ onready var __players: Array = [
 	PlayerState.new($player_3, $ui/player_score_3),
 	PlayerState.new($player_4, $ui/player_score_4),
 ]
+onready var __hour_glass: HourGlass = $ui/hour_glass
+onready var __winner_text: Label = $ui/winner
 
 var __initial_position: Vector2 = Vector2.ZERO
 var __interfaces: Array = []
 var __squares: Array = []
 
 var __playing: bool = false
+
+var __winner: PlayerState = null
+var __winner_position_player: Vector2 = Vector2.ZERO
+var __winner_position_ui: Vector2 = Vector2.ZERO
 
 
 # Lifecycle methods
@@ -50,6 +59,27 @@ func _ready() -> void:
 
 	yield(Event, "wait_game_start")
 	self.__playing = true
+	self.__hour_glass.set_time_remaining(10) # #Why are you setting origin? - MartyrPher
+
+	yield(Event, "wait_times_up")
+
+	var highest_score: int = 0
+	var highest_score_time: int = 0
+	var highest_score_player: PlayerState = null
+
+	for player in self.__players:
+		if player.score > highest_score || (player.score == highest_score && player.score < highest_score_time):
+			highest_score = player.score
+			highest_score_time = player.score_time
+			highest_score_player = player
+
+	self.__winner = highest_score_player
+	self.__winner_position_ui = self.__winner.ui.rect_position
+	self.__winner_text.text = "%s wins!" % self.__winner.instance.data.name
+
+	self.__animation.play("winner")
+
+	Event.emit_signal("wait_end_game")
 
 
 # Private methods
@@ -342,3 +372,30 @@ func __index_position_to_index(incoming: Vector2) -> int:
 func __position_to_index(incoming: Vector2) -> int:
 	var index_position: Vector2 = self.__position_to_index_position(incoming)
 	return self.__index_position_to_index(index_position)
+
+
+func __set_winner_tween(incoming: float) -> void:
+	winner_tween = incoming
+
+	self.__winner.ui.rect_position = lerp(
+		self.__winner_position_ui,
+		WIN_POSITION_UI,
+		incoming
+	)
+	var scale: float = 1.0 + incoming
+	self.__winner.ui.rect_scale = Vector2(scale, scale)
+
+
+func __get_winner_tween() -> float:
+	return winner_tween
+
+
+func __return_to_main() -> void:
+	SceneManager.load_scene("menu_start")
+
+func __hide_children() -> void:
+	for child in self.get_children():
+		if child is AnimationPlayer:
+			continue
+
+		child.visible = false

@@ -58,10 +58,10 @@ Todo list:
 - [x] have countdown timer start
 - [x] allow players to move when timer finished
 - [x] increase move speed
-- [ ] Game UI
+- [x] Game UI
   - [x] Add player icons with colored controls and score
-  - [ ] Add countdown timer to end of round
-  - [ ] Add end of round stuff
+  - [x] Add countdown timer to end of round
+  - [x] Add end of round stuff
 - [x] scoring
   - [x] 1pt grey to own
   - [x] 2pt other to own
@@ -90,11 +90,6 @@ Todo list:
   - [ ] reverse controls
   - [ ] should some internal squares leave????
   - [ ] more?????
-- [ ] stun players near bomb
-- [ ] haptic feedback for controllers 
-  - [ ] countdown timer
-  - [ ] pick up 
-  - [ ] bomb going off nearby
 - [ ] options screen
   - [ ] music volume
   - [ ] sfx volume
@@ -112,6 +107,7 @@ Todo list:
 - [ ] fix touch input so it doesn't keep state going into the game scene
 - [ ] explore AI being grey??
 - [x] STRETCH: Fix gap between Blue and Red scores on game screen
+- [ ] Make tiles invert properly
 
 
 Confirmed working phones: 

@@ -28,11 +28,13 @@ var __untraversable_timer: Timer = null
 
 # Lifecycle methods
 
-func _ready() -> void:
+func _ready() -> void: # Velop is a bad influence, we are now all awake at 3AM.  - Lil'Oni
 	self.__untraversable_timer = Timer.new()
 	self.__untraversable_timer.one_shot = true
 	self.__untraversable_timer.wait_time = 1.0
 	self.call_deferred("add_child", self.__untraversable_timer)
+
+	Event.connect("wait_times_up", self, "set", ["__live", false])
 
 
 func _process(delta: float) -> void:
@@ -58,7 +60,8 @@ func can_traverse() -> bool:
 		self.__live &&
 		self.position.distance_to(self.__origin) == 0.0 &&
 		self.__target == null &&
-		self.__untraversable_timer.is_stopped()
+		self.__untraversable_timer.is_stopped() &&
+		self.position.y < 1000.0
 	)
 
 
@@ -83,6 +86,12 @@ func initialize(origin: Vector2, start_offset: Vector2, speed: float, wait_event
 	yield(Event, wait_event)
 
 	self.__live = true
+
+	yield(Event, "wait_end_game")
+
+	if self.__target == null && self.__untraversable_timer.time_left < 0.5:
+		self.__origin = self.position + self.__start_offset
+		self.__live = true
 
 
 func invert(color: Color) -> void:

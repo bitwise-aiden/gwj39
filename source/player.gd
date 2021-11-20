@@ -33,11 +33,16 @@ var __live: bool = false
 func _ready() -> void:
 	self.__direction = self.data.start_direction
 
+	yield(Event, "wait_times_up")
+
+	self.__live = false
+	self.__update_arrows(Vector2.ZERO)
+
 
 func _process(_delta: float) -> void:
 	self.__interface.process()
 
-	if self.__interface.direction() != Vector2.ZERO:
+	if self.__interface.direction() != Vector2.ZERO && self.__live:
 		self.__update_arrows(self.__interface.direction())
 
 
@@ -51,7 +56,6 @@ func initialize(interface: ControlInterface, can_move_callback: FuncRef) -> void
 	self.__can_move_callback = can_move_callback
 	self.__interface = interface
 
-#	if self.__interface.interface() != 0:
 	self.__sprite.texture = self.data.player
 
 	yield(Event, "wait_game_start")
@@ -103,5 +107,3 @@ func __set_move_delta(incoming: float) -> void:
 func __update_arrows(direction: Vector2) -> void:
 	for arrow in self.__arrows:
 		self.__arrows[arrow].visible = arrow == direction
-
-

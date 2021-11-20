@@ -1,7 +1,35 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://source/square.gd" type="Script" id=1]
 [ext_resource path="res://assets/art/tiles.png" type="Texture" id=2]
+[ext_resource path="res://assets/shaders/square.gdshader" type="Shader" id=3]
+
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2, 2 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "square_animation"
@@ -46,49 +74,9 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Shader" id=4]
-code = "shader_type canvas_item;
-//render_mode blend_mix;
-
-uniform vec4 current_color: hint_color;
-uniform vec4 previous_color: hint_color;
-
-uniform float start_time;
-uniform float duration: hint_range(0.01, 2.0) = 0.05 ;
-
-
-vec2 texture_size(sampler2D t)
-{
-	ivec2 s = textureSize(t, 0);
-	return vec2(float(s.x), float(s.y));
-}
-
-
-void fragment()
-{
-	vec2 size = texture_size(TEXTURE);
-	
-	vec2 position = UV * size;
-	position.x = floor(position.x);
-	position.y = floor(position.y);
-	
-	vec4 c = texture(TEXTURE, UV);
-	
-	if (position.x >= 4.0 && position.x <= 27.0 && position.y >= 4.0 && position.y <= 27.0)
-	{
-		vec2 dir = position - vec2(15.5, 15.5);
-		float dist = max(abs(dir.x), abs(dir.y));
-		float delta = (TIME - start_time) / duration;
-		
-		c = dist < delta * delta ? c * current_color : c * previous_color;
-	}
-	
-	COLOR = c;
-}"
-
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
-shader = SubResource( 4 )
+shader = ExtResource( 3 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
@@ -96,9 +84,11 @@ shader_param/duration = 0.2
 
 [node name="square" type="Node2D"]
 script = ExtResource( 1 )
+player_position = Vector2( 0, 4.08 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
 playback_speed = 1.5
+anims/RESET = SubResource( 7 )
 anims/square_animation = SubResource( 1 )
 
 [node name="sprite" type="Sprite" parent="."]
