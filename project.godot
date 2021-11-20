@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/helpers/ai_input.gd"
 }, {
+"base": "Resource",
+"class": "AudioPack",
+"language": "GDScript",
+"path": "res://source/audio_pack/audio_pack.gd"
+}, {
 "base": "Reference",
 "class": "CommandData",
 "language": "GDScript",
@@ -106,6 +111,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AIInput": "",
+"AudioPack": "",
 "CommandData": "",
 "CommandInfo": "",
 "ControlInterface": "",
@@ -140,7 +146,7 @@ Logger="*res://source/autoloads/logger.gd"
 FileManager="*res://source/autoloads/file_manager.gd"
 SettingsManager="*res://source/autoloads/settings_manager.gd"
 SceneManager="*res://source/autoloads/scene_manager.tscn"
-AudioManager="*res://source/autoloads/audio_manager.gd"
+AudioManager="*res://source/autoloads/audio_manager.tscn"
 InputManager="*res://source/autoloads/input_manager.gd"
 DebugManager="*res://source/autoloads/debug_manager.gd"
 GlobalState="*res://source/autoloads/global_state.gd"

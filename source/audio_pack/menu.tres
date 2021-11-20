@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=2]
+
+[ext_resource path="res://source/audio_pack/audio_pack.gd" type="Script" id=1]
+[ext_resource path="res://assets/sounds/banger_lobby.ogg" type="AudioStream" id=2]
+
+[resource]
+script = ExtResource( 1 )
+music_tracks = [ ExtResource( 2 ) ]
+sound_effects = [  ]

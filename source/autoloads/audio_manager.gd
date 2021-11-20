@@ -7,6 +7,13 @@ var __volume_max: Dictionary = {
 }
 var __volume_min: float = -40.0
 
+onready var __music: AudioStreamPlayer = $music
+onready var __sound_effect: AudioStreamPlayer = $sound_effect
+
+var __audio_pack: AudioPack = null
+
+var __music_fade_tween: Tween = null
+
 
 # Lifecylce methods
 func _ready() -> void:
@@ -16,6 +23,9 @@ func _ready() -> void:
 		self.__volume_max[key] = AudioServer.get_bus_volume_db(index)
 		var value: float = lerp(self.__volume_min, self.__volume_max[key], levels[key])
 		AudioServer.set_bus_volume_db(index, value)
+
+	self.__music_fade_tween = Tween.new()
+	self.call_deferred("add_child", self.__music_fade_tween)
 
 
 # Public methods
@@ -39,6 +49,45 @@ func set_volume(name: String, value: float) -> void:
 	SettingsManager.set_setting("volume/%s" % name, value, true)
 
 
+func set_audio_pack(pack: AudioPack) -> void:
+	self.__audio_pack = pack
+
+
+func play_music(name: String, fade: bool = true) -> void:
+	if self.__audio_pack == null:
+		return
+
+	var track: AudioStream = self.__audio_pack.get_track(name)
+	if track == null:
+		return
+
+	if fade && self.__music.stream:
+		self.__music_fade_tween.interpolate_property(
+			self.__music,
+			"volume_db",
+			0.0
+			-120.0,
+			1.0,
+			Tween.TRANS_LINEAR
+		)
+		self.__music_fade_tween.start()
+
+
+		print("before")
+		yield(self.__music_fade_tween, "tween_all_completed")
+		print("after")
+
+
+	self.__music.stream = track
+	self.__music.playing = true
+	self.__music.volume_db = 0.0
+
+
+func play_sound_effect(name: String) -> void:
+	pass
+
+
 # Private methods
+
 func __get_bus_index(name: String) -> int:
 	return AudioServer.get_bus_index(name)

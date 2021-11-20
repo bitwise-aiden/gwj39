@@ -9,7 +9,8 @@ const PLAYER_POSITIONS: Array = [
 	Vector2(4, 0),
 	Vector2(4, 8),
 ]
-const SQUARE_REFERENCE: Resource = preload("res://source/square.tscn")
+const SQUARE_REFERENCE: Resource = preload("res://source/scenes/main/square.tscn")
+const AUDIO_PACK_REFERENCE: Resource = preload("res://source/audio_pack/game.tres")
 const INVERSION_AREA_SIZE_MIN: int = 3
 const WIN_POSITION_UI: Vector2 = Vector2(1280.0/2.0 - 100.0, 720.0/2.0)
 
@@ -49,6 +50,9 @@ var __winner_position_ui: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	randomize()
+
+	AudioManager.set_audio_pack(self.AUDIO_PACK_REFERENCE)
+	AudioManager.play_music("banger", true)
 
 	self.__initialize_squares()
 	self.__initialize_players()

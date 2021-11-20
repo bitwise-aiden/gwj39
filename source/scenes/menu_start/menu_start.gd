@@ -1,7 +1,12 @@
 extends Control
 
 
-# Private methods
+# Const variables
+
+const AUDIO_PACK_REFERENCE: AudioPack = preload("res://source/audio_pack/menu.tres")
+
+
+# Private variables
 
 onready var __animation: AnimationPlayer = $animation
 onready var __button_play: Button = $play
@@ -13,6 +18,9 @@ onready var __button_exit: Button = $exit
 # Lifecylce methods
 
 func _ready() -> void:
+	AudioManager.set_audio_pack(AUDIO_PACK_REFERENCE)
+	AudioManager.play_music("banger_lobby")
+
 	var seek: float = 0.0
 
 	if !GlobalState.first_time_load:
