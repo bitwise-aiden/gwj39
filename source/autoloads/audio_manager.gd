@@ -65,21 +65,18 @@ func play_music(name: String, fade: bool = true) -> void:
 		self.__music_fade_tween.interpolate_property(
 			self.__music,
 			"volume_db",
-			0.0
-			-120.0,
+			0.0,
+			-80.0,
 			1.0,
 			Tween.TRANS_LINEAR
 		)
 		self.__music_fade_tween.start()
 
-
-		print("before")
 		yield(self.__music_fade_tween, "tween_all_completed")
-		print("after")
 
 
 	self.__music.stream = track
-	self.__music.playing = true
+	self.__music.play()
 	self.__music.volume_db = 0.0
 
 
