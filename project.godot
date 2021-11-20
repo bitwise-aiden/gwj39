@@ -15,11 +15,6 @@ _global_script_classes=[ {
 "path": "res://source/helpers/ai_input.gd"
 }, {
 "base": "Reference",
-"class": "BaseTask",
-"language": "GDScript",
-"path": "res://source/helpers/tasks/base_task.gd"
-}, {
-"base": "Reference",
 "class": "CommandData",
 "language": "GDScript",
 "path": "res://addons/gift/util/cmd_data.gd"
@@ -57,7 +52,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "HourGlass",
 "language": "GDScript",
-"path": "res://source/hour_glass.gd"
+"path": "res://source/scenes/main/hour_glass.gd"
 }, {
 "base": "Node",
 "class": "ImageCache",
@@ -67,12 +62,12 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "InversionArea",
 "language": "GDScript",
-"path": "res://source/inversion_area.gd"
+"path": "res://source/helpers/inversion_area.gd"
 }, {
 "base": "Node2D",
 "class": "Player",
 "language": "GDScript",
-"path": "res://source/player.gd"
+"path": "res://source/scenes/main/player.gd"
 }, {
 "base": "Resource",
 "class": "PlayerData",
@@ -87,12 +82,12 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "PlayerScore",
 "language": "GDScript",
-"path": "res://source/player_score.gd"
+"path": "res://source/scenes/main/player_score.gd"
 }, {
 "base": "Reference",
 "class": "PlayerState",
 "language": "GDScript",
-"path": "res://source/player_state.gd"
+"path": "res://source/scenes/main/player_state.gd"
 }, {
 "base": "Reference",
 "class": "SenderData",
@@ -102,17 +97,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Square",
 "language": "GDScript",
-"path": "res://source/square.gd"
-}, {
-"base": "Reference",
-"class": "Task",
-"language": "GDScript",
-"path": "res://source/helpers/tasks/task.gd"
-}, {
-"base": "Reference",
-"class": "TaskQueue",
-"language": "GDScript",
-"path": "res://source/helpers/tasks/task_queue.gd"
+"path": "res://source/scenes/main/square.gd"
 }, {
 "base": "Reference",
 "class": "TouchInput",
@@ -121,7 +106,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "AIInput": "",
-"BaseTask": "",
 "CommandData": "",
 "CommandInfo": "",
 "ControlInterface": "",
@@ -139,28 +123,23 @@ _global_script_class_icons={
 "PlayerState": "",
 "SenderData": "",
 "Square": "",
-"Task": "",
-"TaskQueue": "",
 "TouchInput": ""
 }
 
 [application]
 
 config/name="inversion"
-run/main_scene="res://source/menus/menu_start.tscn"
+run/main_scene="res://source/scenes/menu_start/menu_start.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 Globals="*res://source/autoloads/globals.gd"
 Event="*res://source/autoloads/event.gd"
+Logger="*res://source/autoloads/logger.gd"
 FileManager="*res://source/autoloads/file_manager.gd"
 SettingsManager="*res://source/autoloads/settings_manager.gd"
-Logger="*res://source/autoloads/logger.gd"
-Time="*res://source/autoloads/time.gd"
-PhysicsTime="*res://source/autoloads/physics_time.gd"
 SceneManager="*res://source/autoloads/scene_manager.tscn"
-TaskManager="*res://source/autoloads/task_manager.gd"
 AudioManager="*res://source/autoloads/audio_manager.gd"
 InputManager="*res://source/autoloads/input_manager.gd"
 DebugManager="*res://source/autoloads/debug_manager.gd"

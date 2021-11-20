@@ -1,13 +1,13 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://assets/art/inactive_join_pain.png" type="Texture" id=1]
-[ext_resource path="res://source/menus/player_join/player_pane.gd" type="Script" id=2]
-[ext_resource path="res://assets/art/player_inactive.png" type="Texture" id=3]
-[ext_resource path="res://assets/fonts/GravityBold8.tres" type="DynamicFont" id=4]
-[ext_resource path="res://assets/art/hand_inactive.png" type="Texture" id=5]
-[ext_resource path="res://assets/art/hand_trail.png" type="Texture" id=6]
-[ext_resource path="res://assets/art/key_inactive.png" type="Texture" id=7]
-[ext_resource path="res://assets/art/controller_player_inactive.png" type="Texture" id=8]
+[ext_resource path="res://assets/art/hand_trail.png" type="Texture" id=1]
+[ext_resource path="res://assets/fonts/GravityBold8.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/art/hand_inactive.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/controller_player_inactive.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/key_inactive.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/inactive_join_pain.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/player_inactive.png" type="Texture" id=7]
+[ext_resource path="res://source/scenes/player_join/player_pane.gd" type="Script" id=8]
 
 [sub_resource type="Animation" id=4]
 resource_name = "choose_controller"
@@ -834,15 +834,15 @@ tracks/4/keys = {
 }
 
 [sub_resource type="Theme" id=1]
-default_font = ExtResource( 4 )
+default_font = ExtResource( 2 )
 
 [node name="player_pane" type="TextureRect"]
 margin_right = 259.0
 margin_bottom = 509.0
 rect_pivot_offset = Vector2( 129, 254 )
 mouse_filter = 2
-texture = ExtResource( 1 )
-script = ExtResource( 2 )
+texture = ExtResource( 6 )
+script = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -887,7 +887,7 @@ grow_vertical = 2
 rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 16, 42 )
 mouse_filter = 2
-texture = ExtResource( 3 )
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -904,7 +904,7 @@ margin_bottom = 49.5
 rect_scale = Vector2( 0.75, 0.75 )
 rect_pivot_offset = Vector2( 32, 32 )
 mouse_filter = 2
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -921,7 +921,7 @@ margin_bottom = 69.4999
 rect_scale = Vector2( 0.75, 0.75 )
 rect_pivot_offset = Vector2( 32, 32 )
 mouse_filter = 2
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -938,7 +938,7 @@ margin_bottom = 69.4999
 rect_scale = Vector2( 0.75, 0.75 )
 rect_pivot_offset = Vector2( 32, 32 )
 mouse_filter = 2
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -955,7 +955,7 @@ margin_bottom = 69.4999
 rect_scale = Vector2( 0.75, 0.75 )
 rect_pivot_offset = Vector2( 32, 32 )
 mouse_filter = 2
-texture = ExtResource( 7 )
+texture = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -972,7 +972,7 @@ margin_bottom = 144.5
 rect_scale = Vector2( 1.5, 1.5 )
 rect_pivot_offset = Vector2( 32, 32 )
 mouse_filter = 2
-texture = ExtResource( 8 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -983,7 +983,7 @@ margin_top = 431.0
 margin_right = 92.0
 margin_bottom = 436.0
 mouse_filter = 2
-texture = ExtResource( 6 )
+texture = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -999,7 +999,7 @@ margin_right = 12.0004
 margin_bottom = 229.5
 rect_pivot_offset = Vector2( 32, 32 )
 mouse_filter = 2
-texture = ExtResource( 5 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

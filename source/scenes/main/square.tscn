@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://source/square.gd" type="Script" id=1]
-[ext_resource path="res://assets/art/tiles.png" type="Texture" id=2]
-[ext_resource path="res://assets/shaders/square.gdshader" type="Shader" id=3]
+[ext_resource path="res://assets/shaders/square.gdshader" type="Shader" id=1]
+[ext_resource path="res://source/scenes/main/square.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/tiles.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=7]
 length = 0.001
@@ -76,14 +76,14 @@ tracks/2/keys = {
 
 [sub_resource type="ShaderMaterial" id=5]
 resource_local_to_scene = true
-shader = ExtResource( 3 )
+shader = ExtResource( 1 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
 shader_param/start_time = null
 shader_param/duration = 0.2
 
 [node name="square" type="Node2D"]
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 player_position = Vector2( 0, 4.08 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
@@ -94,5 +94,5 @@ anims/square_animation = SubResource( 1 )
 [node name="sprite" type="Sprite" parent="."]
 material = SubResource( 5 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 centered = false

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/themes/theme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/art/player_inactive.png" type="Texture" id=2]
-[ext_resource path="res://source/player_score.gd" type="Script" id=3]
+[ext_resource path="res://source/scenes/main/player_score.gd" type="Script" id=3]
 
 [sub_resource type="Animation" id=2]
 length = 0.001

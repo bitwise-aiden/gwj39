@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://assets/art/hour_glass.png" type="Texture" id=1]
-[ext_resource path="res://assets/art/hour_glass_top.png" type="Texture" id=2]
-[ext_resource path="res://assets/art/hour_glass_bottom.png" type="Texture" id=3]
-[ext_resource path="res://assets/art/hour_glass_fill_bottom.png" type="Texture" id=4]
-[ext_resource path="res://assets/art/hour_glass_fill_top.png" type="Texture" id=5]
-[ext_resource path="res://source/hour_glass.gd" type="Script" id=6]
-[ext_resource path="res://assets/art/hour_glass_hide_layer.png" type="Texture" id=7]
-[ext_resource path="res://assets/art/hour_glass_hide_bottom.png" type="Texture" id=8]
-[ext_resource path="res://assets/art/dust.png" type="Texture" id=9]
-[ext_resource path="res://assets/themes/theme.tres" type="Theme" id=10]
+[ext_resource path="res://assets/themes/theme.tres" type="Theme" id=1]
+[ext_resource path="res://source/scenes/main/hour_glass.gd" type="Script" id=2]
+[ext_resource path="res://assets/art/dust.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/hour_glass_top.png" type="Texture" id=4]
+[ext_resource path="res://assets/art/hour_glass.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/hour_glass_fill_bottom.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/hour_glass_bottom.png" type="Texture" id=7]
+[ext_resource path="res://assets/art/hour_glass_fill_top.png" type="Texture" id=8]
+[ext_resource path="res://assets/art/hour_glass_hide_layer.png" type="Texture" id=9]
+[ext_resource path="res://assets/art/hour_glass_hide_bottom.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -508,8 +508,8 @@ tracks/10/keys = {
 margin_right = 221.0
 margin_bottom = 300.0
 rect_pivot_offset = Vector2( 110, 110 )
-theme = ExtResource( 10 )
-script = ExtResource( 6 )
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -523,7 +523,7 @@ anims/turn = SubResource( 2 )
 margin_right = 220.0
 margin_bottom = 300.0
 rect_pivot_offset = Vector2( 110, 150 )
-texture = ExtResource( 3 )
+texture = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -532,7 +532,7 @@ __meta__ = {
 margin_right = 220.0
 margin_bottom = 300.0
 rect_pivot_offset = Vector2( 110, 150 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -541,7 +541,7 @@ __meta__ = {
 visible = false
 margin_right = 220.0
 margin_bottom = 300.0
-texture = ExtResource( 8 )
+texture = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -551,7 +551,7 @@ visible = false
 margin_right = 220.0
 margin_bottom = 300.0
 rect_pivot_offset = Vector2( 110, 150 )
-texture = ExtResource( 5 )
+texture = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -560,7 +560,7 @@ __meta__ = {
 visible = false
 margin_right = 40.0
 margin_bottom = 40.0
-texture = ExtResource( 7 )
+texture = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -572,7 +572,7 @@ margin_top = 133.0
 margin_right = 117.0
 margin_bottom = 197.0
 rect_pivot_offset = Vector2( 8, 32 )
-texture = ExtResource( 9 )
+texture = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -581,13 +581,13 @@ __meta__ = {
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 110, 150 )
-texture = ExtResource( 1 )
+texture = ExtResource( 5 )
 
 [node name="top" type="TextureRect" parent="."]
 margin_right = 220.0
 margin_bottom = 300.0
 rect_pivot_offset = Vector2( 110, 150 )
-texture = ExtResource( 2 )
+texture = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
