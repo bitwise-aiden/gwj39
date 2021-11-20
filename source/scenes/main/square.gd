@@ -38,7 +38,7 @@ func _ready() -> void: # Velop is a bad influence, we are now all awake at 3AM. 
 
 	Event.connect("wait_times_up", self, "set", ["__live", false])
 
-	if OS.get_name() == "HTML5":
+	if OS.has_feature('JavaScript'):
 		self.__shader_offset = 2.0
 
 func _process(delta: float) -> void:

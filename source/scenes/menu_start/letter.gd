@@ -15,7 +15,7 @@ func _ready() -> void:
 	self.__color_current = Color.white
 	self.__color_previous = Color.white
 
-	if OS.get_name() == "HTML5":
+	if OS.has_feature('JavaScript'):
 		self.__shader_offset = 1.0
 
 	self.start_change()

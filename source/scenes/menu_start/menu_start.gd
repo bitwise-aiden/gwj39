@@ -27,9 +27,8 @@ func _ready() -> void:
 		seek = 1.0
 	GlobalState.first_time_load = false
 
-	if OS.get_name() == "HTML5":
+	if OS.has_feature('JavaScript'):
 		self.__button_exit.disabled = true
-
 
 	self.__animation.play("load")
 	self.__animation.seek(seek)
