@@ -298,6 +298,7 @@ func __initialize_players() -> void:
 			ControlInterface.NONE,
 			AIInput.new(
 				funcref(self, "__board_state_getter"),
+				funcref(self, "__player_state_getter"),
 				self.__players[i].instance.color()
 			)
 		)
@@ -349,6 +350,7 @@ func __player_landed(player: Player) -> void:
 
 	var square = self.__squares[index]
 	square.land(player)
+	player.set_coord(self.__position_to_index_position(player.position))
 
 	if !self.__playing:
 		return
@@ -412,3 +414,11 @@ func __hide_children() -> void:
 
 func __board_state_getter() -> Array:
 	return self.__squares
+
+func __player_state_getter() -> Array:
+	var players: Array = []
+
+	for player in self.__players:
+		players.append(player.instance)
+
+	return players

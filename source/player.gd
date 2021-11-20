@@ -5,7 +5,7 @@ class_name Player extends Node2D
 
 export(float) var move_delta: float = 0.0 setget __set_move_delta, __get_move_delta
 export(Resource) var data: Resource
-
+var coord: Vector2 = Vector2.ZERO
 
 # Private variables
 
@@ -42,8 +42,9 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	self.__interface.process()
 
-	if self.__interface.direction() != Vector2.ZERO && self.__live:
-		self.__update_arrows(self.__interface.direction())
+	var direction: Vector2 = self.__interface.direction(true)
+	if direction != Vector2.ZERO && self.__live:
+		self.__update_arrows(direction)
 
 
 # Public methods
@@ -77,8 +78,9 @@ func land() -> void:
 
 
 func move() -> void:
-	if self.__interface.direction() != Vector2.ZERO:
-		self.__direction =  self.__interface.direction()
+	var direciton: Vector2 = __interface.direction(false)
+	if direciton!= Vector2.ZERO:
+		self.__direction =  direciton
 
 	self.__origin = self.position
 
@@ -91,6 +93,10 @@ func move() -> void:
 	if !self.__can_move_callback.call_func(self, self.__origin, self.__destination):
 		self.__destination = self.__origin
 		return
+
+
+func set_coord(incoming: Vector2) -> void:
+	self.coord = incoming
 
 
 # Private methods

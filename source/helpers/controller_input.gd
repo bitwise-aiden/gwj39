@@ -30,7 +30,7 @@ func _init(device: int) -> void:
 
 # Public methods
 
-func direction() -> Vector2:
+func direction(asethetic: bool = true) -> Vector2:
 	return self.__input_queue.current()
 
 
