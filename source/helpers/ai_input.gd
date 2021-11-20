@@ -56,8 +56,6 @@ func process() -> void:
 	self.__calculate_direction()
 
 
-
-
 func __calculate_direction() -> void:
 	var position_own: Vector2 = Vector2.ZERO
 	var position_own_color: Array = []

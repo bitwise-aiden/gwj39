@@ -38,6 +38,9 @@ func _init(interface: int, ai: AIInput = null) -> void:
 	if self.__interface & KEYBOARD_2:
 		self.__interfaces.append(PlayerInput.new("keyboard_2"))
 
+	if self.__interface & TOUCH:
+		self.__interfaces.append(TouchInput.new())
+
 	if self.__interface & CONTROLLER_1:
 		self.__interfaces.append(ControllerInput.new(0))
 
@@ -77,10 +80,6 @@ func direction(asethetic: bool = true) -> Vector2:
 		if direction_new != Vector2.ZERO:
 			direction = direction_new
 			break
-
-	if self.__interface & TOUCH != 0:
-		if TouchInput.direction != Vector2.ZERO:
-			direction = TouchInput.direction
 
 	if direction != Vector2.ZERO:
 		self.__direction = direction

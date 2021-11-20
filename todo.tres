@@ -73,8 +73,6 @@ Todo list:
   - [x] tutorial 
   - [x] options 
 - [ ] Add the awesome bangers to the game
-- [ ] AI 
-  - [ ] Make AI that checks the density of colors that aren't their own and heads in that direction
 - [ ] fix touch input so it doesn't keep state going into the game scene
 - [ ] Fix touch
 - [ ] Fix UI being unresponsive after animations 
@@ -102,6 +100,9 @@ Todo list:
   - [ ] 5x5 with other player, you earn more points when you invert the colour of a square when it belonged to your opponent 
   - [ ] 5x5 to maximize your points, form a box to surround the squares you want to invert
   - [ ] 7x7 with power ups, pick up power ups to increase your speed, clear the board, confuse your enemies
+- [ ] AI 
+  - [x] Make AI that checks the density of colors that aren't their own and heads in that direction
+  - [ ] Make AI even better!
 - [ ] esc brings up menu controlled by the player who initiated
   - [ ] unpause
   - [ ] options (brings up options window)

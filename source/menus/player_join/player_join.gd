@@ -16,9 +16,9 @@ onready var __button_start: Button = $start
 
 
 var __control_interfaces: Array = [
-	ControlInterface.new(ControlInterface.TOUCH),
 	ControlInterface.new(ControlInterface.KEYBOARD_1),
 	ControlInterface.new(ControlInterface.KEYBOARD_2),
+	ControlInterface.new(ControlInterface.TOUCH),
 	ControlInterface.new(ControlInterface.CONTROLLER_1),
 	ControlInterface.new(ControlInterface.CONTROLLER_2),
 	ControlInterface.new(ControlInterface.CONTROLLER_3),

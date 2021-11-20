@@ -887,6 +887,7 @@ shader_param/mask = ExtResource( 15 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 640, 360 )
+mouse_filter = 1
 theme = ExtResource( 2 )
 script = ExtResource( 24 )
 __meta__ = {
@@ -903,6 +904,7 @@ anims/load = SubResource( 15 )
 margin_right = 40.0
 margin_bottom = 40.0
 rect_scale = Vector2( 4, 4 )
+mouse_filter = 2
 script = ExtResource( 18 )
 __meta__ = {
 "_edit_use_anchors_": false

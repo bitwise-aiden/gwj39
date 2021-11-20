@@ -1,35 +1,23 @@
-extends Node
-
-
-# Public variables
-
-var direction: Vector2 = Vector2.ZERO setget , __get_direction
+class_name TouchInput
 
 
 # Private variables
 
-var __swipe_start: Vector2 = Vector2.INF
+var __direction: Vector2 = Vector2.ZERO
+
+# Public methods
+
+func direction(asethetic: bool = true) -> Vector2:
+	return self.__direction
 
 
-# Lifecycle methods
+func process() -> void:
+#	self.__direction = Vector2.ZERO
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventScreenTouch:
-		if event.pressed:
-			if self.__swipe_start == Vector2.INF:
-				self.__swipe_start = event.get_position()
+	if TouchManager.event:
+		var relative: Vector2 = TouchManager.event.relative
+		if abs(relative.x) > abs(relative.y):
+			self.__direction = Vector2(sign(relative.x), 0.0)
 		else:
-			var delta = event.get_position() - self.__swipe_start
+			self.__direction = Vector2(0.0, sign(relative.y))
 
-			if abs(delta.x) > abs(delta.y):
-				direction = Vector2(sign(delta.x), 0.0)
-			else:
-				direction = Vector2(0.0, sign(delta.y))
-
-			self.__swipe_start = Vector2.INF
-
-
-# Private methods
-
-func __get_direction() -> Vector2:
-	return direction

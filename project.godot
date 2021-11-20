@@ -113,6 +113,11 @@ _global_script_classes=[ {
 "class": "TaskQueue",
 "language": "GDScript",
 "path": "res://source/helpers/tasks/task_queue.gd"
+}, {
+"base": "Reference",
+"class": "TouchInput",
+"language": "GDScript",
+"path": "res://source/autoloads/touch_input.gd"
 } ]
 _global_script_class_icons={
 "AIInput": "",
@@ -135,7 +140,8 @@ _global_script_class_icons={
 "SenderData": "",
 "Square": "",
 "Task": "",
-"TaskQueue": ""
+"TaskQueue": "",
+"TouchInput": ""
 }
 
 [application]
@@ -158,8 +164,8 @@ TaskManager="*res://source/autoloads/task_manager.gd"
 AudioManager="*res://source/autoloads/audio_manager.gd"
 InputManager="*res://source/autoloads/input_manager.gd"
 DebugManager="*res://source/autoloads/debug_manager.gd"
-TouchInput="*res://source/autoloads/touch_input.gd"
 GlobalState="*res://source/autoloads/global_state.gd"
+TouchManager="*res://source/autoloads/touch_manager.gd"
 
 [display]
 
