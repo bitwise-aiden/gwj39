@@ -107,7 +107,7 @@ func _process(delta: float) -> void:
 	if self.__wing_spawn_countdown > 0.0:
 		self.__wing_spawn_countdown = max(0.0, self.__wing_spawn_countdown - delta)
 
-		if self.__wing_spawn_countdown == 0.0:
+		if self.live && self.__wing_spawn_countdown == 0.0:
 			while true:
 				var area_position: Vector2 = Vector2(randi() % 4 + 2, randi() % 4 + 2)
 				var square: Square = self.__play_area.square_at_area_position(area_position)

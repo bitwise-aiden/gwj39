@@ -39,7 +39,7 @@ func collect(player: Player) -> void:
 
 
 func fly() -> void:
-	if self.__sprite.y < -1000.0:
+	if self.__sprite.position.y < -1000.0:
 		return
 
 	self.__animation.play("fly")

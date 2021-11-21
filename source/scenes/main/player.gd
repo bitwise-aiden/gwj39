@@ -28,6 +28,8 @@ var __interface: ControlInterface = null
 var __direction: Vector2 = Vector2.ZERO
 var __can_move_callback: FuncRef = null
 
+var __time_since_last_moved: float = 0.0
+
 var __live: bool = false
 
 
@@ -42,12 +44,20 @@ func _ready() -> void:
 	self.__update_arrows(Vector2.ZERO)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	self.__interface.process()
 
 	var direction: Vector2 = self.__interface.direction(true)
 	if direction != Vector2.ZERO && self.__live:
 		self.__update_arrows(direction)
+
+	if !self.__live:
+		return
+
+	self.__time_since_last_moved += delta
+	if self.__time_since_last_moved > 2.0:
+		self.initiate_move()
+		self.__time_since_last_moved == 0.0
 
 
 # Public methods
@@ -70,6 +80,7 @@ func initialize(interface: ControlInterface, can_move_callback: FuncRef) -> void
 
 func initiate_move() -> void:
 	self.__animation.play("jump")
+	self.__time_since_last_moved = 0.0
 
 
 func interface() -> int:
