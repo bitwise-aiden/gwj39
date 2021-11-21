@@ -54,6 +54,7 @@ func _input(event: InputEvent) -> void:
 func __focus_exited() -> void:
 	self.__listening = false
 	self.__update_text()
+	self.__update_text_color(Color.white)
 
 
 func __pressed() -> void:

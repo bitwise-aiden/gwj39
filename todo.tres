@@ -90,7 +90,6 @@ Todo list:
 - [x] fix wings flicker appearing first time
 - [x] fix players stopping randomly 
 - [x] fix wing not leaving at end of game
-- [ ] increase spawn square enter speed
 - [ ] tutorial screen
   - [ ] tile changes fly in making it look dynamic
   - [ ] have fade to show players
