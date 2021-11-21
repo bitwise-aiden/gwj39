@@ -47,6 +47,10 @@ func direction(asethetic: bool = true) -> Vector2:
 	return self.__direction
 
 
+func is_active() -> bool:
+	return true
+
+
 func process() -> void:
 	if self.__cooldown > 0:
 		return # Okay, but this is a test - velopman

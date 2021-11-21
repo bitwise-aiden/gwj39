@@ -85,7 +85,7 @@ Todo list:
   - [x] back to main
 - [x] Update square to pass delta into shader
 - [x] Fix clock disappearing at win screen
-- [ ] Add all controller buttons to controller detection
+- [x] Add all controller buttons to controller detection
 - [ ] Update player join to say press input key
 - [ ] fix wings flicker appearing first time 
 - [ ] tutorial screen

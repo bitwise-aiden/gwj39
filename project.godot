@@ -112,7 +112,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "TouchInput",
 "language": "GDScript",
-"path": "res://source/autoloads/touch_input.gd"
+"path": "res://source/helpers/touch_input.gd"
 }, {
 "base": "PickUp",
 "class": "Wings",

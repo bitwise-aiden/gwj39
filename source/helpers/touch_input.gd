@@ -11,6 +11,10 @@ func direction(asethetic: bool = true) -> Vector2:
 	return self.__direction
 
 
+func is_active() -> bool:
+	return self.__direction != Vector2.ZERO
+
+
 func process() -> void:
 #	self.__direction = Vector2.ZERO
 

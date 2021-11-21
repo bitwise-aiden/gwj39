@@ -34,6 +34,13 @@ func direction(asethetic: bool = true) -> Vector2:
 	return self.__input_queue.current()
 
 
+func is_active() -> bool:
+	if self.__input_queue.current() != Vector2.ZERO:
+		return true
+
+	return false
+
+
 func process() -> void:
 	for input in self.__inputs:
 		if Input.is_action_just_pressed(input):

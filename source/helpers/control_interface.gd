@@ -91,4 +91,4 @@ func process() -> void:
 	for interface in self.__interfaces:
 		interface.process()
 
-		self.__active = self.__active || interface.direction(true) != Vector2.ZERO
+		self.__active = self.__active || interface.is_active()

@@ -34,6 +34,17 @@ func direction(asethetic: bool = true) -> Vector2:
 	return self.__input_queue.current()
 
 
+func is_active() -> bool:
+	if self.__input_queue.current() != Vector2.ZERO:
+		return true
+
+	for button in JOY_BUTTON_MAX:
+		if Input.is_joy_button_pressed(self.__device, button):
+			return true
+
+	return false
+
+
 func process() -> void:
 	if !Input.is_joy_known(self.__device):
 		return
