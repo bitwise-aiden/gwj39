@@ -25,7 +25,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if self.__listening && event is InputEventKey && event.pressed:
-		self.add_color_override("font_color_focus", Color.white)
+		self.__update_text_color(Color.white)
 
 		var incoming: int = event.scancode
 
@@ -37,10 +37,9 @@ func _input(event: InputEvent) -> void:
 
 		if InputManager.is_used(incoming):
 			self.get_tree().set_input_as_handled()
-			self.add_color_override("font_color_focus", Color("#b1385c"))
+			self.__update_text_color(Color("#b1385c"))
 			self.__update_text(incoming)
 			return
-
 
 		InputManager.set_key(self.binding, incoming)
 
@@ -69,3 +68,8 @@ func __update_text(override: int = -1) -> void:
 		value = override
 
 	self.text = OS.get_scancode_string(value)
+
+func __update_text_color(color: Color) -> void:
+	self.add_color_override("font_color", color)
+	self.add_color_override("font_color_focus", color)
+	self.add_color_override("font_color_hover", color)

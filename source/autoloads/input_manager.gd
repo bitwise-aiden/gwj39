@@ -73,8 +73,6 @@ func get_key(action_name: String) -> int:
 
 
 func is_used(key: int) -> bool:
-	print(key)
-	print(self.__used_keys)
 	return self.__used_keys.has(key)
 
 
