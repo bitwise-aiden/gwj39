@@ -23,34 +23,30 @@ Goals for this jam!
 
 Todo: 
 - [x] Separate player controls
-- [ ] Some form of AI
-- [ ] Scoring done based on squares formed
-- [ ] A lovely background
-- [ ] Make the game look nice on mobile (Currently it's sampling at a weird rate)
-- [ ] Nico suggestion!! Flip the center of the tile to better represent inversion
-- [ ] Menus
-	- [ ] Start screen
-	- [ ] Controls screen
-	- [ ] Player join screen
-	- [ ] Pause screen
-- [ ] UI
-	- [ ] Current player scores
-	- [ ] Time remaining
-- [ ] Game loop
-	- [ ] Start game
-		- [ ] Minimum 2 players joined (determine what happens if there are more)
-		- [ ] Start timer 3, 2, 1... Go! 
-		- [ ] When player joined, will jump once and stay stationary? 
-		- [ ] OR we have a timer to ensure that players are jumping at the same time at the start of the game.
-	- [ ] Countdown timer
-		- [ ] Scale back at the last 5 seconds for effect
-		- [ ] Scale player movement at the last 5 seconds for effect
-	- [ ] When players form squares, give score based on size
+- [x] Some form of AI
+- [x] Scoring done based on squares formed
+- [x] A lovely background
+- [x] Make the game look nice on mobile (Currently it's sampling at a weird rate)\
+- [x] Menus
+	- [x] Start screen
+	- [x] Controls screen
+	- [x] Player join screen
+- [x] UI
+	- [x] Current player scores
+	- [x] Time remaining
+- [x] Game loop
+	- [x] Start game
+		- [x] Minimum 2 players joined (determine what happens if there are more)
+		- [x] Start timer 3, 2, 1... Go! 
+		- [x] When player joined, will jump once and stay stationary? 
+		- [x] OR we have a timer to ensure that players are jumping at the same time at the start of the game.
+	- [x] Countdown timer
+		- [x] Scale back at the last 5 seconds for effect
+		- [] Scale player movement at the last 5 seconds for effect
+	- [x] When players form squares, give score based on size
 	- [x] Tile keeps track of previous player for x seconds to prevent new player from entering the same square
 - [ ] Polish
-	- [ ] Particles when player lands
 	- [ ] Remove unavailable input options as they are taken
-- [ ] Detect when on mobile? Is this even possible? Do we need to allow for touch regardless?
 - [x] Have direction indicators to show current movement
 
 Todo list:
@@ -88,11 +84,10 @@ Todo list:
   - [x] map keyboard inputs to different keys
   - [x] back to main
 - [ ] add power ups
-  - [ ] speed 
+  - [x] speed 
+    - [ ] Possibly increase duration
+    - [ ] Create new sound
   - [ ] bomb (clear board, stun players)
-  - [ ] reverse controls
-  - [ ] should some internal squares leave????
-  - [ ] more?????
 - [ ] tutorial screen
   - [ ] tile changes fly in making it look dynamic
   - [ ] have fade to show players
@@ -108,13 +103,16 @@ Todo list:
 - [ ] AI 
   - [x] Make AI that checks the density of colors that aren't their own and heads in that direction
   - [ ] Make AI even better!
-- [ ] esc brings up menu controlled by the player who initiated
+  - [ ] Make AI target power ups
+    - [ ] Make AI run away from bomb if they picked it up
+- [ ] STRETC esc brings up menu controlled by the player who initiated
   - [ ] unpause
   - [ ] options (brings up options window)
   - [ ] main menu to are you sure
   - [ ] are you sure to main menu
-- [ ] background??????
-- [ ] explore AI being grey??
 - [x] STRETCH: Fix gap between Blue and Red scores on game screen
-- [ ] Make tiles invert properly
+- [ ] STRETCH Make tiles invert properly
+- [ ] There was a thing that was meant to go here that I thought I should do... 
+- [ ] Update square to pass delta into shader
+- [ ] Fix clock disappearing at win screen
 

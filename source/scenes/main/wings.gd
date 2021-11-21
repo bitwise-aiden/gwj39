@@ -15,6 +15,8 @@ func _ready() -> void:
 	self.__timer.one_shot = true
 	self.__timer.wait_time = 5.0
 
+	$sprite.position.y = 1038
+
 	self.call_deferred("add_child", self.__timer)
 
 

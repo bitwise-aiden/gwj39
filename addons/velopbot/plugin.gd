@@ -12,7 +12,7 @@ var moderators: Array = [
 ]
 
 var command_responses: Dictionary = {
-	'!current': 'https://velopman.itch.io/inversion password: chickenrun',
+	'!current': 'https://velopman.itch.io/invertrovert password: chickenrun',
 	'!discord': 'https://discord.gg/snQ4FMAkBp',
 	'!github': 'https://github.com/velopman',
 	'!itch': 'https://velopman.itch.io',
