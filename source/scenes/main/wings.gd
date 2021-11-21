@@ -4,6 +4,7 @@ class_name Wings extends PickUp
 # Private variables
 
 onready var __animation: AnimationPlayer = $animation
+onready var __sprite: Sprite = $sprite
 
 var __timer: Timer = null
 
@@ -13,9 +14,9 @@ var __timer: Timer = null
 func _ready() -> void:
 	self.__timer = Timer.new()
 	self.__timer.one_shot = true
-	self.__timer.wait_time = 5.0
+	self.__timer.wait_time = 10.0
 
-	$sprite.position.y = 1038
+	self.__sprite.position.y = 1038
 
 	self.call_deferred("add_child", self.__timer)
 
@@ -38,10 +39,14 @@ func collect(player: Player) -> void:
 
 
 func fly() -> void:
+	if self.__sprite.y < -1000.0:
+		return
+
 	self.__animation.play("fly")
 
 
-func land(position: Vector2) -> void:
+func land(coord: Vector2, position: Vector2) -> void:
+	self.coord = coord
 	self._active = true
 
 	self.position = position

@@ -23,6 +23,7 @@ class AveragePosition:
 
 var __board_state_getter: FuncRef = null
 var __player_state_getter: FuncRef = null
+var __pick_up_state_getter: FuncRef = null
 
 var __color: Color = Color.transparent
 var __direction: Vector2 = Vector2.ZERO
@@ -32,9 +33,15 @@ var __cooldown: int = 0
 
 # Lifecycle methods
 
-func _init(board_state_getter: FuncRef, player_state_getter: FuncRef, color: Color) -> void:
+func _init(
+	board_state_getter: FuncRef,
+	player_state_getter: FuncRef,
+	pick_up_state_getter: FuncRef,
+	color: Color
+) -> void:
 	self.__board_state_getter = board_state_getter
 	self.__player_state_getter = player_state_getter
+	self.__pick_up_state_getter = pick_up_state_getter
 	self.__color = color
 
 
@@ -110,7 +117,7 @@ func __calculate_direction() -> void:
 
 		var delta: Vector2 = average_position_color - position_own
 		if delta.length() > 5.0:
-			direction = delta * 2.0
+			direction += delta * 2.0
 
 	if !position_own_color.empty():
 		var sum_position_color: Vector2 = Vector2.ZERO
@@ -121,8 +128,15 @@ func __calculate_direction() -> void:
 
 		var delta: Vector2 = average_position_color - position_own
 		if delta.length() < 3.0:
-			direction = -delta * 2.0
+			direction += -delta * 2.0
 
+	var pick_ups: Array = self.__pick_up_state_getter.call_func()
+	for pick_up in pick_ups:
+		if !pick_up.is_active():
+			continue
+
+		var delta: Vector2 = pick_up.coord - position_own
+		direction += delta * 5.0
 
 	direction = direction.normalized()
 

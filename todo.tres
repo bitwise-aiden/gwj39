@@ -90,6 +90,7 @@ Todo list:
 - [ ] fix wings flicker appearing first time 
 - [ ] fix title change area around tween
 - [ ] fix wing z index
+- [ ] fix wing not leaving at end of game
 - [ ] tutorial screen
   - [ ] tile changes fly in making it look dynamic
   - [ ] have fade to show players
@@ -105,13 +106,13 @@ Todo list:
 - [ ] AI 
   - [x] Make AI that checks the density of colors that aren't their own and heads in that direction
   - [ ] Make AI even better!
-  - [ ] Make AI target power ups
-    - [ ] Make AI run away from bomb if they picked it up
+  - [x] Make AI target power ups
 - [ ] add power ups
   - [x] speed 
-    - [ ] Possibly increase duration
+    - [x] Possibly increase duration
     - [ ] Create new sound
   - [ ] bomb (clear board, stun players)
+    - [ ] Make AI run away from bomb if they picked it up
 - [ ] STRETCH esc brings up menu controlled by the player who initiated
   - [ ] unpause
   - [ ] options (brings up options window)

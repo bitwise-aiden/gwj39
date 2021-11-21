@@ -80,6 +80,8 @@ func _ready() -> void:
 
 	yield(Event, "wait_times_up")
 
+	self.__wing_instance.fly()
+
 	AudioManager.play_sound_effect("finish")
 
 	var highest_score: int = 0
@@ -115,13 +117,14 @@ func _process(delta: float) -> void:
 						area_position
 					)
 
-					self.__wing_instance.land(world_position)
+					self.__wing_instance.land(area_position, world_position)
 					square.set_pick_up(self.__wing_instance)
 
 					break
 
 	elif !self.__wing_instance.is_active():
 		self.__wing_spawn_countdown = randf() * 10.0 + 10.0
+
 
 # Private methods
 
@@ -185,6 +188,7 @@ func __initialize_players() -> void:
 			AIInput.new(
 				funcref(self.__play_area, "state"),
 				funcref(self, "__player_state_getter"),
+				funcref(self, "__pick_up_state_getter"),
 				self.__players[i].instance.color()
 			)
 		)
@@ -273,6 +277,7 @@ func __hide_children() -> void:
 
 		child.visible = false
 
+
 func __player_state_getter() -> Array:
 	var players: Array = []
 
@@ -280,6 +285,10 @@ func __player_state_getter() -> Array:
 		players.append(player.instance)
 
 	return players
+
+
+func __pick_up_state_getter() -> Array:
+	return [self.__wing_instance]
 
 
 func __play_sound_effect(name: String) -> void:
