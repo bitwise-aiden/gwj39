@@ -63,7 +63,7 @@ func _ready() -> void:
 
 	yield(Event, "wait_game_start")
 	self.__playing = true
-	self.__hour_glass.set_time_remaining(10) # #Why are you setting origin? - MartyrPher
+	self.__hour_glass.set_time_remaining(120) # #Why are you setting origin? - MartyrPher
 
 	yield(Event, "wait_times_up")
 
