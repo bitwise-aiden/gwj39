@@ -5,10 +5,14 @@ class_name PlayArea
 
 var SQUARE_REFERENCE: Resource = preload("res://source/scenes/main/square.tscn")
 
+# Public variables
+
+var size: int = 0
+
+
 # Private variables
 
 var __owner: Node = null
-var __size: int = 0
 
 var __initial_position: Vector2 = Vector2.ZERO
 var __squares: Array = []
@@ -18,7 +22,7 @@ var __squares: Array = []
 
 func _init(owner: Node, size: int) -> void:
 	self.__owner = owner
-	self.__size = size
+	self.size = size
 
 
 # Public methods
@@ -29,11 +33,11 @@ func area_position_to_world_position(position: Vector2) -> Vector2:
 
 
 func initialize(wait_event_callback: FuncRef) -> void:
-	var total_size: Vector2 = Globals.SQUARE_SIZE * self.__size
+	var total_size: Vector2 = Globals.SQUARE_SIZE * self.size
 	self.__initial_position = Globals.SCREEN_SIZE / 2.0 - total_size / 2.0
 
-	for y in self.__size:
-		for x in self.__size:
+	for y in self.size:
+		for x in self.size:
 			var instance: Square = SQUARE_REFERENCE.instance()
 			var position = Vector2(x, y)
 
@@ -76,10 +80,10 @@ func world_postition_to_area_position(position: Vector2) -> Vector2:
 
 
 func __area_position_to_index(position: Vector2) -> int:
-	if position.x < 0.0 || position.x >= self.__size || position.y < 0.0 || position.y >= self.__size:
+	if position.x < 0.0 || position.x >= self.size || position.y < 0.0 || position.y >= self.size:
 		return -1
 
-	return int(position.y * self.__size + position.x)
+	return int(position.y * self.size + position.x)
 
 
 func __world_position_to_index(position: Vector2) -> int:

@@ -69,6 +69,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/helpers/inversion_area.gd"
 }, {
+"base": "Reference",
+"class": "InversionAreaFinder",
+"language": "GDScript",
+"path": "res://source/helpers/inversion_area_finder.gd"
+}, {
 "base": "Node2D",
 "class": "PickUp",
 "language": "GDScript",
@@ -137,6 +142,7 @@ _global_script_class_icons={
 "HourGlass": "",
 "ImageCache": "",
 "InversionArea": "",
+"InversionAreaFinder": "",
 "PickUp": "",
 "PlayArea": "",
 "Player": "",
