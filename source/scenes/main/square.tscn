@@ -79,8 +79,7 @@ resource_local_to_scene = true
 shader = ExtResource( 1 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
-shader_param/start_time = null
-shader_param/duration = 0.2
+shader_param/delta = 1.0
 
 [node name="square" type="Node2D"]
 script = ExtResource( 2 )

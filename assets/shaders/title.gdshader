@@ -5,8 +5,7 @@ uniform sampler2D mask;
 uniform vec4 current_color: hint_color;
 uniform vec4 previous_color: hint_color;
 
-uniform float start_time;
-uniform float duration: hint_range(0.01, 2.0) = 0.05 ;
+uniform float delta: hint_range(0.0, 1.0) = 1.0;
 
 uniform vec2 origin;
 
@@ -32,7 +31,6 @@ void fragment()
 	{
 		vec2 dir = position - origin;
 		float dist = max(abs(dir.x), abs(dir.y));
-		float delta = (TIME - start_time) / duration;
 		
 		c = dist < delta * delta ? m * current_color : m*previous_color;
 	}

@@ -778,8 +778,7 @@ tracks/15/keys = {
 shader = ExtResource( 16 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
-shader_param/start_time = null
-shader_param/duration = 0.05
+shader_param/delta = 1.0
 shader_param/origin = Vector2( 23.5, 48 )
 shader_param/mask = ExtResource( 2 )
 
@@ -787,8 +786,7 @@ shader_param/mask = ExtResource( 2 )
 shader = ExtResource( 16 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
-shader_param/start_time = null
-shader_param/duration = 0.05
+shader_param/delta = 1.0
 shader_param/origin = Vector2( 36.5, 48 )
 shader_param/mask = ExtResource( 13 )
 
@@ -796,8 +794,7 @@ shader_param/mask = ExtResource( 13 )
 shader = ExtResource( 16 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
-shader_param/start_time = null
-shader_param/duration = 0.05
+shader_param/delta = 1.0
 shader_param/origin = Vector2( 35.5, 48 )
 shader_param/mask = ExtResource( 12 )
 
@@ -805,8 +802,7 @@ shader_param/mask = ExtResource( 12 )
 shader = ExtResource( 16 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
-shader_param/start_time = null
-shader_param/duration = 0.05
+shader_param/delta = 1.0
 shader_param/origin = Vector2( 36, 48 )
 shader_param/mask = ExtResource( 1 )
 
@@ -814,8 +810,7 @@ shader_param/mask = ExtResource( 1 )
 shader = ExtResource( 16 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
-shader_param/start_time = null
-shader_param/duration = 0.05
+shader_param/delta = 1.0
 shader_param/origin = Vector2( 36.5, 48 )
 shader_param/mask = ExtResource( 11 )
 
@@ -823,8 +818,7 @@ shader_param/mask = ExtResource( 11 )
 shader = ExtResource( 16 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
-shader_param/start_time = null
-shader_param/duration = 0.05
+shader_param/delta = 1.0
 shader_param/origin = Vector2( 36.5, 48 )
 shader_param/mask = ExtResource( 8 )
 
@@ -832,8 +826,7 @@ shader_param/mask = ExtResource( 8 )
 shader = ExtResource( 16 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
-shader_param/start_time = null
-shader_param/duration = 0.05
+shader_param/delta = 1.0
 shader_param/origin = Vector2( 36.5, 48 )
 shader_param/mask = ExtResource( 11 )
 
@@ -841,8 +834,7 @@ shader_param/mask = ExtResource( 11 )
 shader = ExtResource( 16 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
-shader_param/start_time = null
-shader_param/duration = 0.05
+shader_param/delta = 1.0
 shader_param/origin = Vector2( 48, 48 )
 shader_param/mask = ExtResource( 5 )
 
@@ -850,8 +842,7 @@ shader_param/mask = ExtResource( 5 )
 shader = ExtResource( 16 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
-shader_param/start_time = null
-shader_param/duration = 0.05
+shader_param/delta = 1.0
 shader_param/origin = Vector2( 35.5, 48 )
 shader_param/mask = ExtResource( 12 )
 
@@ -859,8 +850,7 @@ shader_param/mask = ExtResource( 12 )
 shader = ExtResource( 16 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
-shader_param/start_time = null
-shader_param/duration = 0.05
+shader_param/delta = 1.0
 shader_param/origin = Vector2( 36, 48 )
 shader_param/mask = ExtResource( 1 )
 
@@ -868,8 +858,7 @@ shader_param/mask = ExtResource( 1 )
 shader = ExtResource( 16 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
-shader_param/start_time = null
-shader_param/duration = 0.05
+shader_param/delta = 1.0
 shader_param/origin = Vector2( 0, 36.5 )
 shader_param/mask = ExtResource( 11 )
 
@@ -877,8 +866,7 @@ shader_param/mask = ExtResource( 11 )
 shader = ExtResource( 16 )
 shader_param/current_color = Color( 1, 1, 1, 1 )
 shader_param/previous_color = Color( 1, 1, 1, 1 )
-shader_param/start_time = null
-shader_param/duration = 0.05
+shader_param/delta = 1.0
 shader_param/origin = Vector2( 36.5, 48 )
 shader_param/mask = ExtResource( 8 )
 

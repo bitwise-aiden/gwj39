@@ -4,9 +4,7 @@ shader_type canvas_item;
 uniform vec4 current_color: hint_color;
 uniform vec4 previous_color: hint_color;
 
-uniform float start_time;
-uniform float duration: hint_range(0.01, 2.0) = 0.05 ;
-
+uniform float delta: hint_range(0.0, 1.0) = 1.0;
 
 vec2 texture_size(sampler2D t)
 {
@@ -29,7 +27,7 @@ void fragment()
 	{
 		vec2 dir = position - vec2(15.5, 15.5);
 		float dist = max(abs(dir.x), abs(dir.y));
-		float delta = (TIME - start_time) / duration;
+//		float delta = (TIME - start_time) / duration;
 		
 		c = dist < delta * delta ? c * current_color : c * previous_color;
 	}

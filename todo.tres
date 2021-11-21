@@ -83,11 +83,11 @@ Todo list:
   - [x] sfx volume
   - [x] map keyboard inputs to different keys
   - [x] back to main
+- [ ] Update square to pass delta into shader
+- [ ] Fix clock disappearing at win screen
+- [ ] Add all controller buttons to controller detection
+- [ ] Update player join to say press input key
 - [ ] add power ups
-  - [x] speed 
-    - [ ] Possibly increase duration
-    - [ ] Create new sound
-  - [ ] bomb (clear board, stun players)
 - [ ] tutorial screen
   - [ ] tile changes fly in making it look dynamic
   - [ ] have fade to show players
@@ -105,6 +105,10 @@ Todo list:
   - [ ] Make AI even better!
   - [ ] Make AI target power ups
     - [ ] Make AI run away from bomb if they picked it up
+  - [x] speed 
+    - [ ] Possibly increase duration
+    - [ ] Create new sound
+  - [ ] bomb (clear board, stun players)
 - [ ] STRETCH esc brings up menu controlled by the player who initiated
   - [ ] unpause
   - [ ] options (brings up options window)
@@ -112,7 +116,4 @@ Todo list:
   - [ ] are you sure to main menu
 - [x] STRETCH: Fix gap between Blue and Red scores on game screen
 - [ ] STRETCH Make tiles invert properly
-- [ ] There was a thing that was meant to go here that I thought I should do... 
-- [ ] Update square to pass delta into shader
-- [ ] Fix clock disappearing at win screen
 

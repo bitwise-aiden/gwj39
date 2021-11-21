@@ -27,8 +27,11 @@ var __target_origin: Vector2 = Vector2.ZERO
 var __untraversable_timer: Timer = null
 
 var __shader_offset: float = 0.8
+var __shader_time_elapsed: float = 0.0
+var __shader_tween: Tween = null
 
 var __pick_up: PickUp = null
+
 
 
 # Lifecycle methods
@@ -38,6 +41,9 @@ func _ready() -> void: # Velop is a bad influence, we are now all awake at 3AM. 
 	self.__untraversable_timer.one_shot = true
 	self.__untraversable_timer.wait_time = 1.0
 	self.call_deferred("add_child", self.__untraversable_timer)
+
+	self.__shader_tween = Tween.new()
+	self.call_deferred("add_child", self.__shader_tween)
 
 	Event.connect("wait_times_up", self, "set", ["__live", false])
 
@@ -112,7 +118,18 @@ func invert(color: Color) -> void:
 	self.color_current = color
 	self.__sprite.material.set_shader_param("current_color", self.color_current)
 
-	self.__sprite.material.set_shader_param("start_time", OS.get_ticks_msec() / 1000.0 - self.__shader_offset)
+	self.__shader_tween.interpolate_method(
+		self,
+		"__set_shader_delta",
+		0.0,
+		5.0,
+		0.2
+	)
+	self.__shader_tween.start()
+
+#	self.__sprite.material.set_shader_param("delta", 0.0 - 10.0)
+
+#	self.__sprite.material.set_shader_param("start_time", OS.get_ticks_msec() / 1000.0 - self.__shader_offset)
 
 
 func has_target() -> bool:
@@ -161,3 +178,7 @@ func __set_player_position(incoming: Vector2) -> void:
 
 	if self.__target != null:
 		self.__target.position = self.__target_origin + incoming
+
+
+func __set_shader_delta(incoming: float) -> void:
+	self.__sprite.material.set_shader_param("delta", incoming)
