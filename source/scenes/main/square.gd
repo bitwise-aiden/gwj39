@@ -32,6 +32,8 @@ var __shader_tween: Tween = null
 
 var __pick_up: PickUp = null
 
+var __time_since_occupied: float = 0.0
+
 
 
 # Lifecycle methods
@@ -64,6 +66,11 @@ func _process(delta: float) -> void:
 			self.__origin,
 			delta * self.__speed * 1000.0 * modifier
 		)
+
+	self.__time_since_occupied += delta
+	if self.__time_since_occupied > 1.0:
+		self.complete()
+		self.__time_since_occupied = 0.0
 
 
 # Public methods
@@ -147,6 +154,8 @@ func land(player: Player) -> void:
 	if self.__pick_up != null:
 		self.__pick_up.collect(self.__target)
 		self.__pick_up = null
+
+	self.__time_since_occupied = 0.0
 
 	self.invert(player.color())
 
