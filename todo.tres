@@ -88,6 +88,7 @@ Todo list:
 - [x] Add all controller buttons to controller detection
 - [x] Update player join to say press input key
 - [ ] fix wings flicker appearing first time 
+- [ ] fix title change area around tween
 - [ ] tutorial screen
   - [ ] tile changes fly in making it look dynamic
   - [ ] have fade to show players

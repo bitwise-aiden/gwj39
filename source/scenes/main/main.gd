@@ -38,6 +38,7 @@ onready var __winner_text: Label = $ui/winner
 var __initial_position: Vector2 = Vector2.ZERO
 var __interfaces: Array = []
 var __squares: Array = []
+var __play_area: PlayArea = null
 
 var __playing: bool = false
 
@@ -61,7 +62,10 @@ func _ready() -> void:
 	self.__wing_instance = WING_REFERENCE.instance()
 	self.call_deferred("add_child", self.__wing_instance)
 
-	self.__initialize_squares()
+	self.__play_area = PlayArea.new(self, self.size)
+	self.__play_area.initialize(funcref(self, "__wait_event_callback"))
+	self.__squares = self.__play_area.__squares
+
 	self.__initialize_players()
 
 	self.__animation.play("spawn")
@@ -102,16 +106,20 @@ func _process(delta: float) -> void:
 		self.__wing_spawn_countdown = max(0.0, self.__wing_spawn_countdown - delta)
 
 		if self.__wing_spawn_countdown == 0.0:
-			var index_position: Vector2 = Vector2(randi() % 4 + 2, randi() % 4 + 2)
-			var index: int = self.__index_position_to_index(index_position)
-			while self.__squares[index].has_target():
-				index_position = Vector2(randi() % 4 + 2, randi() % 4 + 2)
-				index = self.__index_position_to_index(index_position)
+			while true:
+				var area_position: Vector2 = Vector2(randi() % 4 + 2, randi() % 4 + 2)
+				var square: Square = self.__play_area.square_at_area_position(area_position)
 
-			var position: Vector2 =  self.__index_position_to_position(index_position)
-			self.__wing_instance.land(position)
+				if square != null && !square.has_target():
+					var world_position: Vector2 = self.__play_area.area_position_to_world_position(
+						area_position
+					)
 
-			self.__squares[index].set_pick_up(self.__wing_instance)
+					self.__wing_instance.land(world_position)
+					square.set_pick_up(self.__wing_instance)
+
+					break
+
 	elif !self.__wing_instance.is_active():
 		self.__wing_spawn_countdown = randf() * 10.0 + 10.0
 
@@ -138,12 +146,9 @@ func _process(delta: float) -> void:
 #	return corners
 
 
-func __is_color(origin:Vector2, color: Color) -> bool:
-	var index: int = self.__index_position_to_index(origin)
-	if index == -1:
-		return false
-
-	return self.__squares[index].color_current == color
+func __is_color(origin:Vector2, color: Color) -> bool: # This one is for my homies - Lumikkode
+	var square: Square = self.__play_area.square_at_area_position(origin)
+	return square != null && square.color_current == color
 
 
 func __is_corner(origin: Vector2, side_a: Vector2, side_b: Vector2, color: Color) -> bool:
@@ -223,7 +228,7 @@ func __find_inversion_areas(player: Player) -> Array:
 
 func __find_inversion_areas_at_position(origin: Vector2, player: Player) -> Array:
 	var color: Color = player.color()
-	var index_position: Vector2 = self.__position_to_index_position(player.position)
+	var area_position: Vector2 = self.__play_area.world_postition_to_area_position(player.position)
 
 	if !self.__is_corner(origin, Vector2.DOWN, Vector2.RIGHT, color):
 		return []
@@ -261,7 +266,7 @@ func __find_inversion_areas_at_position(origin: Vector2, player: Player) -> Arra
 
 		var inversion_area: InversionArea = InversionArea.new(origin, second_corner)
 
-		if !inversion_area.contains_position_border(index_position):
+		if !inversion_area.contains_position_border(area_position):
 			continue
 
 		inversion_areas.append(InversionArea.new(origin, second_corner))
@@ -282,9 +287,9 @@ func __calculate_points(square: Square, player: Player) -> int:
 	for inversion_area in self.__find_inversion_areas(player):
 
 		for internal_positions in inversion_area.internal_positions:
-			var index: int = self.__index_position_to_index(internal_positions)
-
-			var current_square: Square = self.__squares[index]
+			var current_square: Square = self.__play_area.square_at_area_position(
+				internal_positions
+			) # idk what this does but if i remove it, app breaks down - Lumikkode
 			if current_square.has_target():
 				continue
 
@@ -304,20 +309,15 @@ func __calculate_points(square: Square, player: Player) -> int:
 
 
 func __can_move(player: Player, origin: Vector2, destination: Vector2) -> bool:
-	var index_origin: Vector2 = self.__position_to_index_position(origin)
-	var index_destination: Vector2 = self.__position_to_index_position(destination)
+	var area_origin: Vector2 = self.__play_area.world_postition_to_area_position(origin)
+	var area_destination: Vector2 = self.__play_area.world_postition_to_area_position(destination)
 
-	if index_destination.x < 0.0 || index_destination.x >= size || \
-		index_destination.y < 0.0 || index_destination.y >= size:
-			return false
-
-	var delta = (index_destination - index_origin).snapped(Vector2(0.1, 0.1))
+	var delta = (area_destination - area_origin).snapped(Vector2(0.1, 0.1))
 	if [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN].find(delta) == -1:
 		return false
 
-	var index: int = self.__position_to_index(destination)
-	var square: Square = self.__squares[index]
-	if !square.can_traverse():
+	var square: Square = self.__play_area.square_at_world_position(destination)
+	if square == null || !square.can_traverse(): # i will never add a comment fu - TheYagich
 		return false
 
 	square.reserve(player)
@@ -334,7 +334,7 @@ func __initialize_players() -> void:
 		var interface: ControlInterface = ControlInterface.new(
 			ControlInterface.NONE,
 			AIInput.new(
-				funcref(self, "__board_state_getter"),
+				funcref(self.__play_area, "state"),
 				funcref(self, "__player_state_getter"),
 				self.__players[i].instance.color()
 			)
@@ -351,44 +351,21 @@ func __initialize_players() -> void:
 	Event.connect("player_landed", self, "__player_landed")
 
 
-func __initialize_squares() -> void:
-	var total_size: Vector2 = Globals.SQUARE_SIZE * self.size
-	self.__initial_position = Globals.SCREEN_SIZE / 2.0 - total_size / 2.0
+func __wait_event_callback(area_position: Vector2) -> String:
+	if PLAYER_POSITIONS.find(area_position) == -1:
+		return "wait_spawn_world"
 
-	for y in self.size:
-		for x in self.size:
-			var instance: Square = SQUARE_REFERENCE.instance()
-			var index_position = Vector2(x, y)
-
-			var speed = randf() * 3.0 + 2.0
-			var wait_event: String = "wait_spawn_world"
-			if PLAYER_POSITIONS.find(index_position) != -1:
-				speed = randf() + 4.0
-				wait_event = "wait_spawn_player"
-
-			instance.initialize(
-				index_position,
-				self.__initial_position + index_position * Globals.SQUARE_SIZE,
-				Vector2(0.0, 1000.0),
-				speed,
-				wait_event
-			)
-
-			self.call_deferred("add_child", instance)
-
-			self.__squares.append(instance)
+	return "wait_spawn_player"
 
 
 func __player_landed(player: Player) -> void:
-	var index: int = self.__position_to_index(player.position)
-
-	if index < 0 || index > self.__squares.size():
+	var square: Square = self.__play_area.square_at_world_position(player.position)
+	if square == null:
 		return
 
-	var square = self.__squares[index]
 	square.land(player)
 
-	player.set_coord(self.__position_to_index_position(player.position))
+	player.set_coord(self.__play_area.world_postition_to_area_position(player.position))
 
 	if !self.__playing:
 		return
@@ -404,27 +381,6 @@ func __player_landed(player: Player) -> void:
 			state.ui.set_score(state.score)
 
 			break
-
-
-func __position_to_index_position(incoming: Vector2) -> Vector2:
-	var relative_position: Vector2 = incoming - self.__initial_position - Globals.PLAYER_OFFSET
-	return relative_position / Globals.SQUARE_SIZE
-
-
-func __index_position_to_index(incoming: Vector2) -> int:
-	if incoming.x < 0.0 || incoming.x >= self.size || incoming.y < 0.0 || incoming.y >= self.size:
-		return -1
-
-	return int(incoming.y * self.size + incoming.x)
-
-
-func __index_position_to_position(incoming: Vector2) -> Vector2:
-	return (incoming * Globals.SQUARE_SIZE) + self.__initial_position + Globals.PLAYER_OFFSET
-
-
-func __position_to_index(incoming: Vector2) -> int:
-	var index_position: Vector2 = self.__position_to_index_position(incoming)
-	return self.__index_position_to_index(index_position)
 
 
 func __set_winner_tween(incoming: float) -> void:
@@ -460,16 +416,13 @@ func __get_winner_tween() -> float:
 func __return_to_main() -> void:
 	SceneManager.load_scene("menu_start")
 
+
 func __hide_children() -> void:
 	for child in self.get_children():
 		if child is AnimationPlayer:
 			continue
 
 		child.visible = false
-
-
-func __board_state_getter() -> Array:
-	return self.__squares
 
 func __player_state_getter() -> Array:
 	var players: Array = []
