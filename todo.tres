@@ -84,10 +84,10 @@ Todo list:
   - [x] map keyboard inputs to different keys
   - [x] back to main
 - [x] Update square to pass delta into shader
-- [ ] Fix clock disappearing at win screen
+- [x] Fix clock disappearing at win screen
 - [ ] Add all controller buttons to controller detection
 - [ ] Update player join to say press input key
-- [ ] add power ups
+- [ ] fix wings flicker appearing first time 
 - [ ] tutorial screen
   - [ ] tile changes fly in making it look dynamic
   - [ ] have fade to show players
@@ -105,6 +105,7 @@ Todo list:
   - [ ] Make AI even better!
   - [ ] Make AI target power ups
     - [ ] Make AI run away from bomb if they picked it up
+- [ ] add power ups
   - [x] speed 
     - [ ] Possibly increase duration
     - [ ] Create new sound
