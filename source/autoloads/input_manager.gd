@@ -44,11 +44,12 @@ func _ready() -> void:
 	var input_settings: Dictionary = SettingsManager.get_setting("input", {})
 	for action_name in input_settings:
 		if action_name in self.input:
-			self.input[action_name].current = input_settings[action_name]
-			self.input[action_name].valid = self.__update_used_keys(
-				action_name,
-				self.input[action_name].current
-			)
+			self.set_key(action_name, input_settings[action_name])
+#			self.input[action_name].current = input_settings[action_name]
+#			self.input[action_name].valid = self.__update_used_keys(
+#				action_name,
+#				self.input[action_name].current
+#			)
 		else:
 			Logger.warn("invalid input setting %s." % action_name)
 
@@ -63,6 +64,20 @@ func _ready() -> void:
 
 
 # Public methods
+
+func get_key(action_name: String) -> int:
+	if !self.input.has(action_name):
+		return -1
+
+	return self.input[action_name].get_key()
+
+
+func is_used(key: int) -> bool:
+	print(key)
+	print(self.__used_keys)
+	return self.__used_keys.has(key)
+
+
 func set_key(action_name: String, key: int) -> void:
 	if !self.input.has(action_name):
 		return

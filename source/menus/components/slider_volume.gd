@@ -4,6 +4,8 @@ extends HSlider
 export (String) var display_name = "Volume"
 export (String) var controlled_bus = null
 
+export (Array, Texture) var sliders: Array = []
+
 onready var label = $label
 
 
@@ -17,6 +19,7 @@ func _ready() -> void:
 	self.label.text = self.display_name
 
 	self.connect("value_changed", self, "__value_changed")
+	self.connect("focus_entered", self, "__focus_entered")
 
 
 # Private methods

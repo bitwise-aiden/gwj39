@@ -21,7 +21,7 @@ func _ready() -> void:
 	for key in levels.keys():
 		var index = self.__get_bus_index(key)
 		self.__volume_max[key] = AudioServer.get_bus_volume_db(index)
-		var value: float = lerp(self.__volume_min, self.__volume_max[key], levels[key])
+		var value: float = linear2db( levels[key]) #lerp(self.__volume_min, self.__volume_max[key], levels[key])
 		AudioServer.set_bus_volume_db(index, value)
 
 	self.__music_fade_tween = Tween.new()
@@ -43,7 +43,8 @@ func set_volume(name: String, value: float) -> void:
 
 	var volume_db: float = -INF
 	if value > 0.0:
-		volume_db = lerp(self.__volume_min, self.__volume_max[name], value)
+
+		volume_db = linear2db(value)# lerp(self.__volume_min, self.__volume_max[name], value)
 	AudioServer.set_bus_volume_db(index, volume_db)
 
 	SettingsManager.set_setting("volume/%s" % name, value, true)

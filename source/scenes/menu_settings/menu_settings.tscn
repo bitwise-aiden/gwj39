@@ -1,0 +1,557 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://source/menus/components/slider_volume.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/themes/theme.tres" type="Theme" id=2]
+[ext_resource path="res://assets/art/key_inactive.png" type="Texture" id=3]
+[ext_resource path="res://assets/art/pointer.png" type="Texture" id=4]
+[ext_resource path="res://source/scenes/menu_settings/key.gd" type="Script" id=5]
+[ext_resource path="res://source/scenes/menu_settings/menu_settings.gd" type="Script" id=6]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("master_volume:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 73, 278 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("music_volume:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 73, 428 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sound_effect_volume:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 73, 578 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("back:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 64, 64 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("keys_udlr:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 875, 150 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("keys_wasd:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 875, 494 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:rect_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "leave"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 12.1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 100, 100 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "load"
+tracks/0/type = "value"
+tracks/0/path = NodePath("master_volume:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -527, 278 ), Vector2( -527, 278 ), Vector2( 93, 278 ), Vector2( 53, 278 ), Vector2( 73, 278 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("music_volume:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -527, 428 ), Vector2( -527, 428 ), Vector2( 93, 428 ), Vector2( 53, 428 ), Vector2( 73, 428 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("sound_effect_volume:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -527, 578 ), Vector2( -527, 578 ), Vector2( 93, 578 ), Vector2( 53, 578 ), Vector2( 73, 578 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("back:rect_position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -436, 64 ), Vector2( -436, 64 ), Vector2( 84, 64 ), Vector2( 44, 64 ), Vector2( 64, 64 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("keys_udlr:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1625, 150 ), Vector2( 1625, 150 ), Vector2( 855, 150 ), Vector2( 895, 150 ), Vector2( 875, 150 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("keys_wasd:rect_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.3, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1625, 494 ), Vector2( 1625, 494 ), Vector2( 855, 494 ), Vector2( 895, 494 ), Vector2( 875, 494 ) ]
+}
+
+[node name="menu_settings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 640, 360 )
+theme = ExtResource( 2 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="animation" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 2 )
+anims/leave = SubResource( 3 )
+anims/load = SubResource( 1 )
+
+[node name="master_volume" parent="." instance=ExtResource( 1 )]
+margin_left = 73.0
+margin_top = 278.0
+margin_right = 518.0
+margin_bottom = 378.0
+display_name = "Master"
+controlled_bus = "Master"
+
+[node name="music_volume" parent="." instance=ExtResource( 1 )]
+margin_left = 73.0
+margin_top = 428.0
+margin_right = 518.0
+margin_bottom = 528.0
+display_name = "Music"
+controlled_bus = "Music"
+
+[node name="sound_effect_volume" parent="." instance=ExtResource( 1 )]
+margin_left = 73.0
+margin_top = 578.0
+margin_right = 518.0
+margin_bottom = 678.0
+display_name = "Sound Effects"
+controlled_bus = "Sound Effects"
+
+[node name="back" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 64.0
+margin_right = 231.0
+margin_bottom = 134.0
+text = "Back"
+
+[node name="keys_udlr" type="Control" parent="."]
+margin_left = 875.0
+margin_top = 150.0
+margin_right = 1216.0
+margin_bottom = 410.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key_up" type="TextureRect" parent="keys_udlr"]
+margin_left = 17.5
+margin_top = -3.0
+margin_right = 81.5
+margin_bottom = 61.0
+rect_pivot_offset = Vector2( 32, 32 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pointer" type="TextureRect" parent="keys_udlr/key_up"]
+margin_left = 27.0
+margin_top = -25.0
+margin_right = 37.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 5, 25 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key" type="Button" parent="keys_udlr/key_up"]
+margin_left = -4.0
+margin_top = -110.0
+margin_right = 71.0
+margin_bottom = -35.0
+grow_horizontal = 2
+rect_pivot_offset = Vector2( 138, 94 )
+text = "UP"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+binding = "keyboard_1_up"
+
+[node name="key_left" type="TextureRect" parent="keys_udlr"]
+margin_left = -32.5
+margin_top = 23.0
+margin_right = 31.5
+margin_bottom = 87.0
+rect_pivot_offset = Vector2( 32, 32 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pointer" type="TextureRect" parent="keys_udlr/key_left"]
+margin_left = -30.0
+margin_top = 5.0
+margin_right = -20.0
+margin_bottom = 26.0
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 5, 25 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key" type="Button" parent="keys_udlr/key_left"]
+margin_left = -105.5
+margin_top = -7.66667
+margin_right = -30.5001
+margin_bottom = 67.3333
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 138, 94 )
+text = "LEFT"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+binding = "keyboard_1_left"
+
+[node name="key_down" type="TextureRect" parent="keys_udlr"]
+margin_left = 17.5
+margin_top = 23.0
+margin_right = 81.5
+margin_bottom = 87.0
+rect_pivot_offset = Vector2( 32, 32 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pointer" type="TextureRect" parent="keys_udlr/key_down"]
+margin_left = 27.0
+margin_top = 65.0
+margin_right = 37.0
+margin_bottom = 86.0
+rect_pivot_offset = Vector2( 5, 25 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key" type="Button" parent="keys_udlr/key_down"]
+margin_left = -4.83337
+margin_top = 100.333
+margin_right = 70.1666
+margin_bottom = 175.333
+grow_horizontal = 2
+rect_pivot_offset = Vector2( 138, 94 )
+text = "Down"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+binding = "keyboard_1_down"
+
+[node name="key_right" type="TextureRect" parent="keys_udlr"]
+margin_left = 67.5
+margin_top = 23.0
+margin_right = 131.5
+margin_bottom = 87.0
+rect_pivot_offset = Vector2( 32, 32 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pointer" type="TextureRect" parent="keys_udlr/key_right"]
+margin_left = 58.0
+margin_top = 5.0
+margin_right = 68.0
+margin_bottom = 26.0
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 5, 25 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key" type="Button" parent="keys_udlr/key_right"]
+margin_left = 100.0
+margin_top = -7.0
+margin_right = 175.0
+margin_bottom = 68.0
+rect_pivot_offset = Vector2( 138, 94 )
+text = "Right"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+binding = "keyboard_1_right"
+
+[node name="name" type="Label" parent="keys_udlr"]
+margin_left = -250.0
+margin_top = -50.0
+margin_right = -40.0
+margin_bottom = -26.0
+text = "keyboard 1"
+
+[node name="keys_wasd" type="Control" parent="."]
+margin_left = 875.0
+margin_top = 494.0
+margin_right = 1983.0
+margin_bottom = 626.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key_w" type="TextureRect" parent="keys_wasd"]
+margin_left = 17.5
+margin_top = -3.0
+margin_right = 81.5
+margin_bottom = 61.0
+rect_pivot_offset = Vector2( 32, 32 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pointer" type="TextureRect" parent="keys_wasd/key_w"]
+margin_left = 27.0
+margin_top = -25.0
+margin_right = 37.0
+margin_bottom = -4.0
+rect_pivot_offset = Vector2( 5, 25 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key" type="Button" parent="keys_wasd/key_w"]
+margin_left = -4.0
+margin_top = -110.0
+margin_right = 71.0
+margin_bottom = -35.0
+grow_horizontal = 2
+rect_pivot_offset = Vector2( 138, 94 )
+text = "W"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+binding = "keyboard_2_up"
+
+[node name="key_a" type="TextureRect" parent="keys_wasd"]
+margin_left = -32.5
+margin_top = 23.0
+margin_right = 31.5
+margin_bottom = 87.0
+rect_pivot_offset = Vector2( 32, 32 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pointer" type="TextureRect" parent="keys_wasd/key_a"]
+margin_left = -30.0
+margin_top = 5.0
+margin_right = -20.0
+margin_bottom = 26.0
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 5, 25 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key" type="Button" parent="keys_wasd/key_a"]
+margin_left = -105.5
+margin_top = -7.66667
+margin_right = -30.5001
+margin_bottom = 67.3333
+grow_horizontal = 0
+rect_pivot_offset = Vector2( 138, 94 )
+text = "A"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+binding = "keyboard_2_left"
+
+[node name="key_s" type="TextureRect" parent="keys_wasd"]
+margin_left = 17.5
+margin_top = 23.0
+margin_right = 81.5
+margin_bottom = 87.0
+rect_pivot_offset = Vector2( 32, 32 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pointer" type="TextureRect" parent="keys_wasd/key_s"]
+margin_left = 27.0
+margin_top = 65.0
+margin_right = 37.0
+margin_bottom = 86.0
+rect_pivot_offset = Vector2( 5, 25 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key" type="Button" parent="keys_wasd/key_s"]
+margin_left = -4.83337
+margin_top = 100.333
+margin_right = 70.1666
+margin_bottom = 175.333
+grow_horizontal = 2
+rect_pivot_offset = Vector2( 138, 94 )
+text = "S"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+binding = "keyboard_2_down"
+
+[node name="key_d" type="TextureRect" parent="keys_wasd"]
+margin_left = 67.5
+margin_top = 23.0
+margin_right = 131.5
+margin_bottom = 87.0
+rect_pivot_offset = Vector2( 32, 32 )
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pointer" type="TextureRect" parent="keys_wasd/key_d"]
+margin_left = 58.0
+margin_top = 5.0
+margin_right = 68.0
+margin_bottom = 26.0
+rect_rotation = 90.0
+rect_pivot_offset = Vector2( 5, 25 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="key" type="Button" parent="keys_wasd/key_d"]
+margin_left = 100.0
+margin_top = -7.0
+margin_right = 175.0
+margin_bottom = 68.0
+rect_pivot_offset = Vector2( 138, 94 )
+text = "D"
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+binding = "keyboard_2_right"
+
+[node name="name" type="Label" parent="keys_wasd"]
+margin_left = -250.0
+margin_top = -50.0
+margin_right = -40.0
+margin_bottom = 1.0
+text = "keyboard 2
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}

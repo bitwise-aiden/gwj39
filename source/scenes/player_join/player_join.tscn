@@ -298,9 +298,9 @@ __meta__ = {
 [node name="information" type="Label" parent="."]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -325.0
+margin_left = 315.0
 margin_top = -57.0
-margin_right = 326.0
+margin_right = 966.0
 margin_bottom = -33.0
 rect_pivot_offset = Vector2( 325, 12 )
 text = "Inactive players will spawn as AI"

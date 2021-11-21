@@ -41,7 +41,7 @@ func _ready() -> void:
 
 	self.__button_play.connect("pressed", self, "__change_scene", ["player_join"])
 #	self.__button_tutorial.connect("pressed", self, "__change_scene", ["tutorial"])
-#	self.__button_settings.connect("pressed", self, "__change_scene", ["menu_settings"])
+	self.__button_settings.connect("pressed", self, "__change_scene", ["menu_settings"])
 	self.__button_exit.connect("pressed", self, "__exit_pressed")
 
 

@@ -1,12 +1,41 @@
-[gd_resource type="Theme" load_steps=7 format=2]
+[gd_resource type="Theme" load_steps=16 format=2]
 
 [ext_resource path="res://assets/themes/button_style.tres" type="StyleBox" id=1]
 [ext_resource path="res://assets/fonts/GravityBold8.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/themes/button_hover_style.tres" type="StyleBox" id=3]
 [ext_resource path="res://assets/themes/button_style_pressed.tres" type="StyleBox" id=4]
 [ext_resource path="res://assets/themes/button_focus_style.tres" type="StyleBox" id=5]
+[ext_resource path="res://assets/art/button.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/slider_fill.png" type="Texture" id=7]
+[ext_resource path="res://assets/art/slider_empty.png" type="Texture" id=8]
+[ext_resource path="res://assets/art/hand_as_grabber_inactive.png" type="Texture" id=9]
+[ext_resource path="res://assets/art/blank_100x100.png" type="Texture" id=10]
+[ext_resource path="res://assets/art/blank_1x1.png" type="Texture" id=11]
 
 [sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 60, 1 )
+margin_top = 1.0
+margin_bottom = 1.0
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 7 )
+region_rect = Rect2( 0, 0, 60, 1 )
+axis_stretch_horizontal = 1
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 36, 36 )
+margin_left = 11.0
+margin_right = 11.0
+margin_top = 11.0
+margin_bottom = 11.0
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
 
 [resource]
 default_font = ExtResource( 2 )
@@ -17,3 +46,10 @@ Button/styles/focus = ExtResource( 5 )
 Button/styles/hover = ExtResource( 3 )
 Button/styles/normal = ExtResource( 1 )
 Button/styles/pressed = ExtResource( 4 )
+HSlider/icons/grabber = ExtResource( 10 )
+HSlider/icons/grabber_disabled = ExtResource( 10 )
+HSlider/icons/grabber_highlight = ExtResource( 9 )
+HSlider/icons/tick = ExtResource( 11 )
+HSlider/styles/grabber_area = SubResource( 2 )
+HSlider/styles/grabber_area_highlight = SubResource( 4 )
+HSlider/styles/slider = SubResource( 3 )
