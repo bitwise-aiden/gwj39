@@ -67,10 +67,11 @@ func _process(delta: float) -> void:
 			delta * self.__speed * 1000.0 * modifier
 		)
 
-	self.__time_since_occupied += delta
-	if self.__time_since_occupied > 1.0:
-		self.complete()
-		self.__time_since_occupied = 0.0
+	if self.__target != null:
+		self.__time_since_occupied += delta
+		if self.__time_since_occupied > 1.0:
+			self.complete()
+			self.__time_since_occupied = 0.0
 
 
 # Public methods
