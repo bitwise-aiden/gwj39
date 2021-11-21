@@ -83,7 +83,7 @@ Todo list:
   - [x] sfx volume
   - [x] map keyboard inputs to different keys
   - [x] back to main
-- [ ] Update square to pass delta into shader
+- [x] Update square to pass delta into shader
 - [ ] Fix clock disappearing at win screen
 - [ ] Add all controller buttons to controller detection
 - [ ] Update player join to say press input key
