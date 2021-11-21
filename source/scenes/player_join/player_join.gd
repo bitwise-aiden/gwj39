@@ -10,9 +10,9 @@ onready var __player_panes: Array = [
 	$player_3_pane,
 	$player_4_pane,
 ]
-
 onready var __button_back: Button = $back
 onready var __button_start: Button = $start
+onready var __information: Label = $information
 
 
 var __control_interfaces: Array = [
@@ -49,6 +49,8 @@ func _process(_delta: float) -> void:
 			interface.assign()
 
 			AudioManager.play_sound_effect("join")
+
+			self.__information.text = "Inactive players will spawn as AI"
 
 			# Give interface to the current pane
 			self.__player_panes[player_count].activate(interface.interface())
