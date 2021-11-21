@@ -6,10 +6,13 @@ class_name Player extends Node2D
 export(float) var move_delta: float = 0.0 setget __set_move_delta, __get_move_delta
 export(Resource) var data: Resource
 var coord: Vector2 = Vector2.ZERO
+var speed: float = 1.0 setget __set_speed, __get_speed
 
 # Private variables
 
 onready var __animation: AnimationPlayer = $animation
+onready var __default_playback_speed: float = self.__animation.playback_speed
+
 onready var __sprite: Sprite = $sprite
 onready var __arrows: Dictionary = {
 	Vector2.LEFT: $arrow_left,
@@ -105,6 +108,10 @@ func __get_move_delta() -> float:
 	return move_delta
 
 
+func __get_speed() -> float:
+	return speed
+
+
 func __set_move_delta(incoming: float) -> void:
 	move_delta = incoming
 
@@ -112,6 +119,12 @@ func __set_move_delta(incoming: float) -> void:
 		return
 
 	self.position = lerp(self.__origin, self.__destination, move_delta)
+
+
+func __set_speed(incoming: float) -> void:
+	speed = incoming
+
+	self.__animation.playback_speed = self.__default_playback_speed * speed
 
 
 func __update_arrows(direction: Vector2) -> void:

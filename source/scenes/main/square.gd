@@ -12,6 +12,7 @@ var coord: Vector2 = Vector2.ZERO
 # Private variables
 
 onready var __animation: AnimationPlayer = $animation
+onready var __default_playback_speed: float = self.__animation.playback_speed
 onready var __sprite: Sprite = $sprite
 
 
@@ -26,6 +27,8 @@ var __target_origin: Vector2 = Vector2.ZERO
 var __untraversable_timer: Timer = null
 
 var __shader_offset: float = 0.8
+
+var __pick_up: PickUp = null
 
 
 # Lifecycle methods
@@ -77,6 +80,8 @@ func complete() -> void:
 	self.__target = null
 	self.__target_origin = Vector2.ZERO
 
+	self.__animation.playback_speed = self.__default_playback_speed
+
 	self.__untraversable_timer.start()
 
 
@@ -118,7 +123,13 @@ func land(player: Player) -> void:
 	self.__target = player
 	self.__target_origin = player.position
 
+	self.__animation.playback_speed = self.__default_playback_speed * self.__target.speed
+
 	self.__animation.play("square_animation")
+
+	if self.__pick_up != null:
+		self.__pick_up.collect(self.__target)
+		self.__pick_up = null
 
 	self.invert(player.color())
 
@@ -129,6 +140,11 @@ func is_occupied_by(color: Color) -> bool:
 
 func reserve(player: Player) -> void:
 	self.__target = player
+
+
+func set_pick_up(pick_up: PickUp) -> void:
+	self.__pick_up = pick_up
+
 
 func target() -> Player:
 	return self.__target

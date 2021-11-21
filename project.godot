@@ -70,6 +70,11 @@ _global_script_classes=[ {
 "path": "res://source/helpers/inversion_area.gd"
 }, {
 "base": "Node2D",
+"class": "PickUp",
+"language": "GDScript",
+"path": "res://source/scenes/main/pick_up.gd"
+}, {
+"base": "Node2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://source/scenes/main/player.gd"
@@ -108,6 +113,11 @@ _global_script_classes=[ {
 "class": "TouchInput",
 "language": "GDScript",
 "path": "res://source/autoloads/touch_input.gd"
+}, {
+"base": "PickUp",
+"class": "Wings",
+"language": "GDScript",
+"path": "res://source/scenes/main/wings.gd"
 } ]
 _global_script_class_icons={
 "AIInput": "",
@@ -122,6 +132,7 @@ _global_script_class_icons={
 "HourGlass": "",
 "ImageCache": "",
 "InversionArea": "",
+"PickUp": "",
 "Player": "",
 "PlayerData": "",
 "PlayerInput": "",
@@ -129,7 +140,8 @@ _global_script_class_icons={
 "PlayerState": "",
 "SenderData": "",
 "Square": "",
-"TouchInput": ""
+"TouchInput": "",
+"Wings": ""
 }
 
 [application]

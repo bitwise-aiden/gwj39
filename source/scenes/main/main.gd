@@ -13,7 +13,7 @@ const SQUARE_REFERENCE: Resource = preload("res://source/scenes/main/square.tscn
 const AUDIO_PACK_REFERENCE: Resource = preload("res://source/audio_pack/game.tres")
 const INVERSION_AREA_SIZE_MIN: int = 3
 const WIN_POSITION_UI: Vector2 = Vector2(1280.0/2.0 - 100.0, 720.0/2.0)
-
+const WING_REFERENCE: Resource = preload("res://source/scenes/main/wings.tscn")
 
 
 # Publuc variables
@@ -46,6 +46,10 @@ var __winner_position_player: Vector2 = Vector2.ZERO
 var __winner_position_ui: Vector2 = Vector2.ZERO
 
 
+var __wing_instance: Wings = null
+var __wing_spawn_countdown: float = 0.0
+
+
 # Lifecycle methods
 
 func _ready() -> void:
@@ -53,6 +57,9 @@ func _ready() -> void:
 
 	AudioManager.set_audio_pack(self.AUDIO_PACK_REFERENCE)
 	AudioManager.play_music("banger", true)
+
+	self.__wing_instance = WING_REFERENCE.instance()
+	self.call_deferred("add_child", self.__wing_instance)
 
 	self.__initialize_squares()
 	self.__initialize_players()
@@ -64,6 +71,8 @@ func _ready() -> void:
 	yield(Event, "wait_game_start")
 	self.__playing = true
 	self.__hour_glass.set_time_remaining(120) # #Why are you setting origin? - MartyrPher
+
+	self.__wing_spawn_countdown = 2.0
 
 	yield(Event, "wait_times_up")
 
@@ -87,6 +96,24 @@ func _ready() -> void:
 
 	Event.emit_signal("wait_end_game")
 
+
+func _process(delta: float) -> void:
+	if self.__wing_spawn_countdown > 0.0:
+		self.__wing_spawn_countdown = max(0.0, self.__wing_spawn_countdown - delta)
+
+		if self.__wing_spawn_countdown == 0.0:
+			var index_position: Vector2 = Vector2(randi() % 4 + 2, randi() % 4 + 2)
+			var index: int = self.__index_position_to_index(index_position)
+			while self.__squares[index].has_target():
+				index_position = Vector2(randi() % 4 + 2, randi() % 4 + 2)
+				index = self.__index_position_to_index(index_position)
+
+			var position: Vector2 =  self.__index_position_to_position(index_position)
+			self.__wing_instance.land(position)
+
+			self.__squares[index].set_pick_up(self.__wing_instance)
+	elif !self.__wing_instance.is_active():
+		self.__wing_spawn_countdown = randf() * 10.0 + 10.0
 
 # Private methods
 
@@ -389,6 +416,10 @@ func __index_position_to_index(incoming: Vector2) -> int:
 		return -1
 
 	return int(incoming.y * self.size + incoming.x)
+
+
+func __index_position_to_position(incoming: Vector2) -> Vector2:
+	return (incoming * Globals.SQUARE_SIZE) + self.__initial_position + Globals.PLAYER_OFFSET
 
 
 func __position_to_index(incoming: Vector2) -> int:

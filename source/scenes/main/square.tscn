@@ -84,7 +84,6 @@ shader_param/duration = 0.2
 
 [node name="square" type="Node2D"]
 script = ExtResource( 2 )
-player_position = Vector2( 0, 4.08 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
 playback_speed = 1.5
