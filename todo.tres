@@ -87,10 +87,9 @@ Todo list:
 - [x] Fix clock disappearing at win screen
 - [x] Add all controller buttons to controller detection
 - [x] Update player join to say press input key
-- [ ] fix wings flicker appearing first time 
-- [ ] fix title change area around tween
-- [ ] fix wing z index
-- [ ] fix wing not leaving at end of game
+- [x] fix wings flicker appearing first time
+- [x] fix players stopping randomly 
+- [x] fix wing not leaving at end of game
 - [ ] increase spawn square enter speed
 - [ ] tutorial screen
   - [ ] tile changes fly in making it look dynamic
@@ -108,6 +107,8 @@ Todo list:
   - [x] Make AI that checks the density of colors that aren't their own and heads in that direction
   - [ ] Make AI even better!
   - [x] Make AI target power ups
+- [ ] fix title change area around tween
+- [ ] fix wing z index
 - [ ] add power ups
   - [x] speed 
     - [x] Possibly increase duration
