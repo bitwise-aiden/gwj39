@@ -10,6 +10,8 @@ const CONTROLLER_1 = 1 << 3 # Default: Controller, slot 1
 const CONTROLLER_2 = 1 << 4 # Default: Controller, slot 2
 const CONTROLLER_3 = 1 << 5 # Default: Controller, slot 3
 const CONTROLLER_4 = 1 << 6 # Default: Controller, slot 4
+const TUTORIAL_PLAYER_1 = 1 << 7 # Tutorial purposes
+const TUTORIAL_PLAYER_2 = 1 << 8 # Tutorial purposes
 
 const KEYBOARD = KEYBOARD_1 | KEYBOARD_2
 const CONTROLLER = CONTROLLER_1 | CONTROLLER_2 | CONTROLLER_3 | CONTROLLER_4
@@ -52,6 +54,12 @@ func _init(interface: int, ai: AIInput = null) -> void:
 
 	if self.__interface & CONTROLLER_4:
 		self.__interfaces.append(ControllerInput.new(3))
+
+	if self.__interface & TUTORIAL_PLAYER_1:
+		self.__interfaces.append(TutorialPlayer1Input.new())
+
+	if self.__interface & TUTORIAL_PLAYER_2:
+		self.__interfaces.append(TutorialPlayer2Input.new()) # i'll get you next time, gadget, next time... - TheYagich
 
 
 # Public methods

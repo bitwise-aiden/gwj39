@@ -15,13 +15,14 @@ onready var __button_settings: Button = $settings # Hi, I got no sound. So I'm j
 onready var __button_exit: Button = $exit
 
 
+
 # Lifecylce methods
 
 func _ready() -> void:
 	AudioManager.set_audio_pack(AUDIO_PACK_REFERENCE)
 	AudioManager.play_music("banger_lobby")
 
-	var seek: float = 0.0
+	var seek: float = 0.0 # This is a neat line of code! - velopman
 
 	if !GlobalState.first_time_load:
 		seek = 1.0

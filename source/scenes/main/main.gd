@@ -40,8 +40,6 @@ var __interfaces: Array = []
 var __play_area: PlayArea = null
 var __inversion_area_finder: InversionAreaFinder = null
 
-var __playing: bool = false
-
 var __winner: PlayerState = null
 var __winner_position_player: Vector2 = Vector2.ZERO
 var __winner_position_ui: Vector2 = Vector2.ZERO
@@ -55,6 +53,10 @@ var __wing_spawn_countdown: float = 0.0
 func _ready() -> void:
 	randomize()
 
+	GlobalState.playing = false
+
+	Event.connect("calculate_points", self, "__calculate_points")
+
 	AudioManager.set_audio_pack(self.AUDIO_PACK_REFERENCE)
 	AudioManager.play_music("banger", true)
 
@@ -64,7 +66,7 @@ func _ready() -> void:
 	self.__play_area = PlayArea.new(self, self.size)
 	self.__play_area.initialize(funcref(self, "__wait_event_callback"))
 
-	self.__inversion_area_finder = InversionAreaFinder.new(self.__play_area)
+	self.__inversion_area_finder = InversionAreaFinder.new(self.__play_area)\
 
 	self.__initialize_players()
 
@@ -73,14 +75,14 @@ func _ready() -> void:
 	self.__animation.play("countdown")
 
 	yield(Event, "wait_game_start")
-	self.__playing = true
+	GlobalState.playing = true
 	self.__hour_glass.set_time_remaining(120) # #Why are you setting origin? - MartyrPher
 
 	self.__wing_spawn_countdown = 2.0
 
 	yield(Event, "wait_times_up")
 
-	self.__playing = false
+	GlobalState.playing = false
 
 	self.__wing_instance.fly()
 
@@ -109,7 +111,7 @@ func _process(delta: float) -> void:
 	if self.__wing_spawn_countdown > 0.0:
 		self.__wing_spawn_countdown = max(0.0, self.__wing_spawn_countdown - delta)
 
-		if self.__playing && self.__wing_spawn_countdown == 0.0:
+		if GlobalState.playing && self.__wing_spawn_countdown == 0.0:
 			while true:
 				var area_position: Vector2 = Vector2(randi() % 4 + 2, randi() % 4 + 2)
 				var square: Square = self.__play_area.square_at_area_position(area_position)
@@ -130,11 +132,11 @@ func _process(delta: float) -> void:
 
 # Private methods
 
-func __calculate_points(square: Square, player: Player) -> int:
+func __calculate_points(square: Square, player: Player) -> void:
 	var points: int = 1
 
 	if square.color_previous == square.color_current:
-		return 0
+		return
 
 	if square.color_previous != Color.white:
 		points += 1
@@ -159,24 +161,14 @@ func __calculate_points(square: Square, player: Player) -> int:
 
 				current_square.invert(player.color())
 
-	return points
 
+	if points != 0:
+		for state in self.__players:
+			if state.instance == player:
+				state.score += points
+				state.ui.set_score(state.score)
 
-func __can_move(player: Player, origin: Vector2, destination: Vector2) -> bool:
-	var area_origin: Vector2 = self.__play_area.world_postition_to_area_position(origin)
-	var area_destination: Vector2 = self.__play_area.world_postition_to_area_position(destination)
-
-	var delta = (area_destination - area_origin).snapped(Vector2(0.1, 0.1))
-	if [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN].find(delta) == -1:
-		return false
-
-	var square: Square = self.__play_area.square_at_world_position(destination)
-	if square == null || !square.can_traverse(): # i will never add a comment fu - TheYagich
-		return false
-
-	square.reserve(player)
-
-	return true
+				break
 
 
 func __emit_signal(name: String) -> void:
@@ -200,10 +192,8 @@ func __initialize_players() -> void:
 
 		self.__players[i].instance.initialize(
 			interface,
-			funcref(self, "__can_move")
+			funcref(self.__play_area, "can_move")
 		)
-
-	Event.connect("player_landed", self, "__player_landed")
 
 
 func __wait_event_callback(area_position: Vector2) -> String:
@@ -211,31 +201,6 @@ func __wait_event_callback(area_position: Vector2) -> String:
 		return "wait_spawn_world"
 
 	return "wait_spawn_player"
-
-
-func __player_landed(player: Player) -> void:
-	var square: Square = self.__play_area.square_at_world_position(player.position)
-	if square == null:
-		return
-
-	square.land(player)
-
-	player.set_coord(self.__play_area.world_postition_to_area_position(player.position))
-
-	if !self.__playing:
-		return
-
-	for state in self.__players:
-		if state.instance == player:
-			var points: int = self.__calculate_points(square, player)
-			if points == 0:
-				break
-
-
-			state.score += points
-			state.ui.set_score(state.score)
-
-			break
 
 
 func __set_winner_tween(incoming: float) -> void:

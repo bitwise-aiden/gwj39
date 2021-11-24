@@ -24,12 +24,33 @@ func _init(owner: Node, size: int) -> void:
 	self.__owner = owner
 	self.size = size
 
+	Event.connect("player_landed", self, "__player_landed")
+
 
 # Public methods
 
 
 func area_position_to_world_position(position: Vector2) -> Vector2:
 	return (position * Globals.SQUARE_SIZE) + self.__initial_position + Globals.PLAYER_OFFSET
+
+
+func can_move(player: Player, origin: Vector2, destination: Vector2) -> bool:
+	var area_origin: Vector2 = self.world_postition_to_area_position(origin)
+	var area_destination: Vector2 = self.world_postition_to_area_position(destination)
+
+	print(player, origin, destination)
+
+	var delta = (area_destination - area_origin).snapped(Vector2(0.1, 0.1))
+	if [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN].find(delta) == -1:
+		return false
+
+	var square: Square = self.square_at_world_position(destination)
+	if square == null || !square.can_traverse(): # i will never add a comment fu - TheYagich
+		return false
+
+	square.reserve(player)
+
+	return true
 
 
 func initialize(wait_event_callback: FuncRef) -> void:
@@ -84,6 +105,21 @@ func __area_position_to_index(position: Vector2) -> int:
 		return -1
 
 	return int(position.y * self.size + position.x)
+
+
+func __player_landed(player: Player) -> void:
+	var square: Square = self.square_at_world_position(player.position)
+	if square == null:
+		return
+
+	square.land(player)
+
+	player.set_coord(self.world_postition_to_area_position(player.position))
+
+	if !GlobalState.playing:
+		return
+
+	Event.emit_signal("calculate_points", square, player)
 
 
 func __world_position_to_index(position: Vector2) -> int:

@@ -48,6 +48,7 @@ func _ready() -> void: # Velop is a bad influence, we are now all awake at 3AM. 
 	self.call_deferred("add_child", self.__shader_tween)
 
 	Event.connect("wait_times_up", self, "set", ["__live", false])
+	Event.connect("clear_board", self, "__clear_board")
 
 	if OS.has_feature('JavaScript'):
 		self.__shader_offset = 15
@@ -178,6 +179,11 @@ func target() -> Player:
 
 
 # Private methods
+
+func __clear_board() -> void:
+	print("Hello? world")
+	self.invert(Color.white)
+
 
 func __get_player_position() -> Vector2:
 	return player_position
