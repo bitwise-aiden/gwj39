@@ -7,6 +7,7 @@ export(Resource) var active_data: Resource
 
 export(bool) var active: bool = false setget __set_active, __get_active
 
+
 # Private variables
 
 onready var __animation: AnimationPlayer = $animation
@@ -33,12 +34,15 @@ func _ready() -> void:
 
 	self.__animation.play("life")
 
+
 # Public methods
 
-func activate(interface: int) -> void:
+func activate(interface: int, name_override: String = "") -> void:
 	self.__interface = interface
 	self.__animation.play("join")
 
+	if name_override:
+		self.__name.text = name_override
 
 func __get_active() -> bool:
 	return active
@@ -67,9 +71,9 @@ func __join_complete() -> void:
 
 	if self.__interface & ControlInterface.CONTROLLER != 0:
 		self.__animation.play("choose_controller")
-
-	if self.__interface & ControlInterface.KEYBOARD != 0:
+	elif self.__interface & ControlInterface.KEYBOARD != 0:
 		self.__animation.play("choose_keyboard")
-
-	if self.__interface & ControlInterface.TOUCH != 0:
+	elif self.__interface & ControlInterface.TOUCH != 0:
 		self.__animation.play("choose_touch")
+	else:
+		self.__animation.play("life")

@@ -181,7 +181,6 @@ func target() -> Player:
 # Private methods
 
 func __clear_board() -> void:
-	print("Hello? world")
 	self.invert(Color.white)
 
 

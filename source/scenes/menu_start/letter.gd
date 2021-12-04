@@ -17,7 +17,7 @@ func _ready() -> void:
 	self.__color_previous = Color.white
 
 	self.__shader_tween = Tween.new()
-	self.call_deferred("add_child", self.__shader_tween)
+	self.add_child(self.__shader_tween)
 
 	self.start_change()
 

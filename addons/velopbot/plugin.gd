@@ -8,7 +8,9 @@ var moderators: Array = [
 	"b33bytes",
 	"deschainxiv",
 	"incompetent_ian",
-	"velopman"
+	"velopman",
+	"Liioni",
+	"TheYagich",
 ]
 
 var command_responses: Dictionary = {
@@ -59,6 +61,7 @@ func _process(delta: float) -> void:
 		connection.put_data(self.__response_json(data))
 
 # Private methods
+
 func __chat_message(sender : SenderData, message: String, channel: String) -> void:
 	message = message.strip_edges()
 
@@ -71,11 +74,26 @@ func __chat_message(sender : SenderData, message: String, channel: String) -> vo
 	print("%s: %s" % [sender.user, message])
 
 
+var __players = []
+
 func __command(sender: SenderData, message: String) -> void:
-	var command = message.split(" ", 1)[0]
+	var command = message.split(" ", 1)[0].to_lower()
 
 	if command in self.command_responses:
 		self.twitch.chat(self.command_responses[command])
+	else:
+		var username: String = sender.user
+		var player: int = self.__players.find(username)
+		print(username, player)
+		if player == -1:
+			if self.__players.size() < 4:
+				player = self.__players.size()
+				self.__players.append(username)
+			else:
+				return
+
+		var identifier: String = "twitch_%d" % (player + 1)
+		Event.emit_signal("twitch_input", sender.user, command)
 
 
 func __command_buzz(command_info: CommandInfo) -> void:

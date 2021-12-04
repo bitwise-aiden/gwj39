@@ -16,7 +16,6 @@ var __listening: bool = false
 
 func _ready() -> void:
 	self.__current = InputManager.get_key(self.binding)
-	print(self.__current, self.binding)
 	self.__update_text()
 
 	self.connect("focus_exited", self, "__focus_exited")

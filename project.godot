@@ -139,6 +139,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://source/scenes/tutorial/tutorial_player_2_input.gd"
 }, {
+"base": "Node",
+"class": "TwitchInput",
+"language": "GDScript",
+"path": "res://source/helpers/twitch_input.gd"
+}, {
 "base": "PickUp",
 "class": "Wings",
 "language": "GDScript",
@@ -171,6 +176,7 @@ _global_script_class_icons={
 "Tutorial": "",
 "TutorialPlayer1Input": "",
 "TutorialPlayer2Input": "",
+"TwitchInput": "",
 "Wings": ""
 }
 
@@ -194,6 +200,7 @@ InputManager="*res://source/autoloads/input_manager.gd"
 DebugManager="*res://source/autoloads/debug_manager.gd"
 GlobalState="*res://source/autoloads/global_state.gd"
 TouchManager="*res://source/autoloads/touch_manager.gd"
+TwitchManager="*res://source/autoloads/twitch_manager.gd"
 
 [display]
 
@@ -207,7 +214,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/godot_reset/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg", "res://addons/velopbot/plugin.cfg" )
+enabled=PoolStringArray( "res://addons/godot_reset/plugin.cfg", "res://addons/velopbot/plugin.cfg" )
 
 [importer_defaults]
 

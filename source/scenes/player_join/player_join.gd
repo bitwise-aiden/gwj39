@@ -23,8 +23,11 @@ var __control_interfaces: Array = [
 	ControlInterface.new(ControlInterface.CONTROLLER_2),
 	ControlInterface.new(ControlInterface.CONTROLLER_3),
 	ControlInterface.new(ControlInterface.CONTROLLER_4),
+	ControlInterface.new(ControlInterface.TWITCH_1),
+	ControlInterface.new(ControlInterface.TWITCH_2),
+	ControlInterface.new(ControlInterface.TWITCH_3),
+	ControlInterface.new(ControlInterface.TWITCH_4),
 ]
-
 
 # Lifecylce methods
 
@@ -53,7 +56,14 @@ func _process(_delta: float) -> void:
 			self.__information.text = "Inactive players will spawn as AI"
 
 			# Give interface to the current pane
-			self.__player_panes[player_count].activate(interface.interface())
+			var name_override: String = ""
+			if interface.interface() & ControlInterface.TWITCH:
+				name_override = interface.__interfaces[0].username
+
+			self.__player_panes[player_count].activate(
+				interface.interface(),
+				name_override
+			)
 
 			GlobalState.connected_interfaces.append(interface.interface())
 

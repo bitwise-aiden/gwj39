@@ -44,7 +44,6 @@ func _ready() -> void:
 
 	self.__timer.start(3.0)
 
-	print("tutorial_squares_1")
 	Event.emit_signal("tutorial_squares_1")
 
 
@@ -66,9 +65,7 @@ func _ready() -> void:
 
 	yield(self.__show_text("You are a slime!"), "completed")
 
-	print("tutorial_squares_2")
 	Event.emit_signal("tutorial_squares_2")
-
 
 	yield(self.__show_text("Use directions to move, invert squares, and collect points", false), "completed")
 

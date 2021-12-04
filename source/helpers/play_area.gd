@@ -38,7 +38,6 @@ func can_move(player: Player, origin: Vector2, destination: Vector2) -> bool:
 	var area_origin: Vector2 = self.world_postition_to_area_position(origin)
 	var area_destination: Vector2 = self.world_postition_to_area_position(destination)
 
-	print(player, origin, destination)
 
 	var delta = (area_destination - area_origin).snapped(Vector2(0.1, 0.1))
 	if [Vector2.LEFT, Vector2.RIGHT, Vector2.UP, Vector2.DOWN].find(delta) == -1:

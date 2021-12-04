@@ -4,6 +4,9 @@ extends Node
 signal player_landed(player)
 signal calculate_points(square, player)
 
+signal twitch_input(identifier, command)
+signal twitch_join(identifier, username)
+
 signal wait_spawn_player()
 signal wait_spawn_world()
 signal wait_game_start()

@@ -8,10 +8,8 @@ var __direction: Vector2 = Vector2.ZERO
 
 # Lifecycle methods
 func _init() -> void:
-	print("Hello")
 	yield(Event, "tutorial_player_move")
 
-	print("world")
 	self.__direction = Vector2.LEFT
 
 	yield(
